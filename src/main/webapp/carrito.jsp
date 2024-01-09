@@ -28,10 +28,38 @@
     </ul>
 </header>
 
-<c:forEach var="car" items="${carrito}">
-<%--    <p>${car.getItem()}</p>--%>
-    <p>${car.getNombre()}</p>
-</c:forEach>
-    <p>${number10}</p>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>SubTotal</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="car" items="${carrito}">
+        <tr>
+                
+                <%--    <p>${car.getItem()}</p>--%>
+            <td>${car.getNombre()}</td>
+            <td>${car.getPrecio()}</td>
+            <td>
+                <input type="number" value="1">
+            </td>
+            <td>35.00</td>
+            <td>
+                <a href="#">Eliminar</a>
+            </td>
+        
+        
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+
+
+<p>${number10}</p>
 </body>
 </html>
