@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Carrito;
 import model.Producto;
 
@@ -21,13 +22,21 @@ public class controlCarrito extends HttpServlet {
     Producto p = new Producto();
 //    List<Producto> Productos = new ArrayList<>();
 
-    List<Carrito> listaCarrito = new ArrayList<>();
+//    List<Carrito> listaCarrito = new ArrayList<>();
+
     int item;
     double totalPagar = 0.0;
     int cantidad = 1;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        List<Carrito> listaCarrito = (List<Carrito>) session.getAttribute("carrito");
+        if (listaCarrito == null) {
+            listaCarrito = new ArrayList<>();
+            session.setAttribute("carrito", listaCarrito);
+        }
 
 
         String accion = request.getParameter("accion");
@@ -38,6 +47,7 @@ public class controlCarrito extends HttpServlet {
                 item = item + 1;
                 Carrito car = new Carrito();
                 car.setNombre(p.getNombre());
+                car.setPrecio(p.getPrecio());
                 listaCarrito.add(car);
                 request.setAttribute("contador", listaCarrito.size());
                 request.getRequestDispatcher("controlCarrito?accion=Home").forward(request, response);
@@ -47,6 +57,7 @@ public class controlCarrito extends HttpServlet {
             case "Carrito":
                 totalPagar = 0.0;
                 int number1 = 50;
+                listaCarrito = (List<Carrito>) session.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
                 request.setAttribute("number10", number1);
                 request.getRequestDispatcher("carrito.jsp").forward(request, response);
