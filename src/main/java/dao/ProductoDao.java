@@ -1,6 +1,6 @@
 package dao;
 
-import model.producto;
+import model.Producto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,15 +11,15 @@ import java.util.List;
 import static conexion.Conexion.getConnection;
 
 public class ProductoDao {
-    public static List<producto> listar() {
-        List<producto> list = new ArrayList<producto>();
+    public static List<Producto> listar() {
+        List<Producto> list = new ArrayList<Producto>();
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio FROM producto WHERE estado = 1");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                producto prod = new producto();
+                Producto prod = new Producto();
                 prod.setIdProducto(rs.getInt("idProducto"));
                 prod.setNombre(rs.getString("nombre"));
                 prod.setDescripcion(rs.getString("descripcion"));
@@ -32,14 +32,16 @@ public class ProductoDao {
         return list;
     }
 
-    public producto listarId(int id) {
-        producto p = new producto();
+    public Producto listarId(int id) {
+        Producto p = null;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio, stock FROM producto WHERE idProducto = " + id);
+            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio, stock FROM producto WHERE idProducto = ?");
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                p.setIdProducto(rs.getInt("idProducto"));
+                p = new Producto();
+//                p.setIdProducto(rs.getInt("idProducto"));
                 p.setNombre(rs.getString("nombre"));
                 p.setDescripcion(rs.getString("descripcion"));
                 p.setPrecio(rs.getDouble("precio"));

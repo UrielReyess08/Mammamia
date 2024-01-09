@@ -3,7 +3,7 @@
 <%@page import="model.Usuario, controller.controlCarrito" %>
 <%@page import="jakarta.servlet.http.HttpSession" %>
 <%@ page import="dao.ProductoDao" %>
-<%@ page import="model.producto" %>
+<%@ page import="model.Producto" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
@@ -14,15 +14,15 @@
 </head>
 <body>
 <%
-    List<producto> miLista = ProductoDao.listar();
-    request.setAttribute("productos", miLista);
+    List<Producto> miLista = ProductoDao.listar();
+    request.setAttribute("Productos", miLista);
 %>
 
 
 <header>
     <ul>
         <li>
-            <a href="index.jsp">Carrito <label>${contador}</label> </a>
+            <a href="controlCarrito?accion=Carrito">Carrito <label>${contador}</label> </a>
         </li>
     </ul>
 </header>
@@ -38,23 +38,17 @@
         </section>
 
         <section>
-            <c:forEach var="prod" items="${productos}">
+            <c:forEach var="prod" items="${Productos}">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="img_pizza_1">
                     <div class="card-body">
                         <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
                         <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
-                        <a href="output.jsp?id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
+                        <a href="controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
 <%--                        <a href="../../pago/carritoCompras.html">Ver Carrito</a>--%>
                     </div>
                 </div>
-                <form action="carrito.jsp" method="post">
-                    <input type="hidden" name="productoId" value="${prod.getIdProducto()}">
-                    <input type="hidden" name="productoNombre" value="${prod.getNombre()}">
-                    <input type="hidden" name="productoPrecio" value="${prod.getPrecio()}">
-                    <input type="submit" value="Añadir a carrito">
-                </form>
             </c:forEach>
 
         </section>

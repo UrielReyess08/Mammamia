@@ -1,8 +1,9 @@
-<%@ page import="model.carritoCompra" %>
+<%@ page import="model.Carrito" %>
 <%@ page import="dao.ProductoDao" %>
-<%@ page import="model.producto" %>
+<%@ page import="model.Producto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Producto" %><%--
   Created by IntelliJ IDEA.
   User: valde
   Date: 13/06/2023
@@ -14,10 +15,10 @@
 <head>
     <%
         ProductoDao productoDao = new ProductoDao();
-        producto p = new producto();
-        List<producto> productos = new ArrayList<>();
+        Producto p = new Producto();
+        List<Producto> Productos = new ArrayList<>();
         
-        List<carritoCompra> listaCarrito = new ArrayList<>();
+        List<Carrito> listaCarrito = new ArrayList<>();
         int item = 0;
         double totalPagar = 0.0;
         int cantidad = 1;
@@ -29,7 +30,7 @@
       int idProducto = Integer.parseInt(request.getParameter("id"));
       p = productoDao.listarId(idProducto);
       item = item + 1;
-      carritoCompra car = new carritoCompra();
+      Carrito car = new Carrito();
       car.setItem(item);
       car.setIdProducto(p.getIdProducto());
       car.setNombre(p.getNombre());

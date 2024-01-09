@@ -1,17 +1,8 @@
 package model;
 
-public class producto {
-    int idProducto, idCategoria, activo, stock;
+public class Producto {
+    int idProducto, idCategoria, estado, stock;
     String nombre, descripcion;
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
     double precio;
 
     public int getIdProducto() {
@@ -30,12 +21,12 @@ public class producto {
         this.idCategoria = idCategoria;
     }
 
-    public int getActivo() {
-        return activo;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setActivo(int activo) {
-        this.activo = activo;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public int getStock() {
@@ -62,4 +53,11 @@ public class producto {
         this.descripcion = descripcion;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 }
