@@ -14,26 +14,6 @@
         <title>Inicio | Mammamía</title>
     </head>
     <body>
-        <%
-            // Obtener la sesión
-            HttpSession sesion = request.getSession(false);
-            
-            // Obtener la sesion y verificar si el user ha iniciado sesion
-            Boolean isLoggedIn = (sesion != null && sesion.getAttribute("isLoggedIn") != null && (Boolean) sesion.getAttribute("isLoggedIn"));
-            
-            // Declarar variable para nombre de user de sesion
-            String nombreSesion = "";
-            
-            if(isLoggedIn){
-                Object userSession = sesion.getAttribute("usuario");
-                
-                if(userSession != null){
-                    nombreSesion = ((Usuario) userSession).getRol();
-                }else{
-                    nombreSesion = ((Cliente) sesion.getAttribute("cliente")).getNombre();
-                }
-            }
-        %>
 
         <header>
             <ul>
@@ -48,26 +28,6 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/views/viewExtras/nosotros.jsp">Nosotros</a>
                 </li>
-                <!-- Mostrar Cierre de Sesión y nombre del user -->
-                <%
-                    if (isLoggedIn) {
-                %>
-                <li>
-                    <a href="${pageContext.request.contextPath}/views/viewCliente/login/logout.jsp">Cerrar Sesión</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/views/viewCliente/cliente/panelUsuario.jsp">Hola <%= nombreSesion %></a>
-                </li>
-                <!-- Mostrar Inicio de Sesión -->
-                <%
-                    } else {
-                %>
-                <li>
-                    <a href="${pageContext.request.contextPath}/views/viewCliente/login/loginCliente.jsp">Iniciar Sesión</a>
-                </li>
-                <%
-                    }
-                %>
             </ul>
         </header>
 

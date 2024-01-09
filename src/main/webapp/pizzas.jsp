@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="model.Cliente" %>
-<%@page import="model.Usuario" %>
+<%@page import="model.Usuario, controller.controlCarrito" %>
 <%@page import="jakarta.servlet.http.HttpSession" %>
 <%@ page import="dao.ProductoDao" %>
 <%@ page import="model.producto" %>
@@ -22,7 +22,7 @@
 <header>
     <ul>
         <li>
-            <a href="">Carrito <label>${contador}</label> </a>
+            <a href="index.jsp">Carrito <label>${contador}</label> </a>
         </li>
     </ul>
 </header>
@@ -45,13 +45,38 @@
                         <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
                         <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
-                        <a href="controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
+                        <a href="output.jsp?id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
 <%--                        <a href="../../pago/carritoCompras.html">Ver Carrito</a>--%>
                     </div>
                 </div>
+                <form action="carrito.jsp" method="post">
+                    <input type="hidden" name="productoId" value="${prod.getIdProducto()}">
+                    <input type="hidden" name="productoNombre" value="${prod.getNombre()}">
+                    <input type="hidden" name="productoPrecio" value="${prod.getPrecio()}">
+                    <input type="submit" value="Añadir a carrito">
+                </form>
             </c:forEach>
 
         </section>
+        <form action="output.jsp" method="post">
+            
+            <label>
+                Nota 1:
+                <input type="text" name="nota1">
+            </label>
+            
+            <label>
+                Nota 2:
+                <input type="text" name="nota2">
+            </label>
+            
+            <label>
+                Nota 3:
+                <input type="text" name="nota3">
+            </label>
+            
+            <input type="submit" value="Procesar">
+        </form>
     </article>
 </main>
 

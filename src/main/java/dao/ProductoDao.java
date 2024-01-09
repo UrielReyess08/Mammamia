@@ -39,11 +39,11 @@ public class ProductoDao {
             PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio, stock FROM producto WHERE idProducto = " + id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                p.setIdProducto(rs.getInt(1));
-                p.setNombre(rs.getString(2));
-                p.setDescripcion(rs.getString(3));
-                p.setPrecio(rs.getDouble(4));
-                p.setStock(rs.getInt(5));
+                p.setIdProducto(rs.getInt("idProducto"));
+                p.setNombre(rs.getString("nombre"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setPrecio(rs.getDouble("precio"));
+                p.setStock(rs.getInt("stock"));
             }
         } catch (Exception e) {
 
