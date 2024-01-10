@@ -32,11 +32,11 @@ public class controlCarrito extends HttpServlet {
             throws ServletException, IOException {
 
 //        Mantener los productos del carrito guardados en el navegador
-        HttpSession session = request.getSession();
-        List<Carrito> listaCarrito = (List<Carrito>) session.getAttribute("carrito");
+        HttpSession sessionCart = request.getSession();
+        List<Carrito> listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
         if (listaCarrito == null) {
             listaCarrito = new ArrayList<>();
-            session.setAttribute("carrito", listaCarrito);
+            sessionCart.setAttribute("carrito", listaCarrito);
         }
 
         String accion = request.getParameter("accion");
@@ -88,7 +88,7 @@ public class controlCarrito extends HttpServlet {
             case "Carrito":
                 totalPagar = 0.0;
                 int number1 = 50;
-                listaCarrito = (List<Carrito>) session.getAttribute("carrito");
+                listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
                 request.setAttribute("number10", number1);
                 request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
