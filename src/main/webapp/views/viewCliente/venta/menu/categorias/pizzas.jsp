@@ -45,7 +45,6 @@
                         <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
                         <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
-                        src/main/java/controller/controlCarrito.java
                         <a href="<%=request.getContextPath()%>/controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
                     </div>
                 </div>

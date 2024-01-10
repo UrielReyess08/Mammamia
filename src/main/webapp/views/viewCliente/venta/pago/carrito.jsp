@@ -23,7 +23,8 @@
 <header>
     <ul>
         <li>
-            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home">Seguir comprando</a>
+<%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
+    <a href="#" onclick="history.back()">Volver a la página anterior</a>
         </li>
     </ul>
 </header>
@@ -58,8 +59,5 @@
     </c:forEach>
     </tbody>
 </table>
-
-
-<p>${number10}</p>
 </body>
 </html>

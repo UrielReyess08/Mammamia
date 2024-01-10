@@ -36,12 +36,13 @@ public class ProductoDao {
         Producto p = null;
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio, stock FROM producto WHERE idProducto = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT idProducto, idCategoria, nombre, descripcion, precio, stock FROM producto WHERE idProducto = ?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 p = new Producto();
                 p.setIdProducto(rs.getInt("idProducto"));
+                p.setIdCategoria(rs.getInt("idCategoria"));
                 p.setNombre(rs.getString("nombre"));
                 p.setDescripcion(rs.getString("descripcion"));
                 p.setPrecio(rs.getDouble("precio"));
