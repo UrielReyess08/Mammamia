@@ -23,8 +23,8 @@
 <header>
     <ul>
         <li>
-<%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
-    <a href="#" onclick="history.back()">Volver a la página anterior</a>
+            <%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
+            <a href="#" onclick="history.back()">Volver a la página anterior</a>
         </li>
     </ul>
 </header>
@@ -32,6 +32,7 @@
 <table border="1">
     <thead>
     <tr>
+        <th>Item</th>
         <th>Producto</th>
         <th>Precio</th>
         <th>Cantidad</th>
@@ -42,14 +43,14 @@
     <tbody>
     <c:forEach var="car" items="${carrito}">
         <tr>
-                
-                <%--    <p>${car.getItem()}</p>--%>
+            
+            <td>${car.getItem()}</td>
             <td>${car.getNombre()}</td>
             <td>${car.getPrecio()}</td>
             <td>
-                <input type="number" value="1">
+                <input type="number" value="${car.getCantidad()}">
             </td>
-            <td>35.00</td>
+            <td></td>
             <td>
                 <a href="#">Eliminar</a>
             </td>
@@ -59,5 +60,6 @@
     </c:forEach>
     </tbody>
 </table>
+<a href="Pago.html">Pagar</a>
 </body>
 </html>

@@ -12,14 +12,25 @@ public class Carrito {
         this.item = item;
     }
 
-    int item;
+    int item, cantidad;
+
+    public Carrito(int idProducto, int item, int cantidad, double precio, String nombre) {
+        this.idProducto = idProducto;
+        this.item = item;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.nombre = nombre;
+    }
+
     double precio;
     String nombre;
 
-    public Carrito(int idProducto, double precio, String nombre) {
-        this.idProducto = idProducto;
-        this.precio = precio;
-        this.nombre = nombre;
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public int getIdProducto() {
