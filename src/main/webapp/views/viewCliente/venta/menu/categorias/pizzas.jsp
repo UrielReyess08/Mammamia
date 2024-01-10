@@ -14,7 +14,7 @@
 </head>
 <body>
 <%
-    List<Producto> miLista = ProductoDao.listar();
+    List<Producto> miLista = ProductoDao.listarPizzas();
     request.setAttribute("Productos", miLista);
 %>
 

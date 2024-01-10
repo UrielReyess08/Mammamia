@@ -2,24 +2,27 @@
 <%@page import="model.Cliente" %>
 <%@page import="model.Usuario" %>
 <%@page import="jakarta.servlet.http.HttpSession" %>
+<%@ page import="model.Producto" %>
+<%@ page import="dao.ProductoDao" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Bebidas | Mammamía</title>
 
 </head>
 <body>
-
+<%
+    List<Producto> miLista = ProductoDao.listarBebidas();
+    request.setAttribute("Productos", miLista);
+%>
 <header>
     <ul>
         <li>
-            <a href="${pageContext.request.contextPath}/index.jsp">
-                <img src="..." alt="logo"/> | Inicio
+            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Carrito">Carrito <label>${contador}</label>
             </a>
-        </li>
-        <li>
-            <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/menu.jsp">Menú</a>
         </li>
     </ul>
 </header>
@@ -35,16 +38,19 @@
         </section>
         
         <section>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="img_bebida_1">
-                <div class="card-body">
-                    <h5 class="card-title">Bebida 1</h5>
-                    <p class="card-text">Precio</p>
-                    <a href="#" class="btn btn-primary">Añadir Producto</a>|
-                    <a href="../../pago/carritoCompras.html">Ver Carrito</a>
+            <c:forEach var="prod" items="${Productos}">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="img_pizza_1">
+                    <div class="card-body">
+                        <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
+                        <p class="card-text">${prod.getDescripcion()}</p>
+                        <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
+                        <a href="<%=request.getContextPath()%>/controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}"
+                           class="btn btn-primary">Añadir a carrito</a>|
+                    </div>
                 </div>
-            </div>
-
+            </c:forEach>
+        
         </section>
     </article>
 </main>

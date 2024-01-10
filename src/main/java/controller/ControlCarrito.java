@@ -39,21 +39,39 @@ public class controlCarrito extends HttpServlet {
             session.setAttribute("carrito", listaCarrito);
         }
 
-
         String accion = request.getParameter("accion");
-        String menu = request.getParameter("menu");
+
+        String menu = null;
+        int categoria = 0;
+
         switch (accion) {
             case "AgregarCarrito":
                 int idProducto = Integer.parseInt(request.getParameter("id"));
                 p = productoDao.listarId(idProducto);
                 item = item + 1;
+                categoria = p.getIdCategoria();
                 Carrito car = new Carrito();
+
                 car.setNombre(p.getNombre());
                 car.setPrecio(p.getPrecio());
                 car.setItem(item);
                 listaCarrito.add(car);
                 request.setAttribute("contador", listaCarrito.size());
-                request.getRequestDispatcher("controlCarrito?accion=Home").forward(request, response);
+                switch (categoria) {
+                    case 1:
+                        menu = "pizzas.jsp";
+                        break;
+                    case 2:
+                        menu = "bebidas.jsp";
+                        break;
+                    case 3:
+                        menu = "pastas.jsp";
+                        break;
+                }
+
+//                String retorno = "controlCarrito?accion=Home&menu=";
+                String retorno = "views/viewCliente/venta/menu/categorias/";
+                request.getRequestDispatcher(retorno + menu).forward(request, response);
 //                response.sendRedirect("pack/pizzas.jsp");
                 break;
             case "Carrito":
@@ -66,7 +84,9 @@ public class controlCarrito extends HttpServlet {
                 break;
 
             default:
-                request.getRequestDispatcher("views/viewCliente/venta/menu/categorias/pizzas.jsp").forward(request, response);
+//                String page = request.getParameter("menu");
+//                String url = "views/viewCliente/venta/menu/categorias/" + page;
+//                request.getRequestDispatcher(url).forward(request, response);
         }
 
         response.setContentType("text/html;charset=UTF-8");

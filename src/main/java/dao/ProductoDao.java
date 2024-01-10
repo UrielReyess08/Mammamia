@@ -11,11 +11,56 @@ import java.util.List;
 import static conexion.Conexion.getConnection;
 
 public class ProductoDao {
-    public static List<Producto> listar() {
+    public static List<Producto> listarPizzas() {
         List<Producto> list = new ArrayList<Producto>();
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio FROM producto WHERE estado = 1");
+            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio FROM producto WHERE estado = 1 AND idCategoria = ?");
+            ps.setInt(1, 1);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto prod = new Producto();
+                prod.setIdProducto(rs.getInt("idProducto"));
+                prod.setNombre(rs.getString("nombre"));
+                prod.setDescripcion(rs.getString("descripcion"));
+                prod.setPrecio(rs.getDouble("precio"));
+                list.add(prod);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public static List<Producto> listarBebidas() {
+        List<Producto> list = new ArrayList<Producto>();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio FROM producto WHERE estado = 1 AND idCategoria = ?");
+            ps.setInt(1, 2);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto prod = new Producto();
+                prod.setIdProducto(rs.getInt("idProducto"));
+                prod.setNombre(rs.getString("nombre"));
+                prod.setDescripcion(rs.getString("descripcion"));
+                prod.setPrecio(rs.getDouble("precio"));
+                list.add(prod);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public static List<Producto> listarPastas() {
+        List<Producto> list = new ArrayList<Producto>();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT idProducto, nombre, descripcion, precio FROM producto WHERE estado = 1 AND idCategoria = ?");
+            ps.setInt(1, 3);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
