@@ -51,7 +51,6 @@ public class controlCarrito extends HttpServlet {
                 item = item + 1;
                 categoria = p.getIdCategoria();
                 Carrito car = new Carrito();
-
                 car.setNombre(p.getNombre());
                 car.setPrecio(p.getPrecio());
                 car.setItem(item);
@@ -66,6 +65,9 @@ public class controlCarrito extends HttpServlet {
                         break;
                     case 3:
                         menu = "pastas.jsp";
+                        break;
+                    case 4:
+                        menu = "postres.jsp";
                         break;
                 }
 
