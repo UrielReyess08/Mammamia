@@ -55,7 +55,17 @@ public class controlCarrito extends HttpServlet {
                 car.setPrecio(p.getPrecio());
                 car.setCantidad(cantidad);
                 car.setItem(item);
-                listaCarrito.add(car);
+                boolean productoDuplicado = false;
+                for (Carrito c : listaCarrito) {
+                    if (c.getNombre().equals(p.getNombre())) {
+                        c.setCantidad(c.getCantidad() + 1);
+                        productoDuplicado = true;
+                        break;
+                    }
+                }
+                if (!productoDuplicado) {
+                    listaCarrito.add(car);
+                }
                 request.setAttribute("contador", listaCarrito.size());
                 switch (categoria) {
                     case 1:
@@ -71,12 +81,10 @@ public class controlCarrito extends HttpServlet {
                         menu = "postres.jsp";
                         break;
                 }
-
-//                String retorno = "controlCarrito?accion=Home&menu=";
                 String retorno = "views/viewCliente/venta/menu/categorias/";
                 request.getRequestDispatcher(retorno + menu).forward(request, response);
-//                response.sendRedirect("pack/pizzas.jsp");
                 break;
+
             case "Carrito":
                 totalPagar = 0.0;
                 int number1 = 50;
