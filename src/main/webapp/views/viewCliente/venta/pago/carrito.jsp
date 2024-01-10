@@ -23,7 +23,7 @@
 <header>
     <ul>
         <li>
-            <a href="controlCarrito?accion=Home">Seguir comprando</a>
+            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home">Seguir comprando</a>
         </li>
     </ul>
 </header>

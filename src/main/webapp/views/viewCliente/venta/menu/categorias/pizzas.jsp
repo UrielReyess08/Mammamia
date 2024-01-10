@@ -22,7 +22,7 @@
 <header>
     <ul>
         <li>
-            <a href="controlCarrito?accion=Carrito">Carrito <label>${contador}</label> </a>
+            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Carrito">Carrito <label>${contador}</label> </a>
         </li>
     </ul>
 </header>
@@ -31,10 +31,10 @@
     <h1>¡Disfruta de nuestra variedad de Pizzas!</h1>
     <article class="...">
         <section>
-            <a href="menuPizzas.html">Pizzas</a>|
-            <a href="menuPastas.html">Pastas</a>|
-            <a href="menuPostres.html">Postres</a>|
-            <a href="menuBebidas.html">Bebidas</a>
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/pizzas.jsp">Pizzas</a>|
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/pastas.jsp">Pastas</a>|
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/postres.jsp">Postres</a>|
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/bebidas.jsp">Bebidas</a>
         </section>
 
         <section>
@@ -52,25 +52,6 @@
             </c:forEach>
 
         </section>
-        <form action="../../output.jsp" method="post">
-            
-            <label>
-                Nota 1:
-                <input type="text" name="nota1">
-            </label>
-            
-            <label>
-                Nota 2:
-                <input type="text" name="nota2">
-            </label>
-            
-            <label>
-                Nota 3:
-                <input type="text" name="nota3">
-            </label>
-            
-            <input type="submit" value="Procesar">
-        </form>
     </article>
 </main>
 

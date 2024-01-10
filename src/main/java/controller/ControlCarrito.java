@@ -31,6 +31,7 @@ public class controlCarrito extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+//        Mantener los productos del carrito guardados en el navegador
         HttpSession session = request.getSession();
         List<Carrito> listaCarrito = (List<Carrito>) session.getAttribute("carrito");
         if (listaCarrito == null) {
@@ -40,6 +41,7 @@ public class controlCarrito extends HttpServlet {
 
 
         String accion = request.getParameter("accion");
+        String menu = request.getParameter("menu");
         switch (accion) {
             case "AgregarCarrito":
                 int idProducto = Integer.parseInt(request.getParameter("id"));
@@ -48,11 +50,11 @@ public class controlCarrito extends HttpServlet {
                 Carrito car = new Carrito();
                 car.setNombre(p.getNombre());
                 car.setPrecio(p.getPrecio());
+                car.setItem(item);
                 listaCarrito.add(car);
                 request.setAttribute("contador", listaCarrito.size());
                 request.getRequestDispatcher("controlCarrito?accion=Home").forward(request, response);
 //                response.sendRedirect("pack/pizzas.jsp");
-//
                 break;
             case "Carrito":
                 totalPagar = 0.0;
@@ -60,11 +62,11 @@ public class controlCarrito extends HttpServlet {
                 listaCarrito = (List<Carrito>) session.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
                 request.setAttribute("number10", number1);
-                request.getRequestDispatcher("/pack/carrito.jsp").forward(request, response);
+                request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                 break;
 
             default:
-                request.getRequestDispatcher("/pack/second/pizzas.jsp").forward(request, response);
+                request.getRequestDispatcher("views/viewCliente/venta/menu/categorias/pizzas.jsp").forward(request, response);
         }
 
         response.setContentType("text/html;charset=UTF-8");

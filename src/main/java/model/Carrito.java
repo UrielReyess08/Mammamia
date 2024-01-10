@@ -3,6 +3,16 @@ package model;
 public class Carrito {
 
     int idProducto;
+
+    public int getItem() {
+        return item;
+    }
+
+    public void setItem(int item) {
+        this.item = item;
+    }
+
+    int item;
     double precio;
     String nombre;
 
