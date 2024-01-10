@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pastas
-    Created on : 6 ene. 2024, 16:17:29
-    Author     : daiko
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="model.Cliente" %>
 <%@page import="model.Usuario" %>
