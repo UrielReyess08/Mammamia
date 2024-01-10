@@ -45,14 +45,15 @@
                         <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
                         <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
-                        <a href="controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
+                        src/main/java/controller/controlCarrito.java
+                        <a href="<%=request.getContextPath()%>/controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}" class="btn btn-primary">Añadir a carrito</a>|
 <%--                        <a href="../../pago/carritoCompras.html">Ver Carrito</a>--%>
                     </div>
                 </div>
             </c:forEach>
 
         </section>
-        <form action="output.jsp" method="post">
+        <form action="../../output.jsp" method="post">
             
             <label>
                 Nota 1:

@@ -60,11 +60,11 @@ public class controlCarrito extends HttpServlet {
                 listaCarrito = (List<Carrito>) session.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
                 request.setAttribute("number10", number1);
-                request.getRequestDispatcher("carrito.jsp").forward(request, response);
+                request.getRequestDispatcher("/pack/carrito.jsp").forward(request, response);
                 break;
 
             default:
-                request.getRequestDispatcher("pizzas.jsp").forward(request, response);
+                request.getRequestDispatcher("/pack/second/pizzas.jsp").forward(request, response);
         }
 
         response.setContentType("text/html;charset=UTF-8");
