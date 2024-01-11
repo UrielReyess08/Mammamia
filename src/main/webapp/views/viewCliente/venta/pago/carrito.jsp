@@ -42,10 +42,6 @@
     </tr>
     </thead>
     <tbody>
-    <form action="<%=request.getContextPath()%>/controlCarrito?accion=ActualizarCantidad" method="get">
-        <input type="hidden" name="idProducto" value="${car.getIdProducto()}">
-        <input type="hidden" name="cantidad" value="${car.getCantidad()}">
-    </form>
     <c:forEach var="car" items="${carrito}">
         <tr>
             <td>${car.getItem()}</td>
@@ -62,7 +58,7 @@
             </td>
         </tr>
     </c:forEach>
-        <input type="submit" value="Enviar">
+        <input type="submit" id="actualizar" value="ActualizarCarrito">
     
     </tbody>
 </table>
