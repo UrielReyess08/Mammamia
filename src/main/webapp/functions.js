@@ -1,7 +1,25 @@
 $(document).ready(function () {
-    $("tr #Cantidad").click(function (e) {
+
+    $("tr #btnDetele").click(function () {
         var idp = $(this).parent().find('#id').val();
-        var cantidad = $(this).parent().find('#Cantidad').val();
+        eliminar(idp);
+    });
+
+    function eliminar(idp) {
+        var url = "controlCarrito?accion=Delete";
+        // console.log(idp);
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: "idp=" + idp,
+            success: function (data, textStatus, jqXHR) {
+            }
+        });
+    }
+
+    $("tr #Cantidad").on("input", function (e) {
+        var idp = $(this).parent().find('#id').val();
+        var cantidad = $(this).val();
         var url = "controlCarrito?accion=ActualizarCantidad";
         console.log(idp, cantidad);
         $.ajax({
@@ -16,4 +34,5 @@ $(document).ready(function () {
             }
         });
     });
+
 });

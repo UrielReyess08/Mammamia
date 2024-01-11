@@ -24,7 +24,7 @@
     <ul>
         <li>
             <%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
-            <a href="#" onclick="history.back()">Volver a la página anterior</a>
+            <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/menu.jsp" >Volver a la página anterior</a>
         </li>
     </ul>
 </header>
@@ -50,15 +50,15 @@
             <td>${car.getPrecio()}</td>
             <td>
                 <input type="hidden" id="id" value="${car.getIdProducto()}">
-                <input type="number" min="1" id="Cantidad" value="${car.getCantidad()}">
+                <input type="number" min="1" step="1" id="Cantidad" value="${car.getCantidad()}">
             </td>
             <td>${car.getSubtotal()}</td>
             <td>
-                <a href="#">Eliminar</a>
+                <input type="hidden" id="id" value="${car.getIdProducto()}">
+                <a href="" id="btnDetele">Eliminar</a>
             </td>
         </tr>
     </c:forEach>
-        <input type="submit" id="actualizar" value="ActualizarCarrito">
     
     </tbody>
 </table>
