@@ -12,6 +12,7 @@ import model.Producto;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class controlCarrito extends HttpServlet {
     int item;
     double totalPagar = 0.0;
     int cantidad = 1;
+    double subtotal;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,6 +41,7 @@ public class controlCarrito extends HttpServlet {
             sessionCart.setAttribute("carrito", listaCarrito);
         }
 
+        DecimalFormat df = new DecimalFormat("#.##");
         String accion = request.getParameter("accion");
 
         String menu = null;
@@ -62,7 +65,9 @@ public class controlCarrito extends HttpServlet {
                         cantidad = listaCarrito.get(pos).getCantidad()+cantidad;
                         double subtotal = listaCarrito.get(pos).getPrecio()*cantidad;
                         listaCarrito.get(pos).setCantidad(cantidad);
-                        listaCarrito.get(pos).setSubtotal(subtotal);
+                        String subtotalString = df.format(subtotal);
+                        listaCarrito.get(pos).setSubtotal(Double.parseDouble(subtotalString));
+//                        listaCarrito.get(pos).setSubtotal(subtotal);
 
                     } else {
                         item = item + 1;
@@ -73,7 +78,11 @@ public class controlCarrito extends HttpServlet {
                         car.setNombre(p.getNombre());
                         car.setPrecio(p.getPrecio());
                         car.setCantidad(cantidad);
-                        car.setSubtotal(cantidad * p.getPrecio());
+                        double subtotal = cantidad * p.getPrecio();
+                        String subtotalString = df.format(subtotal);
+                        car.setSubtotal(Double.parseDouble(subtotalString));
+
+//                        car.setSubtotal(cantidad * p.getPrecio());
                         listaCarrito.add(car);
                     }
 
@@ -86,7 +95,12 @@ public class controlCarrito extends HttpServlet {
                     car.setNombre(p.getNombre());
                     car.setPrecio(p.getPrecio());
                     car.setCantidad(cantidad);
-                    car.setSubtotal(cantidad * p.getPrecio());
+                    double subtotal = cantidad * p.getPrecio();
+
+                    String subtotalString = df.format(subtotal);
+                    car.setSubtotal(Double.parseDouble(subtotalString));
+
+//                    car.setSubtotal(cantidad * p.getPrecio());
                     listaCarrito.add(car);
 
                 }
@@ -116,7 +130,10 @@ public class controlCarrito extends HttpServlet {
                 for (int j = 0; j < listaCarrito.size(); j++) {
                     if (listaCarrito.get(j).getIdProducto() == idProducto) {
                         listaCarrito.get(j).setCantidad(cant);
-                        listaCarrito.get(j).setSubtotal(listaCarrito.get(j).getPrecio() * cant);
+                        double subtotal = listaCarrito.get(j).getPrecio() * cant;
+                        String subtotalString = df.format(subtotal);
+                        listaCarrito.get(j).setSubtotal(Double.parseDouble(subtotalString));
+//                        listaCarrito.get(j).setSubtotal(listaCarrito.get(j).getPrecio() * cant);
                     }
                 }
                 break;
