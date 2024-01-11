@@ -88,7 +88,7 @@
             // Redireccionamiento hacia Menu.jsp
             function closePopup() {
                 document.getElementById('popup-container').style.visibility = 'hidden';
-                window.location.href = "${pageContext.request.contextPath}/views/viewCliente/venta/menu/menu.jsp";
+                window.location.href = "../menu.jsp";
             }
         </script>
     </body>

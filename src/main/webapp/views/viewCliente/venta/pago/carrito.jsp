@@ -54,7 +54,7 @@
             <td>${car.getPrecio()}</td>
             <td>
                 <input type="hidden" id="id" value="${car.getIdProducto()}">
-                <input type="number" id="Cantidad" value="${car.getCantidad()}">
+                <input type="number" min="1" id="Cantidad" value="${car.getCantidad()}">
             </td>
             <td>${car.getSubtotal()}</td>
             <td>
@@ -67,6 +67,7 @@
     </tbody>
 </table>
 <a href="Pago.html">Pagar</a>
-<%--<script src="<%=request.getContextPath()%>/funtions.js" type="text/javascript"></script>--%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="<%=request.getContextPath()%>/functions.js" type="text/javascript"></script>
 </body>
 </html>

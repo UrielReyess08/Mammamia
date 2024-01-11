@@ -111,17 +111,14 @@ public class controlCarrito extends HttpServlet {
                 break;
 
             case "ActualizarCantidad":
-                int idpro = Integer.parseInt(request.getParameter("idProducto"));
+                idProducto = Integer.parseInt(request.getParameter("id"));
                 int cant = Integer.parseInt(request.getParameter("cantidad"));
-                for (int i = 0; i < listaCarrito.size(); i++) {
-                    if (listaCarrito.get(i).getIdProducto()==idpro){
-                        listaCarrito.get(i).setCantidad(cant);
-                        double st = listaCarrito.get(i).getPrecio()*cant;
-                        listaCarrito.get(i).setSubtotal(st);
+                for (int j = 0; j < listaCarrito.size(); j++) {
+                    if (listaCarrito.get(j).getIdProducto() == idProducto) {
+                        listaCarrito.get(j).setCantidad(cant);
+                        listaCarrito.get(j).setSubtotal(listaCarrito.get(j).getPrecio() * cant);
                     }
-
                 }
-                request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                 break;
 
             case "Carrito":

@@ -33,7 +33,7 @@
 
                     <div>
                         <h2>Card Pizzas</h2>
-                        <a href="${pageContext.request.contextPath}//views/viewCliente/venta/menu/categorias/pizzas.jsp">Ver Todos</a>
+                        <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/categorias/pizzas.jsp">Ver Todos</a>
                     </div>
 
                     <div>
