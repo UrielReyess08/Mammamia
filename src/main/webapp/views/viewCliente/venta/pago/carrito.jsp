@@ -33,33 +33,40 @@
     <thead>
     <tr>
         <th>Item</th>
+        <th>Id Producto</th>
         <th>Producto</th>
         <th>Precio</th>
         <th>Cantidad</th>
         <th>SubTotal</th>
-        <th></th>
+        <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
+    <form action="<%=request.getContextPath()%>/controlCarrito?accion=ActualizarCantidad" method="get">
+        <input type="hidden" name="idProducto" value="${car.getIdProducto()}">
+        <input type="hidden" name="cantidad" value="${car.getCantidad()}">
+    </form>
     <c:forEach var="car" items="${carrito}">
         <tr>
-            
             <td>${car.getItem()}</td>
+            <td>${car.getIdProducto()}</td>
             <td>${car.getNombre()}</td>
             <td>${car.getPrecio()}</td>
             <td>
-                <input type="number" value="${car.getCantidad()}">
+                <input type="hidden" id="id" value="${car.getIdProducto()}">
+                <input type="number" id="Cantidad" value="${car.getCantidad()}">
             </td>
-            <td></td>
+            <td>${car.getSubtotal()}</td>
             <td>
                 <a href="#">Eliminar</a>
             </td>
-        
-        
         </tr>
     </c:forEach>
+        <input type="submit" value="Enviar">
+    
     </tbody>
 </table>
 <a href="Pago.html">Pagar</a>
+<%--<script src="<%=request.getContextPath()%>/funtions.js" type="text/javascript"></script>--%>
 </body>
 </html>

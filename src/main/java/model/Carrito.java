@@ -14,15 +14,27 @@ public class Carrito {
 
     int item, cantidad;
 
-    public Carrito(int idProducto, int item, int cantidad, double precio, String nombre) {
+
+    double precio;
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public Carrito(int idProducto, int item, int cantidad, double precio, double subtotal, String nombre) {
         this.idProducto = idProducto;
         this.item = item;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.subtotal = subtotal;
         this.nombre = nombre;
     }
 
-    double precio;
+    double subtotal;
     String nombre;
 
     public int getCantidad() {

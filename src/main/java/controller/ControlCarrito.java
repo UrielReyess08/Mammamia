@@ -46,26 +46,51 @@ public class controlCarrito extends HttpServlet {
 
         switch (accion) {
             case "AgregarCarrito":
+                int pos = 0;
+                cantidad = 1;
                 int idProducto = Integer.parseInt(request.getParameter("id"));
                 p = productoDao.listarId(idProducto);
-                item = item + 1;
-                categoria = p.getIdCategoria();
-                Carrito car = new Carrito();
-                car.setNombre(p.getNombre());
-                car.setPrecio(p.getPrecio());
-                car.setCantidad(cantidad);
-                car.setItem(item);
-                boolean productoDuplicado = false;
-                for (Carrito c : listaCarrito) {
-                    if (c.getNombre().equals(p.getNombre())) {
-                        c.setCantidad(c.getCantidad() + 1);
-                        productoDuplicado = true;
-                        break;
+
+                if (listaCarrito.size() > 0){
+                    for (int i = 0; i < listaCarrito.size(); i++) {
+                        if (idProducto == listaCarrito.get(i).getIdProducto()){
+                            pos = i;
+                        }
                     }
-                }
-                if (!productoDuplicado) {
+                    if (idProducto == listaCarrito.get(pos).getIdProducto()){
+                        categoria = p.getIdCategoria();
+                        cantidad = listaCarrito.get(pos).getCantidad()+cantidad;
+                        double subtotal = listaCarrito.get(pos).getPrecio()*cantidad;
+                        listaCarrito.get(pos).setCantidad(cantidad);
+                        listaCarrito.get(pos).setSubtotal(subtotal);
+
+                    } else {
+                        item = item + 1;
+                        categoria = p.getIdCategoria();
+                        Carrito car = new Carrito();
+                        car.setItem(item);
+                        car.setIdProducto(p.getIdProducto());
+                        car.setNombre(p.getNombre());
+                        car.setPrecio(p.getPrecio());
+                        car.setCantidad(cantidad);
+                        car.setSubtotal(cantidad * p.getPrecio());
+                        listaCarrito.add(car);
+                    }
+
+                } else {
+                    item = item + 1;
+                    categoria = p.getIdCategoria();
+                    Carrito car = new Carrito();
+                    car.setItem(item);
+                    car.setIdProducto(p.getIdProducto());
+                    car.setNombre(p.getNombre());
+                    car.setPrecio(p.getPrecio());
+                    car.setCantidad(cantidad);
+                    car.setSubtotal(cantidad * p.getPrecio());
                     listaCarrito.add(car);
+
                 }
+
                 request.setAttribute("contador", listaCarrito.size());
                 switch (categoria) {
                     case 1:
@@ -85,6 +110,20 @@ public class controlCarrito extends HttpServlet {
                 request.getRequestDispatcher(retorno + menu).forward(request, response);
                 break;
 
+            case "ActualizarCantidad":
+                int idpro = Integer.parseInt(request.getParameter("idProducto"));
+                int cant = Integer.parseInt(request.getParameter("cantidad"));
+                for (int i = 0; i < listaCarrito.size(); i++) {
+                    if (listaCarrito.get(i).getIdProducto()==idpro){
+                        listaCarrito.get(i).setCantidad(cant);
+                        double st = listaCarrito.get(i).getPrecio()*cant;
+                        listaCarrito.get(i).setSubtotal(st);
+                    }
+
+                }
+                request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
+                break;
+
             case "Carrito":
                 totalPagar = 0.0;
                 int number1 = 50;
@@ -96,8 +135,8 @@ public class controlCarrito extends HttpServlet {
 
             default:
 //                String page = request.getParameter("menu");
-//                String url = "views/viewCliente/venta/menu/categorias/" + page;
-//                request.getRequestDispatcher(url).forward(request, response);
+                String url = "views/viewCliente/venta/menu";
+                request.getRequestDispatcher(url).forward(request, response);
         }
 
         response.setContentType("text/html;charset=UTF-8");
