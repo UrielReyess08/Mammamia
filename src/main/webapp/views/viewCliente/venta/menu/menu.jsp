@@ -15,8 +15,6 @@
         <title>Menú | Mammamía</title>
     </head>
     <body>
-    <body>
-
         <main>
             <h1>Menú</h1>
             <article class="...">
