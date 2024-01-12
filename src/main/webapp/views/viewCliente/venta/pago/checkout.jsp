@@ -42,8 +42,6 @@
             <table border="1">
                 <thead>
                 <tr>
-                    <th>Item</th>
-                    <th>Id Producto</th>
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
@@ -53,8 +51,6 @@
                 <tbody>
                 <c:forEach var="car" items="${carrito}">
                     <tr>
-                        <td>${car.getItem()}</td>
-                        <td>${car.getIdProducto()}</td>
                         <td>${car.getNombre()}</td>
                         <td>${car.getPrecio()}</td>
                         <td>${car.getCantidad()}</td>

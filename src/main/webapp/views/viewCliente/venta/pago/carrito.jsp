@@ -50,11 +50,11 @@
             <td>${car.getSubtotal()}</td>
             <td>
                 <input type="hidden" id="id" value="${car.getIdProducto()}">
-                <a href="" id="btnDetele">Eliminar</a>
+                <a href="<%=request.getContextPath()%>/controlCarrito?accion=Delete&idp=${car.getIdProducto()}" id="btnDetele">Eliminar</a>
             </td>
         </tr>
     </c:forEach>
-    
+    <p>Total a pagar: ${totalPagar}</p>
     </tbody>
 </table>
 <a href="<%=request.getContextPath()%>/views/viewCliente/venta/pago/checkout.jsp">Realizar pago</a>

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @WebServlet(name = "controlCarrito", value = "/controlCarrito")
@@ -67,6 +68,11 @@ public class controlCarrito extends HttpServlet {
                         listaCarrito.get(pos).setCantidad(cantidad);
                         String subtotalString = df.format(subtotal);
                         listaCarrito.get(pos).setSubtotal(Double.parseDouble(subtotalString));
+                        double totalPagar = 0.0;
+                        for (int i = 0; i < listaCarrito.size(); i++) {
+                            totalPagar = totalPagar + listaCarrito.get(i).getSubtotal();
+                        }
+                        request.setAttribute("totalPagar", totalPagar);
 //                        listaCarrito.get(pos).setSubtotal(subtotal);
 
                     } else {
@@ -125,6 +131,7 @@ public class controlCarrito extends HttpServlet {
                 break;
 
             case "Delete":
+//                totalPagar = 0.0;
                 int idproducto = Integer.parseInt(request.getParameter("idp"));
                 for (int i = 0; i < listaCarrito.size(); i++) {
                     if (listaCarrito.get(i).getIdProducto()==idproducto){
@@ -132,6 +139,9 @@ public class controlCarrito extends HttpServlet {
                     }
 
                 }
+//                request.setAttribute("totalPagar", totalPagar);
+                request.getRequestDispatcher("controlCarrito?accion=Carrito").forward(request, response);
+
                 break;
 
             case "ActualizarCantidad":
@@ -150,10 +160,24 @@ public class controlCarrito extends HttpServlet {
 
             case "Carrito":
                 totalPagar = 0.0;
-                int number1 = 50;
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
+                if (listaCarrito.isEmpty()){
+//                    request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
+                    totalPagar = 0.0;
+                    request.setAttribute("totalPagar", totalPagar);
+                } else {
+                    for (int i = 0; i < listaCarrito.size(); i++) {
+                        totalPagar = totalPagar + listaCarrito.get(i).getSubtotal();
+                    }
+                    request.setAttribute("totalPagar", totalPagar);
+                }
+
                 request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
+                break;
+
+            case "Pago":
+
                 break;
 
             default:
