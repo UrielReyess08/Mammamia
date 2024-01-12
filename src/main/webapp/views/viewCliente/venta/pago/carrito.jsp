@@ -62,7 +62,7 @@
     
     </tbody>
 </table>
-<a href="Pago.html">Pagar</a>
+<a href="<%=request.getContextPath()%>/views/viewCliente/venta/pago/checkout.jsp">Pagar</a>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/functions.js" type="text/javascript"></script>
 </body>

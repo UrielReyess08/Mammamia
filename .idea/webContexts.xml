@@ -12,6 +12,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/menu/categorias/postres.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/menu/categorias" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/menu/menu.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/menu" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/pago/carrito.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/pago" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/pago/checkout.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/viewCliente/venta/pago" />
       </map>
     </option>
   </component>

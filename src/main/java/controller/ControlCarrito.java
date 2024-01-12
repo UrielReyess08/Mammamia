@@ -124,6 +124,16 @@ public class controlCarrito extends HttpServlet {
                 request.getRequestDispatcher(retorno + menu).forward(request, response);
                 break;
 
+            case "Delete":
+                int idproducto = Integer.parseInt(request.getParameter("idp"));
+                for (int i = 0; i < listaCarrito.size(); i++) {
+                    if (listaCarrito.get(i).getIdProducto()==idproducto){
+                        listaCarrito.remove(i);
+                    }
+
+                }
+                break;
+
             case "ActualizarCantidad":
                 idProducto = Integer.parseInt(request.getParameter("id"));
                 int cant = Integer.parseInt(request.getParameter("cantidad"));
@@ -143,7 +153,6 @@ public class controlCarrito extends HttpServlet {
                 int number1 = 50;
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
-                request.setAttribute("number10", number1);
                 request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                 break;
 
