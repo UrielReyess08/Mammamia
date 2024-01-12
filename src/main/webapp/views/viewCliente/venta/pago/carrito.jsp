@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="model.Producto" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List, model.Carrito, controller.controlCarrito" %>
@@ -6,14 +7,7 @@
 <%@page import="jakarta.servlet.http.HttpSession" %>
 <%@ page import="dao.ProductoDao" %>
 <%@ page import="model.Producto" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: RefinedCandle49
-  Date: 9/01/2024
-  Time: 12:48
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -24,7 +18,8 @@
     <ul>
         <li>
             <%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
-            <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/menu.jsp" >Volver a la página anterior</a>
+            <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/menu.jsp">Volver a la página
+                anterior</a>
         </li>
     </ul>
 </header>
@@ -62,7 +57,7 @@
     
     </tbody>
 </table>
-<a href="<%=request.getContextPath()%>/views/viewCliente/venta/pago/checkout.jsp">Pagar</a>
+<a href="<%=request.getContextPath()%>/views/viewCliente/venta/pago/checkout.jsp">Realizar pago</a>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/functions.js" type="text/javascript"></script>
 </body>

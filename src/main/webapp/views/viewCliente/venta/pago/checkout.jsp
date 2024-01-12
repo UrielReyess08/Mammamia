@@ -1,13 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: RefinedCandle49
-  Date: 11/01/2024
-  Time: 18:52
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page import="model.Cliente" %>
+<%@page import="model.Usuario, controller.controlCarrito" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
+<%@ page import="dao.ProductoDao" %>
+<%@ page import="model.Producto" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <title>Checkout</title>
 </head>
 <body>
@@ -38,6 +38,32 @@
     <h1>Finalizar Compra</h1>
     <article class="...">
         <section>
+            <h1>Resumen del pedido</h1>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Id Producto</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>SubTotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="car" items="${carrito}">
+                    <tr>
+                        <td>${car.getItem()}</td>
+                        <td>${car.getIdProducto()}</td>
+                        <td>${car.getNombre()}</td>
+                        <td>${car.getPrecio()}</td>
+                        <td>${car.getCantidad()}</td>
+                        <td>${car.getSubtotal()}</td>
+                    </tr>
+                </c:forEach>
+                
+                </tbody>
+            </table>
             <form action="..." method="POST">
                 <h2>Dirección:</h2>
                 <label>Selecciona tu dirección:</label>
@@ -46,32 +72,32 @@
                 </select><br>
                 
                 <label>idDireccionCliente</label>
-                <input type="text" name="idDireccionCliente" value="" /><br>
+                <input type="text" name="idDireccionCliente" value=""/><br>
                 
                 <label>idCliente</label>
-                <input type="text" name="idCliente" value="" /><br>
+                <input type="text" name="idCliente" value=""/><br>
                 
                 <label>direccion</label>
-                <input type="text" name="idDireccion" value="" /><br>
+                <input type="text" name="idDireccion" value=""/><br>
                 
                 <label>tipoVivienda</label>
-                <input type="text" name="tipoVivienda" value="" /><br>
+                <input type="text" name="tipoVivienda" value=""/><br>
                 
                 <label>referencia</label>
-                <input type="text" name="referencia" value="" /><br>
+                <input type="text" name="referencia" value=""/><br>
                 
                 <label>telefono</label>
-                <input type="text" name="telefono" value="" /><br>
+                <input type="text" name="telefono" value=""/><br>
                 
                 <h2>Datos Personales:</h2>
                 <label>Nombre</label>
-                <input type="text" name="nombre" value="" /><br>
+                <input type="text" name="nombre" value=""/><br>
                 
                 <label>Apellido</label>
-                <input type="text" name="apellido" value="" /><br>
+                <input type="text" name="apellido" value=""/><br>
                 
                 <label>Email</label>
-                <input type="text" name="email" value="" /><br>
+                <input type="text" name="email" value=""/><br>
                 
                 <h2>Tarjeta de Pago:</h2>
                 <label>Selecciona tu tarjeta:</label>
@@ -80,24 +106,24 @@
                 </select><br>
                 
                 <label>idTarjetaCliente</label>
-                <input type="text" name="idTarjetaCliente" value="" /><br>
+                <input type="text" name="idTarjetaCliente" value=""/><br>
                 
                 <label>idCliente</label>
-                <input type="text" name="idCliente" value="" /><br>
+                <input type="text" name="idCliente" value=""/><br>
                 
                 <label>metodoPago</label>
-                <input type="text" name="metodoPago" value="" /><br>
+                <input type="text" name="metodoPago" value=""/><br>
                 
                 <label>fechaExpiracion</label>
-                <input type="text" name="fechaExpiracion" value="" /><br>
+                <input type="text" name="fechaExpiracion" value=""/><br>
                 
                 <label>tipoTarjeta</label>
-                <input type="text" name="tipoTarjeta" value="" /><br>
+                <input type="text" name="tipoTarjeta" value=""/><br>
                 
                 <label>numeroTarjeta</label>
-                <input type="text" name="numeroTarjeta" value="" /><br>
+                <input type="text" name="numeroTarjeta" value=""/><br>
                 
-                <input type="submit" value="Finalizar Compra" />
+                <input type="submit" value="Finalizar Compra"/>
             </form>
         </section>
         
