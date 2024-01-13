@@ -1,5 +1,6 @@
 package controller;
 
+import dao.PedidoDao;
 import dao.ProductoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Carrito;
+import model.Cliente;
+import model.Pedido;
 import model.Producto;
 
 import java.io.IOException;
@@ -55,16 +58,16 @@ public class controlCarrito extends HttpServlet {
                 int idProducto = Integer.parseInt(request.getParameter("id"));
                 p = productoDao.listarId(idProducto);
 
-                if (listaCarrito.size() > 0){
+                if (listaCarrito.size() > 0) {
                     for (int i = 0; i < listaCarrito.size(); i++) {
-                        if (idProducto == listaCarrito.get(i).getIdProducto()){
+                        if (idProducto == listaCarrito.get(i).getIdProducto()) {
                             pos = i;
                         }
                     }
-                    if (idProducto == listaCarrito.get(pos).getIdProducto()){
+                    if (idProducto == listaCarrito.get(pos).getIdProducto()) {
                         categoria = p.getIdCategoria();
-                        cantidad = listaCarrito.get(pos).getCantidad()+cantidad;
-                        double subtotal = listaCarrito.get(pos).getPrecio()*cantidad;
+                        cantidad = listaCarrito.get(pos).getCantidad() + cantidad;
+                        double subtotal = listaCarrito.get(pos).getPrecio() * cantidad;
                         listaCarrito.get(pos).setCantidad(cantidad);
                         String subtotalString = df.format(subtotal);
                         listaCarrito.get(pos).setSubtotal(Double.parseDouble(subtotalString));
@@ -134,7 +137,7 @@ public class controlCarrito extends HttpServlet {
 //                totalPagar = 0.0;
                 int idproducto = Integer.parseInt(request.getParameter("idp"));
                 for (int i = 0; i < listaCarrito.size(); i++) {
-                    if (listaCarrito.get(i).getIdProducto()==idproducto){
+                    if (listaCarrito.get(i).getIdProducto() == idproducto) {
                         listaCarrito.remove(i);
                     }
 
@@ -162,7 +165,7 @@ public class controlCarrito extends HttpServlet {
                 totalPagar = 0.0;
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
-                if (listaCarrito.isEmpty()){
+                if (listaCarrito.isEmpty()) {
 //                    request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                     totalPagar = 0.0;
                     request.setAttribute("totalPagar", totalPagar);
@@ -176,10 +179,13 @@ public class controlCarrito extends HttpServlet {
                 request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                 break;
 
-            case "Pago":
+            case "RealizarPedido":
 
                 break;
 
+            case "ABC":
+                response.sendRedirect("views/viewCliente/venta/menu/menu.jsp");
+                break;
             default:
 //                String page = request.getParameter("menu");
                 String url = "views/viewCliente/venta/menu";
