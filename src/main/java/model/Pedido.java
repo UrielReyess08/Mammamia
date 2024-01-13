@@ -3,9 +3,9 @@ package model;
 import java.util.List;
 
 public class Pedido {
-    int idPedido, idCliente, tipoVivienda, metodoPago, tipoTarjeta, estado;
-    double total;
-    String receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, horaPedido;
+    private int idPedido, idCliente, tipoVivienda, metodoPago, tipoTarjeta;
+    private double total;
+    private String receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta;
 
     private List<Carrito>detalleCompra;
 
@@ -47,14 +47,6 @@ public class Pedido {
 
     public void setTipoTarjeta(int tipoTarjeta) {
         this.tipoTarjeta = tipoTarjeta;
-    }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
     }
 
     public double getTotal() {
@@ -113,14 +105,6 @@ public class Pedido {
         this.numeroTarjeta = numeroTarjeta;
     }
 
-    public String getHoraPedido() {
-        return horaPedido;
-    }
-
-    public void setHoraPedido(String horaPedido) {
-        this.horaPedido = horaPedido;
-    }
-
     public List<Carrito> getDetalleCompra() {
         return detalleCompra;
     }
@@ -129,12 +113,11 @@ public class Pedido {
         this.detalleCompra = detalleCompra;
     }
 
-    public Pedido(int idCliente, int tipoVivienda, int metodoPago, int tipoTarjeta, int estado, double total, String receptor, String direccion, String referencia, String telefono, String fechaExpiracion, String numeroTarjeta, String horaPedido, List<Carrito> detalleCompra) {
+    public Pedido(int idCliente, int tipoVivienda, int metodoPago, int tipoTarjeta, double total, String receptor, String direccion, String referencia, String telefono, String fechaExpiracion, String numeroTarjeta, List<Carrito> detalleCompra) {
         this.idCliente = idCliente;
         this.tipoVivienda = tipoVivienda;
         this.metodoPago = metodoPago;
         this.tipoTarjeta = tipoTarjeta;
-        this.estado = estado;
         this.total = total;
         this.receptor = receptor;
         this.direccion = direccion;
@@ -142,7 +125,6 @@ public class Pedido {
         this.telefono = telefono;
         this.fechaExpiracion = fechaExpiracion;
         this.numeroTarjeta = numeroTarjeta;
-        this.horaPedido = horaPedido;
         this.detalleCompra = detalleCompra;
     }
 

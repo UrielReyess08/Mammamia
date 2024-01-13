@@ -60,89 +60,99 @@
                 
                 </tbody>
             </table>
-            <form action="..." method="POST">
+            <form action="<%=request.getContextPath()%>/controlCarrito?accion=RealizarPedido" method="POST">
                 <h2>Dirección:</h2>
-                <label>Selecciona tu dirección:</label>
-                <select name="...">
-                    <option>getDirecciones</option>
-                </select><br>
+                <label>
+                    Selecciona tu dirección:
+<%--                    <select name="">--%>
+<%--                        <option>getDirecciones</option>--%>
+<%--                    </select>--%>
+                </label>
                 
-                <label>idDireccionCliente</label>
-                <input type="text" name="idDireccionCliente" value=""/><br>
+                <label>
+                    idCliente
+                    <input type="number" name="idCliente"/>
+                </label>
                 
-                <label>idCliente</label>
-                <input type="text" name="idCliente" value=""/><br>
+                <label>
+                    Receptor:
+                    <input type="text" name="receptor">
+                </label>
                 
-                <label>direccion</label>
-                <input type="text" name="idDireccion" value=""/><br>
+                <label>
+                    Dirección a entregar:
+                    <input required type="text" name="direccion"/>
+                </label>
                 
-                <label>tipoVivienda</label>
-                <input type="text" name="tipoVivienda" value=""/><br>
+                <label>
+                    Tipo de vivienda:
+                    <select name="tipoVivienda" required>
+                        <option disabled selected type="hidden">Seleccionar opción</option>
+                        <option value="1">Departamento</option>
+                        <option value="2">Casa</option>
+                        <option value="3">Condominio</option>
+                        <option value="4">Empresa</option>
+                        <option value="5">Hotel</option>
+                    </select>
+                </label>
                 
-                <label>referencia</label>
-                <input type="text" name="referencia" value=""/><br>
+                <label>
+                    Referencia:
+                    <input required type="text" name="referencia"/>
+                </label>
                 
-                <label>telefono</label>
-                <input type="text" name="telefono" value=""/><br>
+                <label>
+                    Teléfono:
+                    <input required type="tel" name="telefono"/>
+                </label>
                 
-                <h2>Datos Personales:</h2>
-                <label>Nombre</label>
-                <input type="text" name="nombre" value=""/><br>
+                <h2>Información de pago:</h2>
                 
-                <label>Apellido</label>
-                <input type="text" name="apellido" value=""/><br>
+<%--                <label>--%>
+<%--                    Selecciona tarjeta:--%>
+<%--                    <select name="">--%>
+<%--                        <option>getDirecciones</option>--%>
+<%--                    </select>--%>
+<%--                </label>--%>
                 
-                <label>Email</label>
-                <input type="text" name="email" value=""/><br>
+                <fieldset>
+                    <legend>Tipo de tarjeta:</legend>
+                    <div>
+                        
+                        <label>
+                            <input type="radio" name="metodoPago" value="1" required/>
+                            Crédito
+                        </label>
+                        
+<%--                        <label>--%>
+<%--                            <input type="radio" name="metodoPago" value="2" />--%>
+<%--                            Débito--%>
+<%--                        </label>--%>
+                    </div>
+                </fieldset>
                 
-                <h2>Tarjeta de Pago:</h2>
-                <label>Selecciona tu tarjeta:</label>
-                <select name="...">
-                    <option>getPago</option>
-                </select><br>
+                <label>
+                    Método de pago
+                    <select name="metodoPago" required>
+                        <option disabled selected type="hidden">Seleccionar opción</option>
+                        <option value="1">Visa</option>
+                        <option value="2">Mastercard</option>
+                        <option value="3">American Express</option>
+                    </select>
+                </label>
                 
-                <label>idTarjetaCliente</label>
-                <input type="text" name="idTarjetaCliente" value=""/><br>
+                <label>
+                    Número de tarjeta:
+                    <input required type="text" name="numeroTarjeta"/>
+                </label>
                 
-                <label>idCliente</label>
-                <input type="text" name="idCliente" value=""/><br>
-                
-                <label>metodoPago</label>
-                <input type="text" name="metodoPago" value=""/><br>
-                
-                <label>fechaExpiracion</label>
-                <input type="text" name="fechaExpiracion" value=""/><br>
-                
-                <label>tipoTarjeta</label>
-                <input type="text" name="tipoTarjeta" value=""/><br>
-                
-                <label>numeroTarjeta</label>
-                <input type="text" name="numeroTarjeta" value=""/><br>
+                <label>
+                    Fecha de expiración:
+                    <input type="text" name="fechaExpiracion">
+                </label>
                 
                 <input type="submit" value="Finalizar Compra"/>
             </form>
-        </section>
-        
-        <section>
-            <h2>Detalle del Pedido</h2>
-            <table border="1">
-                <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Pizza</td>
-                    <td>1</td>
-                    <td>35.00</td>
-                </tr>
-                </tbody>
-            </table>
-            
-            <!-- Esto es solo mientras diseñamos --><a href="resumenPedido.html">Resumen del Pedido</a>
         </section>
     </article>
 </main>
