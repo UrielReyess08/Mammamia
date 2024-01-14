@@ -4,21 +4,18 @@
  */
 package dao;
 
-import model.Usuario;
-
+import static connection.Conexion.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import static conexion.Conexion.getConnection;
+import model.Usuario;
 
 /**
  *
  * @author daiko
  */
-public class DAO_Usuario {
-    
-    public boolean validar(Usuario usu) {
+public class UsuarioDao {
+    public boolean validarUsuario(Usuario usu) {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM usuario WHERE email=? AND password=?");
@@ -29,7 +26,7 @@ public class DAO_Usuario {
             if (rs.next()) {
                 usu.setIdUsuario(rs.getInt("idUsuario"));
                 usu.setRol(rs.getString("rol"));
-                usu.setActivo(rs.getBoolean("activo"));
+                usu.setEstado(rs.getInt("estado"));
                 return true;
             }
 

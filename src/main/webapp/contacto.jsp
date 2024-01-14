@@ -1,16 +1,17 @@
 <%-- 
-    Document   : index
-    Created on : 11 ene. 2024, 11:40:09
+    Document   : contacto
+    Created on : 11 ene. 2024, 11:44:55
     Author     : daiko
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Cliente" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio | Mammamía</title>
+        <title>Contáctanos | Mammamía</title>
     </head>
     <body>
         <%
@@ -68,11 +69,33 @@
         </header>
 
         <main>
-            <h2>¡Bienvenido a la Pizzería Mammamía!</h2>
             <article class="...">
-                <!-- Carrusel -->
+                <h1>Contáctate con nosotros</h1>
+                <p>Al llenar el formulario autoriza el tratamiento de sus datos personales</p>
                 <section>
-                    Carrusel
+                    <form method="POST">
+                        <label>Nombre</label><br>
+                        <input type="text" name="nombre" value="" /><br>
+
+                        <label>Email</label><br>
+                        <input type="text" name="email" value="" /><br>
+
+                        <label>Teléfono</label><br>
+                        <input type="text" name="telefono" value="" /><br>
+
+                        <label>Motivo</label><br>
+                        <select name="motivo">
+                            <option>-- Seleccione --</option>
+                            <option>Sugerencia</option>
+                            <option>Reclamo</option>
+                            <option>Consulta</option>
+                        </select><br>
+
+                        <label>Comentarios</label><br>
+                        <textarea name="comentario" rows="5" cols="10"></textarea><br>
+
+                        <input type="submit" value="Enviar" />
+                    </form>
                 </section>
             </article>
         </main>

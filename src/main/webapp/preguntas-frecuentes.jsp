@@ -1,16 +1,17 @@
 <%-- 
-    Document   : index
-    Created on : 11 ene. 2024, 11:40:09
+    Document   : preguntas-frecuentes
+    Created on : 11 ene. 2024, 11:45:28
     Author     : daiko
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Cliente" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio | Mammamía</title>
+        <title>Preguntas Frecuentes | Mammamía</title>
     </head>
     <body>
         <%
@@ -68,11 +69,30 @@
         </header>
 
         <main>
-            <h2>¡Bienvenido a la Pizzería Mammamía!</h2>
+            <h1>Preguntas Frecuentes</h1>
             <article class="...">
-                <!-- Carrusel -->
                 <section>
-                    Carrusel
+                    <!-- Firefox no soporta details, al parecer -->
+                    <details>
+                        <summary>¿Pregunta 1?</summary>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley 
+                            of type and scrambled it to make a type specimen book.</p>
+                    </details>
+
+                    <details>
+                        <summary>¿Pregunta 2?</summary>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley 
+                            of type and scrambled it to make a type specimen book.</p>
+                    </details>
+
+                    <details>
+                        <summary>¿Pregunta 3?</summary>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley 
+                            of type and scrambled it to make a type specimen book.</p>
+                    </details>
                 </section>
             </article>
         </main>

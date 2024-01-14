@@ -1,16 +1,17 @@
 <%-- 
-    Document   : index
-    Created on : 11 ene. 2024, 11:40:09
+    Document   : nosotros
+    Created on : 11 ene. 2024, 11:45:02
     Author     : daiko
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Cliente" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio | Mammamía</title>
+        <title>Nosotros | Mammamía</title>
     </head>
     <body>
         <%
@@ -68,11 +69,25 @@
         </header>
 
         <main>
-            <h2>¡Bienvenido a la Pizzería Mammamía!</h2>
+            <h1>Acerca de Nosotros</h1>
             <article class="...">
-                <!-- Carrusel -->
                 <section>
-                    Carrusel
+                    <h2>Nuestra Historia</h2>
+                    <img src="..." alt="Imagen de la Pizzería"/>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type 
+                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also 
+                        the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 
+                        1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with 
+                        desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </section>
+
+                <section>
+                    <h2>Mision y Vision</h2>
+                    <img src="..." alt="Imagen"/>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been 
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley 
+                        of type and scrambled it to make a type specimen book.</p>
                 </section>
             </article>
         </main>

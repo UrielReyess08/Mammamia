@@ -9,9 +9,8 @@ package model;
  * @author daiko
  */
 public class Usuario {
-    int idUsuario;
+    int idUsuario, estado;
     String email, password, rol;
-    boolean activo;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -45,13 +44,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
-    
-    
 }

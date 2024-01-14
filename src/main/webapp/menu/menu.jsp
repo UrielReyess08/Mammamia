@@ -46,7 +46,7 @@
 
                     <div>
                         <h2>Card Bebidas</h2>
-                        <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/categorias/bebidas.jsp">ver Todos</a>
+                        <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/bebidas.jsp">ver Todos</a>
                     </div>
                 </section>
             </article>

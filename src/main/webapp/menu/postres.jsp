@@ -31,10 +31,10 @@
         <h1>¡Disfruta de nuestra variedad de Pastas!</h1>
         <article class="...">
             <section>
-                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/pizzas.jsp">Pizzas</a>|
-                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/pastas.jsp">Pastas</a>|
-                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/postres.jsp">Postres</a>|
-                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/categorias/bebidas.jsp">Bebidas</a>
+                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp">Pizzas</a>|
+                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pastas.jsp">Pastas</a>|
+                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/postres.jsp">Postres</a>|
+                <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/bebidas.jsp">Bebidas</a>
             </section>
             
             <section>
@@ -88,7 +88,7 @@
             // Redireccionamiento hacia Menu.jsp
             function closePopup() {
                 document.getElementById('popup-container').style.visibility = 'hidden';
-                window.location.href = "../menu.jsp";
+                window.location.href = "menu.jsp";
             }
         </script>
     </body>

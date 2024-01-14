@@ -4,24 +4,21 @@
  */
 package dao;
 
-import model.Cliente;
-
+import static connection.Conexion.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import static conexion.Conexion.getConnection;
+import model.Cliente;
 
 /**
  *
  * @author daiko
  */
-public class DAO_Cliente {
-
-    public boolean validar(Cliente cli) {
+public class ClienteDao {
+    public boolean validarCliente(Cliente cli) {
         try {
             Connection con = getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM cliente WHERE email= ? AND password= ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM cliente WHERE email=? AND password=?");
             ps.setString(1, cli.getEmail());
             ps.setString(2, cli.getPassword());
             ResultSet rs = ps.executeQuery();
