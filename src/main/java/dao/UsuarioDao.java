@@ -4,7 +4,7 @@
  */
 package dao;
 
-import static connection.Conexion.getConnection;
+import static conexion.Conexion.getConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
