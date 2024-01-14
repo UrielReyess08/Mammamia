@@ -24,7 +24,7 @@ public class PedidoDao {
         int estado = 0;
         try {
             Connection con = getConnection();
-            ps = con.prepareStatement("INSERT INTO pedido (idCliente, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            ps = con.prepareStatement("INSERT INTO pedido (idCliente, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, tipoVivienda, metodoPago, tipoTarjeta, estado, horaPedido, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setInt(1, pedido.getIdCliente());
             ps.setString(2, pedido.getReceptor());
             ps.setString(3, pedido.getDireccion());
@@ -32,6 +32,12 @@ public class PedidoDao {
             ps.setString(5, pedido.getTelefono());
             ps.setString(6, pedido.getFechaExpiracion());
             ps.setString(7, pedido.getNumeroTarjeta());
+            ps.setInt(8, pedido.getTipoVivienda());
+            ps.setInt(9, pedido.getMetodoPago());
+            ps.setInt(10, pedido.getTipoTarjeta());
+            ps.setInt(11, pedido.getEstado());
+            ps.setString(12, obtenerFechaActual());
+            ps.setDouble(13, pedido.getTotal());
 
             estado = ps.executeUpdate();
 

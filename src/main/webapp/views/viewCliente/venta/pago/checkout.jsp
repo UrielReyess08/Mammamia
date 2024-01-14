@@ -84,18 +84,18 @@
                     <input required type="text" name="direccion"/>
                 </label>
                 
-<%--                <label>--%>
-<%--                    Tipo de vivienda:--%>
-<%--                    <select name="tipoVivienda" required>--%>
-<%--                        <option disabled selected type="hidden">Seleccionar opción</option>--%>
-<%--                        <option value="1">Departamento</option>--%>
-<%--                        <option value="2">Casa</option>--%>
-<%--                        <option value="3">Condominio</option>--%>
-<%--                        <option value="4">Empresa</option>--%>
-<%--                        <option value="5">Hotel</option>--%>
-<%--                    </select>--%>
-<%--                </label>--%>
-<%--                --%>
+                <label>
+                    Tipo de vivienda:
+                    <select name="tipoVivienda" required>
+                        <option disabled selected type="hidden">Seleccionar opción</option>
+                        <option value="1">Departamento</option>
+                        <option value="2">Casa</option>
+                        <option value="3">Condominio</option>
+                        <option value="4">Empresa</option>
+                        <option value="5">Hotel</option>
+                    </select>
+                </label>
+                
                 <label>
                     Referencia:
                     <input required type="text" name="referencia"/>
@@ -105,41 +105,41 @@
                     Teléfono:
                     <input required type="tel" name="telefono"/>
                 </label>
-<%--                --%>
-<%--                <h2>Información de pago:</h2>--%>
-<%--                --%>
-<%--&lt;%&ndash;                <label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    Selecciona tarjeta:&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <select name="">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        <option>getDirecciones</option>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    </select>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                </label>&ndash;%&gt;--%>
-<%--                --%>
-<%--                <fieldset>--%>
-<%--                    <legend>Tipo de tarjeta:</legend>--%>
-<%--                    <div>--%>
-<%--                        --%>
-<%--                        <label>--%>
-<%--                            <input type="radio" name="metodoPago" value="1" required/>--%>
-<%--                            Crédito--%>
-<%--                        </label>--%>
-<%--                        --%>
-<%--&lt;%&ndash;                        <label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <input type="radio" name="metodoPago" value="2" />&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            Débito&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        </label>&ndash;%&gt;--%>
-<%--                    </div>--%>
-<%--                </fieldset>--%>
-<%--                --%>
+                
+                <h2>Información de pago:</h2>
+                
 <%--                <label>--%>
-<%--                    Método de pago--%>
-<%--                    <select name="metodoPago" required>--%>
-<%--                        <option disabled selected type="hidden">Seleccionar opción</option>--%>
-<%--                        <option value="1">Visa</option>--%>
-<%--                        <option value="2">Mastercard</option>--%>
-<%--                        <option value="3">American Express</option>--%>
+<%--                    Selecciona tarjeta:--%>
+<%--                    <select name="">--%>
+<%--                        <option>getDirecciones</option>--%>
 <%--                    </select>--%>
 <%--                </label>--%>
+                
+                <fieldset>
+                    <legend>Tipo de tarjeta:</legend>
+                    <div>
+                        
+                        <label>
+                            <input type="radio" name="tipoTarjeta" value="1" required/>
+                            Crédito
+                        </label>
+                        
+                        <label>
+                            <input type="radio" name="tipoTarjeta" value="2" />
+                            Débito
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <label>
+                    Método de pago
+                    <select name="metodoPago" required>
+                        <option disabled selected type="hidden">Seleccionar opción</option>
+                        <option value="1">Visa</option>
+                        <option value="2">Mastercard</option>
+                        <option value="3">American Express</option>
+                    </select>
+                </label>
                 
                 <label>
                     Número de tarjeta:

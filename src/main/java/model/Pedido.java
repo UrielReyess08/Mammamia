@@ -7,6 +7,43 @@ public class Pedido {
     }
 
     int idPedido;
+    int tipoVivienda;
+    int metodoPago;
+    int tipoTarjeta;
+
+    public int getTipoVivienda() {
+        return tipoVivienda;
+    }
+
+    public void setTipoVivienda(int tipoVivienda) {
+        this.tipoVivienda = tipoVivienda;
+    }
+
+    public int getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(int metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public int getTipoTarjeta() {
+        return tipoTarjeta;
+    }
+
+    public void setTipoTarjeta(int tipoTarjeta) {
+        this.tipoTarjeta = tipoTarjeta;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    int estado;
 
     public int getIdPedido() {
         return idPedido;
@@ -88,7 +125,13 @@ public class Pedido {
         this.numeroTarjeta = numeroTarjeta;
     }
 
-    public Pedido(int idCliente, List<Carrito> detallePedido, String receptor, String direccion, String referencia, String telefono, String fechaExpiracion, String numeroTarjeta) {
+    String numeroTarjeta;
+
+    public Pedido(int tipoVivienda, int metodoPago, int tipoTarjeta, int estado, int idCliente, List<Carrito> detallePedido, String receptor, String direccion, String referencia, String telefono, String fechaExpiracion, String numeroTarjeta, double total) {
+        this.tipoVivienda = tipoVivienda;
+        this.metodoPago = metodoPago;
+        this.tipoTarjeta = tipoTarjeta;
+        this.estado = estado;
         this.idCliente = idCliente;
         this.detallePedido = detallePedido;
         this.receptor = receptor;
@@ -97,9 +140,18 @@ public class Pedido {
         this.telefono = telefono;
         this.fechaExpiracion = fechaExpiracion;
         this.numeroTarjeta = numeroTarjeta;
+        this.total = total;
     }
 
-    String numeroTarjeta;
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    double total;
 
 
 }

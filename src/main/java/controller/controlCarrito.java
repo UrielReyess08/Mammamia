@@ -56,16 +56,16 @@ public class controlCarrito extends HttpServlet {
                 int idProducto = Integer.parseInt(request.getParameter("id"));
                 p = productoDao.listarId(idProducto);
 
-                if (listaCarrito.size() > 0){
+                if (listaCarrito.size() > 0) {
                     for (int i = 0; i < listaCarrito.size(); i++) {
-                        if (idProducto == listaCarrito.get(i).getIdProducto()){
+                        if (idProducto == listaCarrito.get(i).getIdProducto()) {
                             pos = i;
                         }
                     }
-                    if (idProducto == listaCarrito.get(pos).getIdProducto()){
+                    if (idProducto == listaCarrito.get(pos).getIdProducto()) {
                         categoria = p.getIdCategoria();
-                        cantidad = listaCarrito.get(pos).getCantidad()+cantidad;
-                        double subtotal = listaCarrito.get(pos).getPrecio()*cantidad;
+                        cantidad = listaCarrito.get(pos).getCantidad() + cantidad;
+                        double subtotal = listaCarrito.get(pos).getPrecio() * cantidad;
                         listaCarrito.get(pos).setCantidad(cantidad);
                         String subtotalString = df.format(subtotal);
                         listaCarrito.get(pos).setSubtotal(Double.parseDouble(subtotalString));
@@ -135,7 +135,7 @@ public class controlCarrito extends HttpServlet {
 //                totalPagar = 0.0;
                 int idproducto = Integer.parseInt(request.getParameter("idp"));
                 for (int i = 0; i < listaCarrito.size(); i++) {
-                    if (listaCarrito.get(i).getIdProducto()==idproducto){
+                    if (listaCarrito.get(i).getIdProducto() == idproducto) {
                         listaCarrito.remove(i);
                     }
 
@@ -163,7 +163,7 @@ public class controlCarrito extends HttpServlet {
                 totalPagar = 0.0;
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.setAttribute("carrito", listaCarrito);
-                if (listaCarrito.isEmpty()){
+                if (listaCarrito.isEmpty()) {
 //                    request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                     totalPagar = 0.0;
                     request.setAttribute("totalPagar", totalPagar);
@@ -179,9 +179,13 @@ public class controlCarrito extends HttpServlet {
 
             case "RealizarPedido":
                 String receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta;
+                int estado, tipoVivienda, metodoPago, tipoTarjeta, idCliente;
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 PedidoDao dao = new PedidoDao();
-                int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+                tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
+                metodoPago = Integer.parseInt(request.getParameter("metodoPago"));
+                tipoTarjeta = Integer.parseInt(request.getParameter("tipoTarjeta"));
+                idCliente = Integer.parseInt(request.getParameter("idCliente"));
                 receptor = request.getParameter("receptor");
                 direccion = request.getParameter("direccion");
                 referencia = request.getParameter("referencia");
@@ -189,7 +193,7 @@ public class controlCarrito extends HttpServlet {
                 fechaExpiracion = request.getParameter("fechaExpiracion");
                 numeroTarjeta = request.getParameter("numeroTarjeta");
 
-                Pedido pedido = new Pedido(idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta);
+                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
                 int res = dao.generarPedido(pedido);
                 break;
 
