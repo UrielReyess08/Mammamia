@@ -1,5 +1,6 @@
 package controller;
 
+import dao.PedidoDao;
 import dao.ProductoDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,13 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Carrito;
+import model.Pedido;
 import model.Producto;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @WebServlet(name = "controlCarrito", value = "/controlCarrito")
@@ -176,8 +177,20 @@ public class controlCarrito extends HttpServlet {
                 request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
                 break;
 
-            case "Pago":
+            case "RealizarPedido":
+                String receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta;
+                listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
+                PedidoDao dao = new PedidoDao();
+                int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+                receptor = request.getParameter("receptor");
+                direccion = request.getParameter("direccion");
+                referencia = request.getParameter("referencia");
+                telefono = request.getParameter("telefono");
+                fechaExpiracion = request.getParameter("fechaExpiracion");
+                numeroTarjeta = request.getParameter("numeroTarjeta");
 
+                Pedido pedido = new Pedido(idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta);
+                int res = dao.generarPedido(pedido);
                 break;
 
             default:

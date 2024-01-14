@@ -3,11 +3,10 @@ package model;
 import java.util.List;
 
 public class Pedido {
-    private int idPedido, idCliente, tipoVivienda, metodoPago, tipoTarjeta;
-    private double total;
-    private String receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta;
+    public Pedido() {
+    }
 
-    private List<Carrito>detalleCompra;
+    int idPedido;
 
     public int getIdPedido() {
         return idPedido;
@@ -25,36 +24,12 @@ public class Pedido {
         this.idCliente = idCliente;
     }
 
-    public int getTipoVivienda() {
-        return tipoVivienda;
+    public List<Carrito> getDetallePedido() {
+        return detallePedido;
     }
 
-    public void setTipoVivienda(int tipoVivienda) {
-        this.tipoVivienda = tipoVivienda;
-    }
-
-    public int getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(int metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-
-    public int getTipoTarjeta() {
-        return tipoTarjeta;
-    }
-
-    public void setTipoTarjeta(int tipoTarjeta) {
-        this.tipoTarjeta = tipoTarjeta;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
+    public void setDetallePedido(List<Carrito> detallePedido) {
+        this.detallePedido = detallePedido;
     }
 
     public String getReceptor() {
@@ -64,6 +39,14 @@ public class Pedido {
     public void setReceptor(String receptor) {
         this.receptor = receptor;
     }
+
+    int idCliente;
+    List<Carrito> detallePedido;
+    String receptor;
+    String direccion;
+    String referencia;
+    String telefono;
+    String fechaExpiracion;
 
     public String getDireccion() {
         return direccion;
@@ -105,29 +88,18 @@ public class Pedido {
         this.numeroTarjeta = numeroTarjeta;
     }
 
-    public List<Carrito> getDetalleCompra() {
-        return detalleCompra;
-    }
-
-    public void setDetalleCompra(List<Carrito> detalleCompra) {
-        this.detalleCompra = detalleCompra;
-    }
-
-    public Pedido(int idCliente, int tipoVivienda, int metodoPago, int tipoTarjeta, double total, String receptor, String direccion, String referencia, String telefono, String fechaExpiracion, String numeroTarjeta, List<Carrito> detalleCompra) {
+    public Pedido(int idCliente, List<Carrito> detallePedido, String receptor, String direccion, String referencia, String telefono, String fechaExpiracion, String numeroTarjeta) {
         this.idCliente = idCliente;
-        this.tipoVivienda = tipoVivienda;
-        this.metodoPago = metodoPago;
-        this.tipoTarjeta = tipoTarjeta;
-        this.total = total;
+        this.detallePedido = detallePedido;
         this.receptor = receptor;
         this.direccion = direccion;
         this.referencia = referencia;
         this.telefono = telefono;
         this.fechaExpiracion = fechaExpiracion;
         this.numeroTarjeta = numeroTarjeta;
-        this.detalleCompra = detalleCompra;
     }
 
-    public Pedido() {
-    }
+    String numeroTarjeta;
+
+
 }

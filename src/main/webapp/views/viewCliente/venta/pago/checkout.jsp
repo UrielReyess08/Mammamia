@@ -62,12 +62,12 @@
             </table>
             <form action="<%=request.getContextPath()%>/controlCarrito?accion=RealizarPedido" method="POST">
                 <h2>Dirección:</h2>
-                <label>
+<%--                <label>--%>
                     Selecciona tu dirección:
 <%--                    <select name="">--%>
 <%--                        <option>getDirecciones</option>--%>
 <%--                    </select>--%>
-                </label>
+<%--                </label>--%>
                 
                 <label>
                     idCliente
@@ -84,62 +84,62 @@
                     <input required type="text" name="direccion"/>
                 </label>
                 
-                <label>
-                    Tipo de vivienda:
-                    <select name="tipoVivienda" required>
-                        <option disabled selected type="hidden">Seleccionar opción</option>
-                        <option value="1">Departamento</option>
-                        <option value="2">Casa</option>
-                        <option value="3">Condominio</option>
-                        <option value="4">Empresa</option>
-                        <option value="5">Hotel</option>
-                    </select>
-                </label>
-                
+<%--                <label>--%>
+<%--                    Tipo de vivienda:--%>
+<%--                    <select name="tipoVivienda" required>--%>
+<%--                        <option disabled selected type="hidden">Seleccionar opción</option>--%>
+<%--                        <option value="1">Departamento</option>--%>
+<%--                        <option value="2">Casa</option>--%>
+<%--                        <option value="3">Condominio</option>--%>
+<%--                        <option value="4">Empresa</option>--%>
+<%--                        <option value="5">Hotel</option>--%>
+<%--                    </select>--%>
+<%--                </label>--%>
+<%--                --%>
                 <label>
                     Referencia:
                     <input required type="text" name="referencia"/>
                 </label>
-                
+<%--                --%>
                 <label>
                     Teléfono:
                     <input required type="tel" name="telefono"/>
                 </label>
-                
-                <h2>Información de pago:</h2>
-                
+<%--                --%>
+<%--                <h2>Información de pago:</h2>--%>
+<%--                --%>
+<%--&lt;%&ndash;                <label>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    Selecciona tarjeta:&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    <select name="">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        <option>getDirecciones</option>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    </select>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                </label>&ndash;%&gt;--%>
+<%--                --%>
+<%--                <fieldset>--%>
+<%--                    <legend>Tipo de tarjeta:</legend>--%>
+<%--                    <div>--%>
+<%--                        --%>
+<%--                        <label>--%>
+<%--                            <input type="radio" name="metodoPago" value="1" required/>--%>
+<%--                            Crédito--%>
+<%--                        </label>--%>
+<%--                        --%>
+<%--&lt;%&ndash;                        <label>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <input type="radio" name="metodoPago" value="2" />&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            Débito&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        </label>&ndash;%&gt;--%>
+<%--                    </div>--%>
+<%--                </fieldset>--%>
+<%--                --%>
 <%--                <label>--%>
-<%--                    Selecciona tarjeta:--%>
-<%--                    <select name="">--%>
-<%--                        <option>getDirecciones</option>--%>
+<%--                    Método de pago--%>
+<%--                    <select name="metodoPago" required>--%>
+<%--                        <option disabled selected type="hidden">Seleccionar opción</option>--%>
+<%--                        <option value="1">Visa</option>--%>
+<%--                        <option value="2">Mastercard</option>--%>
+<%--                        <option value="3">American Express</option>--%>
 <%--                    </select>--%>
 <%--                </label>--%>
-                
-                <fieldset>
-                    <legend>Tipo de tarjeta:</legend>
-                    <div>
-                        
-                        <label>
-                            <input type="radio" name="metodoPago" value="1" required/>
-                            Crédito
-                        </label>
-                        
-<%--                        <label>--%>
-<%--                            <input type="radio" name="metodoPago" value="2" />--%>
-<%--                            Débito--%>
-<%--                        </label>--%>
-                    </div>
-                </fieldset>
-                
-                <label>
-                    Método de pago
-                    <select name="metodoPago" required>
-                        <option disabled selected type="hidden">Seleccionar opción</option>
-                        <option value="1">Visa</option>
-                        <option value="2">Mastercard</option>
-                        <option value="3">American Express</option>
-                    </select>
-                </label>
                 
                 <label>
                     Número de tarjeta:
