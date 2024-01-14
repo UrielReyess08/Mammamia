@@ -64,4 +64,124 @@ public class PedidoDao {
         }
         return estado;
     }
+
+    public static List<Pedido> listarPedidos() {
+        List<Pedido> listaPedidos = new ArrayList<Pedido>();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT ped.idPedido, cli.nombre, cli.apellido, ped.receptor, ped.direccion, ped.metodoPago, ped.horaPedido, ped.estado, ped.total FROM pedido ped INNER JOIN cliente cli ON ped.idCliente = cli.idCliente WHERE estado=0 OR estado=1 ORDER BY idPedido ASC;");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pedido ped = new Pedido();
+                ped.setIdPedido(rs.getInt("idPedido"));
+                ped.setNombre(rs.getString("nombre"));
+                ped.setApellido(rs.getString("apellido"));
+                ped.setReceptor(rs.getString("receptor"));
+                ped.setDireccion(rs.getString("direccion"));
+                ped.setMetodoPago(rs.getInt("metodoPago"));
+                ped.setHoraPedido(rs.getString("horaPedido"));
+                ped.setEstado(rs.getInt("estado"));
+                ped.setTotal(rs.getDouble("total"));
+                listaPedidos.add(ped);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return listaPedidos;
+    }
+
+    public static int actualizarEstado(Pedido ped) {
+        int est = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE pedido SET estado=? WHERE idPedido=?");
+            ps.setInt(1, ped.getEstado());
+            ps.setInt(2, ped.getIdPedido());
+            est = ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return est;
+    }
+
+    public static Pedido obtenerPedidoPorId(int idPedido) {
+        Pedido pedido = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT ped.idPedido, cli.nombre, cli.apellido, ped.receptor, ped.direccion, ped.metodoPago, ped.horaPedido, ped.estado, ped.total FROM pedido ped INNER JOIN cliente cli ON ped.idCliente = cli.idCliente WHERE idPedido=?");
+            ps.setInt(1, idPedido);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                pedido = new Pedido();
+                pedido.setIdPedido(rs.getInt("idPedido"));
+                pedido.setNombre(rs.getString("nombre"));
+                pedido.setApellido(rs.getString("apellido"));
+                pedido.setReceptor(rs.getString("receptor"));
+                pedido.setDireccion(rs.getString("direccion"));
+                pedido.setMetodoPago(rs.getInt("metodoPago"));
+                pedido.setHoraPedido(rs.getString("horaPedido"));
+                pedido.setEstado(rs.getInt("estado"));
+                pedido.setTotal(rs.getDouble("total"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return pedido;
+    }
+
+    public static List<Pedido> listarEntregas() {
+        List<Pedido> listaEntregas = new ArrayList<Pedido>();
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT idPedido, horaPedido, estado FROM pedido WHERE estado=0 ORDER BY idPedido ASC;");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pedido ent = new Pedido();
+                ent.setIdPedido(rs.getInt("idPedido"));
+                ent.setHoraPedido(rs.getString("horaPedido"));
+                ent.setEstado(rs.getInt("estado"));
+                listaEntregas.add(ent);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return listaEntregas;
+    }
+
+    public static Pedido obtenerEntregaporId(int idPedido) {
+        Pedido entrega = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT idPedido, receptor, direccion, tipoVivienda, referencia, telefono, horaPedido, estado, total FROM pedido WHERE idPedido=?");
+            ps.setInt(1, idPedido);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                entrega = new Pedido();
+                entrega.setIdPedido(rs.getInt("idPedido"));
+                entrega.setReceptor(rs.getString("receptor"));
+                entrega.setDireccion(rs.getString("direccion"));
+                entrega.setTipoVivienda(rs.getInt("tipoVivienda"));
+                entrega.setReferencia(rs.getString("referencia"));
+                entrega.setTelefono(rs.getString("telefono"));
+                entrega.setHoraPedido(rs.getString("horaPedido"));
+                entrega.setEstado(rs.getInt("estado"));
+                entrega.setTotal(rs.getDouble("total"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return entrega;
+    }
 }

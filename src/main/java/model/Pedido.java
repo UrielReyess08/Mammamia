@@ -153,5 +153,32 @@ public class Pedido {
 
     double total;
 
+    String horaPedido;
+    String nombre;
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    String apellido;
+
+    public String getHoraPedido() {
+        return horaPedido;
+    }
+
+    public void setHoraPedido(String horaPedido) {
+        this.horaPedido = horaPedido;
+    }
 }

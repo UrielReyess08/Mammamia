@@ -165,20 +165,18 @@
                 </div>
                 </div>
               </div>
-              <!-- Fin Segunda Fila -->
-          
-              
-          
             </div>
           </div>
 
         <footer>
             <div class="container-fluid mt-3">
                 <div class="social-icons">
-                    <a href="#"><img src="/img/img-footer/facebook.png" alt="Facebook" class="bi bi-facebook img-icon mt-4"></a>
-                    <a href="#"><img src="/img/img-footer/instagram.png" alt="Instagram" class="bi bi-instagram img-icon mt-4"></a>
-                    <a href="#"><img src="/img/img-footer/tik-tok.png" alt="TikTok" class="bi bi-tiktok img-icon mt-4"></a>
+                    <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
+                    <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
+                    <i class="fa-brands fa-tiktok fa-2x"></i>
                 </div>
+            </div>
+                
                         
                 <div class="container mt-5">
                     <div class="row g-4">
@@ -188,8 +186,8 @@
                                 <a href="#">Local</a><br>
                                 <a href="#">Zona reparto</a><br>
                                 <a href="#">Nosotros</a><br>
-                                <a href="#">Atención al cliente</a><br>
-                                <a href="#">Preguntas Frecuentes</a><br>
+                                <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al cliente</a><br>
+                                <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
                                 <a href="#">Mapa de sitio</a>
                             </div>
                         </div>
@@ -203,9 +201,9 @@
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h5>FORMAS DE PAGO</h5>
-                            <i class="fa-brands fa-cc-visa style="color: #ffffff;" ></i>
-                            <i class="fa-brands fa-cc-mastercard style="color: #ffffff;"></i>
-                            <i class="fa-brands fa-cc-amex" style="color: #ffffff;"></i>
+                            <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;" ></i>
+                            <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
+                            <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <form class="small-form">
@@ -215,7 +213,7 @@
                                 <div class="mb-2 form-check">
                                     <input class="form-check-input" type="checkbox" name="remember">
                                     <label class="form-check-label">
-                                        He leído y revisado los <a class="text-white" href="#">términos y condiciones</a>
+                                        He leído y revisado los <a class="text-white" href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos y condiciones</a>
                                     </label>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>

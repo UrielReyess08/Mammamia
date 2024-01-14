@@ -22,13 +22,13 @@ public class DetallePedidoDao {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT det.idDetalleVenta, det.idPedido, prod.nombre, det.cantidad FROM detallepedido det INNER JOIN producto prod ON det.idProducto = prod.idProducto WHERE idPedido=?");
+                    "SELECT det.idDetallePedido, det.idPedido, prod.nombre, det.cantidad FROM detallepedido det INNER JOIN producto prod ON det.idProducto = prod.idProducto WHERE idPedido=?");
             ps.setInt(1, idPedido);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 DetallePedido det = new DetallePedido();
-                det.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
+                det.setDetallePedido(rs.getInt("idDetalleVenta"));
                 det.setIdPedido(rs.getInt("idPedido"));
                 det.setNombre(rs.getString("nombre"));
                 //det.setIdProducto(rs.getInt("idProducto"));
@@ -41,4 +41,6 @@ public class DetallePedidoDao {
 
         return listaDetalles;
     }
+
+    
 }
