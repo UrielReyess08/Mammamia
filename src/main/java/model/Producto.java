@@ -60,4 +60,14 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    String nombreCategoria;
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
 }
