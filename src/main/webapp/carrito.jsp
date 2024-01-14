@@ -18,7 +18,7 @@
     <ul>
         <li>
             <%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
-            <a href="${pageContext.request.contextPath}/views/viewCliente/venta/menu/menu.jsp">Volver a la página
+            <a href="${pageContext.request.contextPath}/menu.jsp">Volver a la página
                 anterior</a>
         </li>
     </ul>
@@ -59,6 +59,6 @@
 </table>
 <a href="<%=request.getContextPath()%>/checkout.jsp">Realizar pago</a>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="<%=request.getContextPath()%>/functions.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/js/functions.js" type="text/javascript"></script>
 </body>
 </html>

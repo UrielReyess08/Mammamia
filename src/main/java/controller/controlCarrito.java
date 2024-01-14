@@ -127,7 +127,7 @@ public class controlCarrito extends HttpServlet {
                         menu = "postres.jsp";
                         break;
                 }
-                String retorno = "views/viewCliente/venta/menu/categorias/";
+                String retorno = "menu/";
                 request.getRequestDispatcher(retorno + menu).forward(request, response);
                 break;
 
@@ -174,7 +174,7 @@ public class controlCarrito extends HttpServlet {
                     request.setAttribute("totalPagar", totalPagar);
                 }
 
-                request.getRequestDispatcher("views/viewCliente/venta/pago/carrito.jsp").forward(request, response);
+                request.getRequestDispatcher("carrito.jsp").forward(request, response);
                 break;
 
             case "RealizarPedido":
@@ -199,7 +199,7 @@ public class controlCarrito extends HttpServlet {
 
             default:
 //                String page = request.getParameter("menu");
-                String url = "views/viewCliente/venta/menu";
+                String url = "menu.jsp";
                 request.getRequestDispatcher(url).forward(request, response);
         }
 

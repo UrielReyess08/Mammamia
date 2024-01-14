@@ -31,10 +31,10 @@
     <h1>¡Disfruta de nuestra variedad de Pizzas!</h1>
     <article class="...">
         <section>
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp">Pizzas</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pastas.jsp">Pastas</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/postres.jsp">Postres</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/bebidas.jsp">Bebidas</a>
+            <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">Pizzas</a>|
+            <a href="<%=request.getContextPath()%>/menu/pastas.jsp">Pastas</a>|
+            <a href="<%=request.getContextPath()%>/menu/postres.jsp">Postres</a>|
+            <a href="<%=request.getContextPath()%>/menu/bebidas.jsp">Bebidas</a>
         </section>
 
         <section>
