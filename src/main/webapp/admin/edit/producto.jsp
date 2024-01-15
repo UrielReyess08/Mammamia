@@ -54,7 +54,7 @@
                         
                         <input type="hidden" name="idProducto" value="${producto.idProducto}">
                         
-                        <label for="idCategoria">Categoria:</label>
+                        <label>Categoria:</label>
                         <select name="idCategoria" required>
                             <option value="1" ${producto.idCategoria == 1 ? "selected" : ""}>Bebidas</option>
                             <option value="2" ${producto.idCategoria == 2 ? "selected" : ""}>Pizzas</option>
@@ -62,19 +62,19 @@
                             <option value="4" ${producto.idCategoria == 4 ? "selected" : ""}>Postres</option>
                         </select><br>
                         
-                        <label for="nombre">Nombre:</label>
+                        <label>Nombre:</label>
                         <input type="text" name="nombre" value="${producto.nombre}" required><br>
                         
-                        <label for="descripcion">Descripción:</label>
+                        <label>Descripción:</label>
                         <textarea name="descripcion" required>${producto.descripcion}</textarea> <br>
                        
-                        <label for="precio">Precio:</label>
+                        <label>Precio:</label>
                         <input type="text" name="precio" value="${producto.precio}" required><br>
                         
-                        <label for="stock">Stock:</label>
+                        <label>Stock:</label>
                         <input type="text" name="stock" value="${producto.stock}" required><br>
                         
-                        <label for="estado">Estado:</label>
+                        <label>Estado:</label>
                         <select name="estado" required>
                             <option value="0" ${producto.estado == 0 ? "selected" : ""}>Inactivo</option>
                             <option value="1" ${producto.estado == 1 ? "selected" : ""}>Activo</option>
