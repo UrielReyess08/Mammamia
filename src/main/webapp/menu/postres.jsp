@@ -65,7 +65,7 @@
     
     <main>
         
-        <article>
+        <article class="container text-center">
             <section>
                 <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp" class="sub-menu">Pizzas</a>|
                 <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pastas.jsp" class="sub-menu">Pastas</a>|

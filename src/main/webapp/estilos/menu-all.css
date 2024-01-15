@@ -101,3 +101,24 @@ footer {
         height: 120px;
     }
 }
+
+/* Submenu*/
+
+section {
+    
+    margin-top: 50px; 
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #888888; 
+}
+section a {
+    margin: 0 10px;
+    color: #FE8330; 
+    text-decoration: none;
+}
+
+section a:hover {
+    text-decoration: underline; 
+    color: #e76d00; 
+}
