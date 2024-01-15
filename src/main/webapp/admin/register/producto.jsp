@@ -54,27 +54,30 @@
                 <section>
                     <form action="${pageContext.request.contextPath}/ControlProducto?action=registrar" method="post">
 
-                        <label for="idCategoria">Categoria:</label>
+                        <label>Categoria:</label>
                         <select name="idCategoria">
                             <% for (Categoria categoria : categorias) { %>
                             <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getNombre() %></option>
                             <% } %>
                         </select><br>
 
-                        <label for="nombre">Nombre:</label>
+                        <label>Nombre:</label>
                         <input type="text" name="nombre" required><br>
 
-                        <label for="descripcion">Descripción:</label>
+                        <label>Descripción:</label>
                         <textarea name="descripcion" required></textarea><br>
 
-                        <label for="precio">Precio:</label>
+                        <label>Precio:</label>
                         <input type="text" name="precio" required><br>
 
-                        <label for="stock">Stock:</label>
+                        <label>Stock:</label>
                         <input type="text" name="stock" required><br>
 
-                        <label for="estado">Estado:</label>
-                        <input type="type" name="estado" required><br>
+                        <label>Estado:</label>
+                        <select name="estado">
+                            <option value="1">Disponible</option>
+                            <option value="0">No Disponible</option>
+                        </select><br>
 
                         <input type="submit" value="Registrar Producto">
                     </form>
