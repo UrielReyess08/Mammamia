@@ -5,7 +5,11 @@ import java.io.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-
+import java.io.IOException;
+import model.Cliente;
+import model.Direccion;
+import model.Tarjeta;
+import dao.ClienteDao;
 
 /*import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,7 +60,34 @@ public class controlCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("action");
+
+        if ("editarDireccion".equals(action)) {
+            int idDireccionCliente = Integer.parseInt(request.getParameter("id"));
+            Direccion dire = ClienteDao.obtenerDireccionPorId(idDireccionCliente);
+
+            request.setAttribute("dire", dire);
+
+            request.getRequestDispatcher("/customer/account/edit/addressbook.jsp").forward(request, response);
+        } else if ("eliminarDireccion".equals(action)) {
+            int idDireccionCliente = Integer.parseInt(request.getParameter("id"));
+            int result = ClienteDao.eliminarDireccion(idDireccionCliente);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
+            } else {
+                response.getWriter().println("Error al eliminar la dirección.");
+            }
+        }   else if ("eliminarTarjeta".equals(action)) {
+            int idTarjetaCliente = Integer.parseInt(request.getParameter("id"));
+            int result = ClienteDao.eliminarTarjeta(idTarjetaCliente);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/customer/account/wallet.jsp");
+            } else {
+                response.getWriter().println("Error al eliminar la tarjeta.");
+            }
+        }
     }
 
     /**
@@ -70,7 +101,102 @@ public class controlCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("action");
+
+        if ("registrar".equals(action)) {
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            Cliente cliente = new Cliente();
+            cliente.setNombre(nombre);
+            cliente.setApellido(apellido);
+            cliente.setEmail(email);
+            cliente.setPassword(password);
+
+            int result = ClienteDao.registrarCliente(cliente);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
+            } else {
+                response.getWriter().println("Error al registrar cliente.");
+            }
+        } else if ("registrarDireccion".equals(action)) {
+
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            String nombreDireccion = request.getParameter("nombreDireccion");
+            String direccion = request.getParameter("direccion");
+            String tipoVivienda = request.getParameter("tipoVivienda");
+            String referencia = request.getParameter("referencia");
+            String telefono = request.getParameter("telefono");
+
+            Direccion dire = new Direccion();
+            dire.setIdCliente(idCliente);
+            dire.setNombreDireccion(nombreDireccion);
+            dire.setDireccion(direccion);
+            dire.setTipoVivienda(tipoVivienda);
+            dire.setReferencia(referencia);
+            dire.setTelefono(telefono);
+
+            int result = ClienteDao.registrarDireccion(dire);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
+            } else {
+                response.getWriter().println("Error al reigstrar la direccion.");
+            }
+        } else if ("actualizarDireccion".equals(action)) {
+
+            int idDireccionCliente = Integer.parseInt(request.getParameter("idDireccionCliente"));
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            String nombreDireccion = request.getParameter("nombreDireccion");
+            String direccion = request.getParameter("direccion");
+            String tipoVivienda = request.getParameter("tipoVivienda");
+            String referencia = request.getParameter("referencia");
+            String telefono = request.getParameter("telefono");
+
+            Direccion dire = new Direccion();
+            dire.setIdDireccionCliente(idDireccionCliente);
+            dire.setIdCliente(idCliente);
+            dire.setNombreDireccion(nombreDireccion);
+            dire.setDireccion(direccion);
+            dire.setTipoVivienda(tipoVivienda);
+            dire.setReferencia(referencia);
+            dire.setTelefono(telefono);
+
+            int result = ClienteDao.actualizarDireccion(dire);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
+            } else {
+                response.getWriter().println("Error al actualizar la direccion.");
+            }
+        }else if ("registrarTarjeta".equals(action)) {
+
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            String nombreTarjeta = request.getParameter("nombreTarjeta");
+            String metodoPago = request.getParameter("metodoPago");
+            String fechaExpiracion = request.getParameter("fechaExpiracion");
+            String tipoTarjeta = request.getParameter("tipoTarjeta");
+            String numeroTarjeta = request.getParameter("numeroTarjeta");
+
+            Tarjeta tar = new Tarjeta();
+            tar.setIdCliente(idCliente);
+            tar.setNombreTarjeta(nombreTarjeta);
+            tar.setMetodoPago(metodoPago);
+            tar.setFechaExpiracion(fechaExpiracion);
+            tar.setTipoTarjeta(tipoTarjeta);
+            tar.setNumeroTarjeta(numeroTarjeta);
+
+            int result = ClienteDao.registrarTarjeta(tar);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/customer/account/wallet.jsp");
+            } else {
+                response.getWriter().println("Error al registrar la tarjeta.");
+            }
+        }
     }
 
     /**
