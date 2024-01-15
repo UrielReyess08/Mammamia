@@ -1,11 +1,6 @@
-<%-- 
-    Document   : categorias
-    Created on : 12 ene. 2024, 20:48:33
-    Author     : daiko
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Usuario" %>
+<%@page import="model.Usuario, model.Categoria, connection.Conexion, dao.CategoriaDao, java.util.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,9 +8,6 @@
         <title>Categorías | Sistema Mammamía</title>
     </head>
     <body>
-        <%@page import="model.Categoria, connection.Conexion, dao.CategoriaDao, java.util.*"%>
-        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);

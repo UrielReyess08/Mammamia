@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../estilos/menu-all.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/menu-all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -62,10 +62,10 @@
     
     <article class="container text-center">
         <section>
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp" class="sub-menu">Pizzas</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pastas.jsp" class="sub-menu">Pastas</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/postres.jsp" class="sub-menu">Postres</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/bebidas.jsp" class="sub-menu">Bebidas</a>
+            <a href="<%=request.getContextPath()%>menu/pizzas.jsp" class="sub-menu">Pizzas</a>
+            <a href="<%=request.getContextPath()%>menu/pastas.jsp" class="sub-menu">Pastas</a>
+            <a href="<%=request.getContextPath()%>menu/postres.jsp" class="sub-menu">Postres</a>
+            <a href="<%=request.getContextPath()%>menu/bebidas.jsp" class="sub-menu">Bebidas</a>
         </section>
         
        <div class="container mt-4">

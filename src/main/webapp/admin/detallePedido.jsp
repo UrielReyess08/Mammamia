@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Usuario" %>
+<%@page import="model.Usuario, model.DetallePedido, connection.Conexion, dao.DetallePedidoDao, java.util.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,9 +14,6 @@
         <title>Detalle del Pedido | Mammamía</title>
     </head>
     <body>
-        <%@page import="model.DetallePedido, connection.Conexion, dao.DetallePedidoDao, java.util.*"%>
-        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);

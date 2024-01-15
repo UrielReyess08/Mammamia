@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Usuario" %>
+<%@page import="model.Usuario, model.Producto, connection.Conexion, dao.ProductoDao, java.util.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,9 +14,6 @@
         <title>Inventario | Sistema Mammamía</title>
     </head>
     <body>
-        <%@page import="model.Producto, conexion.Conexion, dao.ProductoDao, java.util.*"%>
-        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
@@ -77,7 +75,7 @@
                                 <c:forEach items="${list}" var="prod">
                                     <tr>
                                         <td>${prod.getIdProducto()}</td>
-                                        <td>${prod.getNombreCategoria()}</td>
+                                        <td>${prod.getNombreCat()}</td>
                                         <td>${prod.getNombre()}</td>
                                         <td>${prod.getDescripcion()}</td>
                                         <td>${prod.getPrecio()}</td>
