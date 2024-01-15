@@ -93,7 +93,7 @@
               
               <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="/img/pizza-barbacoa.png" class="card-img-top" alt="Imagen 1" height="250px">
+                    <img src="img/inicio/pizza-barbacoa.png" class="card-img-top" alt="Imagen 1" height="250px">
                     <div class="card-body">
                         <!-- Contenido de la Tarjeta 1 -->
                         <h5 class="card-title">Pizza Barbacoa</h5>
@@ -106,7 +106,7 @@
           
               <div class="col-md-4 mb-4">
                 <div class="card">
-                  <img src="/img/pizza-siciliana.png" class="card-img-top" alt="Imagen 2" height="250px">
+                  <img src="img/inicio/pizza-siciliana.png" class="card-img-top" alt="Imagen 2" height="250px">
                   <div class="card-body">
                     <!-- Contenido de la Tarjeta 2 -->
                     <h5 class="card-title">Pizza Siciliana</h5>
@@ -118,7 +118,7 @@
           
               <div class="col-md-4 mb-4">
                 <div class="card">
-                  <img src="/img/pizza-margherita.png" class="card-img-top" alt="Imagen 3" height="250px">
+                  <img src="img/inicio/pizza-margherita.png" class="card-img-top" alt="Imagen 3" height="250px">
                   <div class="card-body">
                     <!-- Contenido de la Tarjeta 3 -->
                     <h5 class="card-title">Pizza margherita</h5>
@@ -132,7 +132,7 @@
               <!-- Segunda Fila de Tarjetas -->
               <div class="col-md-4 mb-4">
                 <div class="card">
-                  <img src="/img/pizza-tocino.png" class="card-img-top" alt="Imagen 4" height="250px">
+                  <img src="img/inicio/pizza-tocino.png" class="card-img-top" alt="Imagen 4" height="250px">
                   <div class="card-body">
                     <!-- Contenido de la Tarjeta 4 -->
                     <h5 class="card-title">Pizza Tocino</h5>
@@ -144,7 +144,7 @@
           
               <div class="col-md-4 mb-4">
                 <div class="card">
-                  <img src="/img/pizza-peperoni.png" class="card-img-top" alt="Imagen 5" height="250px">
+                  <img src="img/inicio/pizza-peperoni.png" class="card-img-top" alt="Imagen 5" height="250px">
                   <div class="card-body">
                     <!-- Contenido de la Tarjeta 5 -->
                     <h5 class="card-title">Pizza Pepperoni</h5>
@@ -156,7 +156,7 @@
           
               <div class="col-md-4 mb-4">
                 <div class="card">
-                  <img src="/img/pizza-estilocalifornia.png" class="card-img-top" alt="Imagen 6" height="250px">
+                  <img src="img/inicio/pizza-estilocalifornia.png" class="card-img-top" alt="Imagen 6" height="250px">
                   <div class="card-body">
                     <!-- Contenido de la Tarjeta 6 -->
                     <h5 class="card-title">Pizza estilo california</h5>
@@ -222,7 +222,7 @@
                     </div>
                 </div>
             </div>
-            <img src="/img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
+            <img src="img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
             <div class="text-center">
                 <hr>
                 <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
