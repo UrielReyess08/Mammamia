@@ -10,7 +10,7 @@ package model;
  */
 public class Tarjeta {
     int idTarjetaCliente, idCliente;
-    String metodoPago, fechaExpiracion, tipoTarjeta, numeroTarjeta;
+    String nombreTarjeta, metodoPago, fechaExpiracion, tipoTarjeta, numeroTarjeta;
 
     public int getIdTarjetaCliente() {
         return idTarjetaCliente;
@@ -26,6 +26,14 @@ public class Tarjeta {
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public String getNombreTarjeta() {
+        return nombreTarjeta;
+    }
+
+    public void setNombreTarjeta(String nombreTarjeta) {
+        this.nombreTarjeta = nombreTarjeta;
     }
 
     public String getMetodoPago() {
