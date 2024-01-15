@@ -79,7 +79,7 @@
             <c:forEach var="prod" items="${Productos}">
                 <div class="col-lg-4 col-md-6 col-sm-12 mx-auto my-4">
                 <div class="car w-100"  style="width: 18rem;">
-                    <img class="card-img-top" src="%=request.getContextPath()%>/img/Bebidas/<%=contador%>.png" alt="img_pizza_1">
+                    <img class="card-img-top" src="<%=request.getContextPath()%>/img/Bebidas/<%=contador%>.png" alt="img_pizza_1">
                     <div class="card-body">
                         <h5 class="card-title">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
