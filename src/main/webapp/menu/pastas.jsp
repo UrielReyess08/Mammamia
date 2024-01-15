@@ -69,7 +69,7 @@
         <div class="container mt-4 text-center">
         <div class="row row-cols-3">
             <c:forEach var="prod" items="${Productos}">
-                <div class="col"></div>
+                <div class="col">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="/img/Lasagna/lasanga&pan.jpg" alt="img_pizza_1">
                     <div class="card-body">
