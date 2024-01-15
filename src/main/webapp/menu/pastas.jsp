@@ -161,7 +161,7 @@
             </div>
         </div>
     </div>
-    <img src="/img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
+    <img src="../img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
     <div class="text-center">
         <hr>
         <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
