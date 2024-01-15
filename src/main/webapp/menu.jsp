@@ -16,7 +16,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="estilos/menu.css">
         <link rel="stylesheet" href="estilos/popup.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -105,21 +105,10 @@
             <h1>Menú</h1>
             <article class="container">
                 <section class="row">
-                    <!--
-                    <div>
-                        <h2>Promociones</h2>
-                        <p>Proximamente</p>
-                    </div>
-
-                    <div>
-                        <h2>Combos</h2>
-                        <p>Proximamente</p>
-                    </div> -->
-
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="/img/Menu/menu-pizza.jpg" class="card-img-top" alt="Imagen 3">
+                                <img src="img/Pizzas/pizza1.jpg class="card-img-top" alt="Imagen 3">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Pizzas</h2>
@@ -132,7 +121,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="/img/Menu/menu-pastas.jpg" class="card-img-top" alt="Imagen 4">
+                                <img src="img/Lasagna/Lasagna1.jpg" class="card-img-top" alt="Imagen 4">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Pastas</h2>
@@ -145,7 +134,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="/img/Menu/menu-postre.jpg" class="card-img-top" alt="Imagen 5">
+                                <img src="img/Postres/postre1.jpg class="card-img-top" alt="Imagen 5">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Postres</h2>
@@ -158,7 +147,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="${pageContext.request.contextPath}/menu/bebidas.jsp" class="card-img-top" alt="Imagen 6">
+                                <img src="img/Bebidas/bebida1.jpg class="card-img-top" alt="Imagen 6">
                                 
                             </div>
                             <div class="card-body">
