@@ -13,7 +13,7 @@
         <title>Detalle Entrega | Mammamía</title>
     </head>
     <body>
-        <%@page import="model.Pedido, connection.Conexion, dao.PedidoDao, java.util.*"%>
+        <%@page import="model.Pedido, conexion.Conexion, dao.PedidoDao, java.util.*"%>
         <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
         <%

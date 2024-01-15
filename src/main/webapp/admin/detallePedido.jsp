@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Usuario, model.DetallePedido, connection.Conexion, dao.DetallePedidoDao, java.util.*"%>
+<%@page import="model.Usuario, model.DetallePedido, conexion.Conexion, dao.DetallePedidoDao, java.util.*"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>

@@ -12,7 +12,7 @@
         <title>Editar Dirección | Mammamía</title>
     </head>
     <body>
-        <%@page import="model.Cliente, model.Direccion, connection.Conexion, dao.ClienteDao, java.util.*"%>
+        <%@page import="model.Cliente, model.Direccion, conexion.Conexion, dao.ClienteDao, java.util.*"%>
         <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
         <%
