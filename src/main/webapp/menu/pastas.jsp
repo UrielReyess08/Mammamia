@@ -68,10 +68,13 @@
         </section>
         <div class="container mt-4 text-center">
         <div class="row row-cols-3">
+            <%
+                int contador = 1;
+            %>
             <c:forEach var="prod" items="${Productos}">
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="/img/Lasagna/lasanga&pan.jpg" alt="img_pizza_1">
+                    <img class="card-img-top" src="<%=request.getContextPath()%>/img/Lasagna/<%=contador%>.png" alt="img_pizza_1">
                     <div class="card-body">
                         <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
@@ -81,6 +84,9 @@
                     </div>
                 </div>
             </div>
+                <%
+                    contador++;
+                %>
             </c:forEach>
         </div>
     </div>
