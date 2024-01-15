@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    < <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bebidas | Mammamía</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +73,7 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="img/bebida1.jpg" alt="img_pizza_1">
                     <div class="card-body">
-                        <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
+                        <h5 class="card-title">${prod.getNombre()}</h5>
                         <p class="card-text">${prod.getDescripcion()}</p>
                         <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
                         <a href="<%=request.getContextPath()%>/controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}"
