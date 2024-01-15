@@ -101,68 +101,68 @@
             </article>
         </main>
 
-    <footer>
-        <div class="container-fluid mt-3">
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
-                <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
-                <i class="fa-brands fa-tiktok fa-2x"></i>
-            </div>
-        </div>
-        
-        
-        <div class="container mt-5">
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <h5>Enlaces</h5>
-                    <div class="footer-links">
-                        <a href="#">Local</a><br>
-                        <a href="#">Zona reparto</a><br>
-                        <a href="#">Nosotros</a><br>
-                        <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al
-                            cliente</a><br>
-                        <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
-                        <a href="#">Mapa de sitio</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Políticas</h5>
-                    <div class="footer-links">
-                        <a href="#">Políticas de Datos Personales</a><br>
-                        <a href="#">Términos y condiciones de Promociones</a><br>
-                        <a href="#">Derechos ARCO</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>FORMAS DE PAGO</h5>
-                    <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;"></i>
-                    <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
-                    <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <form class="small-form">
-                        <div class="mb-2">
-                            <input type="text" class="form-control" placeholder="Ingrese su correo" name="email">
-                        </div>
-                        <div class="mb-2 form-check">
-                            <input class="form-check-input" type="checkbox" name="remember">
-                            <label class="form-check-label">
-                                He leído y revisado los <a class="text-white"
-                                                           href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos
-                                y condiciones</a>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>
-                    </form>
+        <footer>
+            <div class="container-fluid mt-3">
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
+                    <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
+                    <i class="fa-brands fa-tiktok fa-2x"></i>
                 </div>
             </div>
-        </div>
-        <img src="../img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
-        <div class="text-center">
-            <hr>
-            <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
-        </div>
-    </footer>
+            
+            
+            <div class="container mt-5">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Enlaces</h5>
+                        <div class="footer-links">
+                            <a href="#">Local</a><br>
+                            <a href="#">Zona reparto</a><br>
+                            <a href="#">Nosotros</a><br>
+                            <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al
+                                cliente</a><br>
+                            <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
+                            <a href="#">Mapa de sitio</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Políticas</h5>
+                        <div class="footer-links">
+                            <a href="#">Políticas de Datos Personales</a><br>
+                            <a href="#">Términos y condiciones de Promociones</a><br>
+                            <a href="#">Derechos ARCO</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>FORMAS DE PAGO</h5>
+                        <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;"></i>
+                        <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
+                        <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <form class="small-form">
+                            <div class="mb-2">
+                                <input type="text" class="form-control" placeholder="Ingrese su correo" name="email">
+                            </div>
+                            <div class="mb-2 form-check">
+                                <input class="form-check-input" type="checkbox" name="remember">
+                                <label class="form-check-label">
+                                    He leído y revisado los <a class="text-white"
+                                                               href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos
+                                    y condiciones</a>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <img src="../img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
+            <div class="text-center">
+                <hr>
+                <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
+            </div>
+        </footer>
 
         <script>
             // Redireccionamiento hacia Menu.jsp

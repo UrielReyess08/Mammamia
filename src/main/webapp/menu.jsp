@@ -108,7 +108,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Pizzas/pizza1.jpg class="card-img-top" alt="Imagen 3">
+                                <img src="img/Pizzas/1.png card-img-top" alt="Imagen 3">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Pizzas</h2>
@@ -121,7 +121,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Lasagna/Lasagna1.jpg" class="card-img-top" alt="Imagen 4">
+                                <img src="img/Lasagna/1.png" class="card-img-top" alt="Imagen 4">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Pastas</h2>
@@ -134,7 +134,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Postres/postre1.jpg class="card-img-top" alt="Imagen 5">
+                                <img src="img/Postres/1.png class="card-img-top" alt="Imagen 5">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Postres</h2>
@@ -147,7 +147,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Bebidas/bebida1.jpg class="card-img-top" alt="Imagen 6">
+                                <img src="img/Bebidas/1.png class="card-img-top" alt="Imagen 6">
                                 
                             </div>
                             <div class="card-body">
@@ -162,7 +162,7 @@
                     <div class="col-md-6 mb-4 disable-clicks">
                         <div class="card" style="opacity:0.7">
                             <div class="img-container">
-                                <img src="/img/Menu/menu-promociones.jpg" class="card-img-top" alt="Imagen 7">
+                                <img src="img/ class="card-img-top" alt="Imagen 7">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Promociones</h2>
