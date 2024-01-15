@@ -108,7 +108,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Pizzas/1.png card-img-top" alt="Imagen 3">
+                                <img src="img/Menu/menu-pizza.png" class="card-img-top" alt="Imagen 1">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Pizzas</h2>
@@ -121,7 +121,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Lasagna/1.png" class="card-img-top" alt="Imagen 4">
+                                <img src="img/Menu/menu-pastas.png" class="card-img-top" alt="Imagen 4">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Pastas</h2>
@@ -134,7 +134,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Postres/1.png class="card-img-top" alt="Imagen 5">
+                                <img src="img/Menu/menu-postre.png" class="card-img-top" alt="Imagen 5">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Postres</h2>
@@ -147,7 +147,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="img-container">
-                                <img src="img/Bebidas/1.png class="card-img-top" alt="Imagen 6">
+                                <img src="img/Menu/menu-bebidas.png" class="card-img-top" alt="Imagen 6">
                                 
                             </div>
                             <div class="card-body">
@@ -162,7 +162,7 @@
                     <div class="col-md-6 mb-4 disable-clicks">
                         <div class="card" style="opacity:0.7">
                             <div class="img-container">
-                                <img src="img/ class="card-img-top" alt="Imagen 7">
+                                <img src="img/Menu/menu-promociones.png" class="card-img-top" alt="Imagen 7">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Promociones</h2>
@@ -174,7 +174,7 @@
                     <div class="col-md-6 mb-4 disable-clicks">
                         <div class="card" style="opacity:0.7">
                             <div class="img-container">
-                                <img src="/img/Menu/menu-combos.jpg" class="card-img-top" alt="Imagen 8">
+                                <img src="img/Menu/menu-combos.png" class="card-img-top" alt="Imagen 8">
                             </div>
                             <div class="card-body">
                                 <h2 class="card-title">Combos</h2>
@@ -242,7 +242,7 @@
                     </div>
                 </div>
             </div>
-            <img src="/img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
+            <img src="img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
             <div class="text-center">
                 <hr>
                 <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
