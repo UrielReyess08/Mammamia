@@ -66,10 +66,10 @@
     
     <article>
         <section>
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp">Pizzas</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pastas.jsp">Pastas</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/postres.jsp">Postres</a>|
-            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/bebidas.jsp">Bebidas</a>
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp" class="sub-menu">Pizzas</a>|
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pastas.jsp" class="sub-menu">Pastas</a>|
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/postres.jsp" class="sub-menu">Postres</a>|
+            <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/bebidas.jsp" class="sub-menu">Bebidas</a>
         </section>
         <div class="container mt-4">
             <h1>¡Disfruta de nuestra variedad de Pastas!</h1>
