@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/menu-all.css">
+    <link rel="stylesheet" href="../estilos/menu-all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -59,7 +59,7 @@
 </header>
 
 <main>
-    <h1>¡Disfruta de nuestra variedad de Bebidas!</h1>
+    
     <article class="container">
         <section>
             <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/pizzas.jsp">Pizzas</a>|
@@ -68,9 +68,17 @@
             <a href="<%=request.getContextPath()%>/views/viewCliente/venta/menu/bebidas.jsp">Bebidas</a>
         </section>
         
-        <section class="row">
+       <div class="container mt-4">
+        <h1>¡Disfruta de nuestra variedad de Bebidas!</h1>
+        <div>
+            <%
+                int contador = 1;
+            %>
+            
+            <div class="row"> 
             <c:forEach var="prod" items="${Productos}">
-                <div class="card" style="width: 18rem;">
+                <div class="col-lg-4 col-md-6 col-sm-12 mx-auto my-4">
+                <div class="car w-100"  style="width: 18rem;">
                     <img class="card-img-top" src="img/bebida1.jpg" alt="img_pizza_1">
                     <div class="card-body">
                         <h5 class="card-title">${prod.getNombre()}</h5>
@@ -80,9 +88,14 @@
                            class="btn btn-primary">Añadir a carrito</a>|
                     </div>
                 </div>
+            </div>
+            <%
+                contador++;
+            %>
             </c:forEach>
-        
-        </section>
+        </div>
+        </div>
+       </div>
     </article>
 </main>
 
