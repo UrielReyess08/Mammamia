@@ -4,15 +4,17 @@
     Author     : daiko
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="model.Cliente"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>  
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agregar Tarjeta | Mammamía</title>
+        <title>Mis Tarjetas | Mammamía</title>
     </head>
     <body>
+        <%@page import="model.Cliente, model.Tarjeta, conexion.Conexion, dao.ClienteDao, java.util.*"%>
+        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
@@ -80,48 +82,59 @@
             </ul>
         </header>
 
+        <%  
+                   ClienteDao clienteDao = new ClienteDao();
+                   List<Tarjeta> tarjetas = clienteDao.listarTarjetaPorId(idCliente);
+                   request.setAttribute("list",tarjetas);
+        %>
         <main>
-            <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Regresar</a>
-            <h1>Agregar Tarjeta</h1>
+            <h1>Mis Direcciones</h1>
             <article class="...">
                 <section>
-                    <form action="${pageContext.request.contextPath}/ControlCliente?action=registrarTarjeta" method="post">
+                    <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/">Información de la Cuenta</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                </section>
 
-                        <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
+                <section>
+                    <a href="${pageContext.request.contextPath}/customer/account/register/wallet.jsp">Agregar Nueva Tarjeta</a>
 
-                        <label>¿Cómo te gustaría guardar esta tarjeta?</label>
-                        <input type="text" name="nombreTarjeta" required /><br>
+                    <c:if test="${empty list}">
+                        <p>No hay tarjetas.</p>
+                    </c:if>
 
-                        <label>Metodo de Pago:</label>
-                        <select name="metodoPago" required>
-                            <option disabled selected type="hidden">Seleccionar opción</option>
-                            <option value="Visa">Visa</option>
-                            <option value="Mastercard">Mastercard</option>
-                            <option value="American Express">American Express</option>
-                        </select><br>
+                    <c:if test="${not empty list}">
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>NOMBRE</th>
+                                    <th>MÉTODO DE PAGO</th>
+                                    <th>FECHA EXP.</th>
+                                    <th>TIPO</th>
+                                    <th>NÚMERO</th>
+                                </tr>
+                            </thead>
 
-                        <label>Fecha de Expiración:</label>
-                        <input type="text" name="fechaExpiracion" required /><br>
+                            <tbody>
+                                <c:forEach items="${list}" var="tar">
+                                    <tr>
+                                        <td>${tar.getIdTarjetaCliente()}</td>
+                                        <td>${tar.getNombreTarjeta()}</td>
+                                        <td>${tar.getMetodoPago()}</td>
+                                        <td>${tar.getFechaExpiracion()}</td>
+                                        <td>${tar.getTipoTarjeta()}</td>
+                                        <td>${tar.getNumeroTarjeta()}</td>
+                                        <td>
+                                            <a href="${pageContext.request.contextPath}/ControlCliente?action=eliminarTarjeta&id=${tar.getIdTarjetaCliente()}">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if> 
 
-
-                        <label>Tipo:</label>
-                        <div>
-                            <label>
-                                <input type="radio" name="tipoTarjeta" value="Credito" required/>
-                                Crédito
-                            </label>
-
-                            <label>
-                                <input type="radio" name="tipoTarjeta" value="Debito" />
-                                Débito
-                            </label>
-                        </div>
-
-                        <label>Número:</label>
-                        <input type="text" name="numeroTarjeta" required /><br>
-
-                        <input type="submit" value="Agregar">
-                    </form>
                 </section>
             </article>
         </main>

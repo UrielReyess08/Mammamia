@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar Dirección | Mammamía</title>
+        <title>Mis Direcciones | Mammamía</title>
     </head>
     <body>
         <%@page import="model.Cliente, model.Direccion, conexion.Conexion, dao.ClienteDao, java.util.*"%>
@@ -80,38 +80,63 @@
                 %>
             </ul>
         </header>
-            
+        <%  
+                   ClienteDao clienteDao = new ClienteDao();
+                   List<Direccion> direcciones = clienteDao.listarDireccionPorId(idCliente);
+                   request.setAttribute("list",direcciones);
+        %>
         <main>
-            <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Regresar</a>
-            <h1>Editar Dirección</h1>
+            <h1>Mis Direcciones</h1>
             <article class="...">
                 <section>
-                    <form action="${pageContext.request.contextPath}/ControlCliente?action=actualizarDireccion" method="post">
-                        
-                        <input type="text" name="idDireccionCliente" value="${dire.idDireccionCliente}">
-                        
-                        <input type="text" name="idCliente" value="${dire.idCliente}"><br>
+                    <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/">Información de la Cuenta</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                </section>
 
-                        <label for="nombreDireccion">¿Cómo te gustaría guardar esta dirección?</label>
-                        <input type="text" name="nombreDireccion" value="${dire.nombreDireccion}" required /><br>
+                <section>
+                    <a href="${pageContext.request.contextPath}/customer/account/register/addressbook.jsp">Agregar Nueva Dirección</a>
+                    
+                    <c:if test="${empty list}">
+                        <p>No hay direcciones.</p>
+                    </c:if>
 
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" name="direccion" value="${dire.direccion}" required /><br>
+                    <c:if test="${not empty list}">
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>NOMBRE</th>
+                                    <th>DIRECCIÓN</th>
+                                    <th>TIPO DE VIVIENDA</th>
+                                    <th>REFERENCIA</th>
+                                    <th>TELEFONO</th>
+                                </tr>
+                            </thead>
 
-                        <label for="tipoVivienda">Tipo de Vivienda:</label>
-                        <input type="text" name="tipoVivienda" value="${dire.tipoVivienda}" required><br>
+                            <tbody>
+                                <c:forEach items="${list}" var="dire">
+                                    <tr>
+                                        <td>${dire.getIdDireccionCliente()}</td>
+                                        <td>${dire.getNombreDireccion()}</td>
+                                        <td>${dire.getDireccion()}</td>
+                                        <td>${dire.getTipoVivienda()}</td>
+                                        <td>${dire.getReferencia()}</td>
+                                        <td>${dire.getTelefono()}</td>
+                                        <td>
+                                            <a href="${pageContext.request.contextPath}/ControlCliente?action=editarDireccion&id=${dire.getIdDireccionCliente()}">Modificar</a>|
+                                            <a href="${pageContext.request.contextPath}/ControlCliente?action=eliminarDireccion&id=${dire.getIdDireccionCliente()}">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if> 
 
-                        <label for="referencia">Referencia:</label>
-                        <input type="text" name="referencia" value="${dire.referencia}" required /><br>
-
-                        <label for="telefono">Telefóno:</label>
-                        <input type="text" name="telefono" value="${dire.telefono}" required /><br>
-
-                        <input type="submit" value="Editar">
-                    </form>
                 </section>
             </article>
-        </main>
+        </main>    
 
         <footer>
             <ul>
