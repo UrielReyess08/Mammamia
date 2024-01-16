@@ -78,7 +78,7 @@
                                     <c:forEach items="${list}" var="prod">
                                         <tr>
                                             <td>${prod.getIdProducto()}</td>
-                                            <td>${prod.getNombreCat()}</td>
+                                            <td>${prod.getNombreCategoria()}</td>
                                             <td>${prod.getNombre()}</td>
                                             <td>${prod.getDescripcion()}</td>
                                             <td>${prod.getPrecio()}</td>
