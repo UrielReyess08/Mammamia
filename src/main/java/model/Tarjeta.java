@@ -1,16 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
-/**
- *
- * @author daiko
- */
 public class Tarjeta {
     int idTarjetaCliente, idCliente;
-    String nombreTarjeta, metodoPago, fechaExpiracion, tipoTarjeta, numeroTarjeta;
+    String nombreTarjeta, fechaExpiracion, numeroTarjeta;
+    int tipoTarjeta, metodoPago;
+
+    public int getTipoTarjeta() {
+        return tipoTarjeta;
+    }
+
+    public void setTipoTarjeta(int tipoTarjeta) {
+        this.tipoTarjeta = tipoTarjeta;
+    }
+
+    public int getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(int metodoPago) {
+        this.metodoPago = metodoPago;
+    }
 
     public int getIdTarjetaCliente() {
         return idTarjetaCliente;
@@ -36,28 +46,12 @@ public class Tarjeta {
         this.nombreTarjeta = nombreTarjeta;
     }
 
-    public String getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-
     public String getFechaExpiracion() {
         return fechaExpiracion;
     }
 
     public void setFechaExpiracion(String fechaExpiracion) {
         this.fechaExpiracion = fechaExpiracion;
-    }
-
-    public String getTipoTarjeta() {
-        return tipoTarjeta;
-    }
-
-    public void setTipoTarjeta(String tipoTarjeta) {
-        this.tipoTarjeta = tipoTarjeta;
     }
 
     public String getNumeroTarjeta() {
