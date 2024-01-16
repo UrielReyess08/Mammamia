@@ -80,8 +80,9 @@
             </nav>
         </header>
 
+    
         <div class="img-container">
-            <a href="/src/main/webapp/menu/pizzas.jsp" src="img/inicio/MicrosoftTeams-image.png" class="rounded mx-auto d-block img-fluid"></a>
+            <img src="img/inicio/MicrosoftTeams-image.png" alt="" class="rounded mx-auto d-block img-fluid">
         </div>
         
         <!-- Card -->
@@ -93,7 +94,7 @@
               
               <div class="col-md-4 mb-4">
                 <div class="card">
-                    <a href="/src/main/webapp/menu/pizzas.jsp">
+                    <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
                     <img src="img/inicio/pizza-barbacoa.png" class="card-img-top" alt="Imagen 1" height="250px">
                     </a>
                     <div class="card-body">
@@ -108,9 +109,10 @@
               <!-- Primera Fila de Tarjetas -->
 <div class="col-md-4 mb-4">
     <div class="card">
-        <a href="/src/main/webapp/menu/pizzas.jsp">
+        <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
             <img src="img/inicio/pizza-siciliana.png" class="card-img-top" alt="Imagen 2" height="250px">
         </a>
+        <img src="img/inicio/MicrosoftTeams-image.png" alt="">
         <div class="card-body">
             <!-- Contenido de la Tarjeta 2 -->
             <h5 class="card-title">Pizza Siciliana</h5>
@@ -122,7 +124,7 @@
 
 <div class="col-md-4 mb-4">
     <div class="card">
-        <a href="/src/main/webapp/menu/pizzas.jsp">
+        <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
             <img src="img/inicio/pizza-margherita.png" class="card-img-top" alt="Imagen 3" height="250px">
         </a>
         <div class="card-body">
@@ -138,7 +140,7 @@
 <!-- Segunda Fila de Tarjetas -->
 <div class="col-md-4 mb-4">
     <div class="card">
-        <a href="/src/main/webapp/menu/pizzas.jsp">
+        <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
             <img src="img/inicio/pizza-tocino.png" class="card-img-top" alt="Imagen 4" height="250px">
         </a>
         <div class="card-body">
@@ -152,7 +154,7 @@
 
 <div class="col-md-4 mb-4">
     <div class="card">
-        <a href="/src/main/webapp/menu/pizzas.jsp">
+        <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
             <img src="img/inicio/pizza-peperoni.png" class="card-img-top" alt="Imagen 5" height="250px">
         </a>
         <div class="card-body">
@@ -166,7 +168,7 @@
 
 <div class="col-md-4 mb-4">
     <div class="card">
-        <a href="/src/main/webapp/menu/pizzas.jsp">
+        <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
             <img src="img/inicio/pizza-estilocalifornia.png" class="card-img-top" alt="Imagen 6" height="250px">
         </a>
         <div class="card-body">
