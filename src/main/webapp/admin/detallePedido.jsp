@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Detalle del Pedido | Mammamía</title>
     </head>
-    <body>
+    <body class="mt-5" style="display: flex; flex-direction: column; min-height: 100vh;">
 
         <%
             // Obtener la sesión
@@ -52,11 +52,11 @@
             request.setAttribute("list", detalles);
         %>
         
-        <main class="container mt-3">
+        <main class="container mt-3" style="flex: 1;display: flex; align-items: center; justify-content: center;">
             <article>
                 <section>
                     <a href="${pageContext.request.contextPath}/admin/pedidos.jsp" class="btn btn-secondary mb-3">Regresar</a>
-                    <h1>Detalle del Pedido: <%= idPedido %></h1>
+                    <h1 class="text-center">Detalle del Pedido: <%= idPedido %></h1>
                     
                     <div class="table-responsive">
                         <table class="table table-striped">
