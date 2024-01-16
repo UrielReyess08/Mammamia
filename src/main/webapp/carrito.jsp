@@ -57,8 +57,26 @@
     <p>Total a pagar: ${totalPagar}</p>
     </tbody>
 </table>
-<a href="<%=request.getContextPath()%>/checkout.jsp">Realizar pago</a>
+<a href="#" id="btnRealizarPago">Realizar pago</a>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/functions.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function realizarPago() {
+        var totalPagar = ${totalPagar};
+        if (totalPagar == 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se puede realizar el pago',
+            });
+            return;
+        }
+        window.location.href = "<%=request.getContextPath()%>/checkout.jsp";
+    }
+
+    document.getElementById("btnRealizarPago").addEventListener("click", realizarPago);
+</script>
+
 </body>
 </html>
