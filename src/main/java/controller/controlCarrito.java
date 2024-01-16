@@ -195,7 +195,17 @@ public class controlCarrito extends HttpServlet {
 
                 Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
                 int res = dao.generarPedido(pedido);
+                request.getRequestDispatcher("controlCarrito?accion=ResumenPedido").forward(request, response);
+                break;
+
+            case "ResumenPedido":
+                listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
+                request.getRequestDispatcher("order.jsp").forward(request, response);
+                break;
+
+            case "FinalizarCompra":
                 sessionCart.invalidate();
+                request.getRequestDispatcher("menu.jsp").forward(request, response);
                 break;
 
             default:
