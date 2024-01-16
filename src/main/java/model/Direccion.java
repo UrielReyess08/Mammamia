@@ -1,16 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author daiko
- */
 public class Direccion {
     int idDireccionCliente, idCliente;
-    String nombreDireccion, direccion, tipoVivienda, referencia, telefono;
+    String nombreDireccion, direccion, referencia, telefono;
+    int tipoVivienda;
+
+    public int getTipoVivienda() {
+        return tipoVivienda;
+    }
+
+    public void setTipoVivienda(int tipoVivienda) {
+        this.tipoVivienda = tipoVivienda;
+    }
 
     public int getIdDireccionCliente() {
         return idDireccionCliente;
@@ -42,14 +43,6 @@ public class Direccion {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public String getTipoVivienda() {
-        return tipoVivienda;
-    }
-
-    public void setTipoVivienda(String tipoVivienda) {
-        this.tipoVivienda = tipoVivienda;
     }
 
     public String getReferencia() {
