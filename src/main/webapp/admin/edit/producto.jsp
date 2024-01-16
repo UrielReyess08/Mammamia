@@ -8,7 +8,7 @@
         <title>Editar Producto | Sistema Mammamía</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100 mt-5">
 
         <%
         // Obtener la sesión
@@ -41,58 +41,58 @@
         </div>
     </header>
     
-    <main class="container mt-3">
+    <main class="container mt-3 text-center">
         <a href="${pageContext.request.contextPath}/admin/inventario.jsp" class="btn btn-secondary mb-3">Regresar</a>
         <h1>Modificar Producto</h1>
     
         <form action="${pageContext.request.contextPath}/ControlProducto?action=actualizar" method="post">
-            <input type="hidden" name="idProducto" value="${producto.idProducto}">
-    
-            <table class="table">
-                <tr>
-                    <th>Categoría:</th>
-                    <td>
-                        <select name="idCategoria" class="form-select" required>
-                            <option value="1" ${producto.idCategoria == 1 ? "selected" : ""}>Bebidas</option>
-                            <option value="2" ${producto.idCategoria == 2 ? "selected" : ""}>Pizzas</option>
-                            <option value="3" ${producto.idCategoria == 3 ? "selected" : ""}>Pastas</option>
-                            <option value="4" ${producto.idCategoria == 4 ? "selected" : ""}>Postres</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Nombre:</th>
-                    <td><input type="text" name="nombre" value="${producto.nombre}" class="form-control" required></td>
-                </tr>
-                <tr>
-                    <th>Descripción:</th>
-                    <td><textarea name="descripcion" class="form-control" required>${producto.descripcion}</textarea></td>
-                </tr>
-                <tr>
-                    <th>Precio:</th>
-                    <td><input type="text" name="precio" value="${producto.precio}" class="form-control" required></td>
-                </tr>
-                <tr>
-                    <th>Stock:</th>
-                    <td><input type="text" name="stock" value="${producto.stock}" class="form-control" required></td>
-                </tr>
-                <tr>
-                    <th>Estado:</th>
-                    <td>
-                        <select name="estado" class="form-select" required>
-                            <option value="0" ${producto.estado == 0 ? "selected" : ""}>Inactivo</option>
-                            <option value="1" ${producto.estado == 1 ? "selected" : ""}>Activo</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Categoría:</th>
+                        <td>
+                            <select name="idCategoria" class="form-select" required>
+                                <option value="1" ${producto.idCategoria == 1 ? "selected" : ""}>Bebidas</option>
+                                <option value="2" ${producto.idCategoria == 2 ? "selected" : ""}>Pizzas</option>
+                                <option value="3" ${producto.idCategoria == 3 ? "selected" : ""}>Pastas</option>
+                                <option value="4" ${producto.idCategoria == 4 ? "selected" : ""}>Postres</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nombre:</th>
+                        <td><input type="text" name="nombre" value="${producto.nombre}" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Descripción:</th>
+                        <td><textarea name="descripcion" class="form-control" required>${producto.descripcion}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th>Precio:</th>
+                        <td><input type="text" name="precio" value="${producto.precio}" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Stock:</th>
+                        <td><input type="text" name="stock" value="${producto.stock}" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Estado:</th>
+                        <td>
+                            <select name="estado" class="form-select" required>
+                                <option value="0" ${producto.estado == 0 ? "selected" : ""}>Inactivo</option>
+                                <option value="1" ${producto.estado == 1 ? "selected" : ""}>Activo</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
     
             <button type="submit" class="btn btn-primary">Actualizar Producto</button>
         </form>
     </main>
     
     <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
+        <div class="container text-center">
             <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
         </div>
     </footer>

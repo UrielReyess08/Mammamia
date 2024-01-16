@@ -14,60 +14,82 @@
         <title>Detalle del Pedido | Mammamía</title>
     </head>
     <body>
+
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
-            
+        
             // Verificación de inicio de sesión
             if (sesion == null || sesion.getAttribute("usuario") == null){
                 System.out.println("Sesión inválida o usuario no presente");
                 response.sendRedirect(request.getContextPath() + "/customer/login.jsp");
                 return;
             }
-            
+        
             //Variable para el nombre del rol
             String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
         %>
-
-        <header>
-            <ul>
-                <li>
-                    Sistema
-                </li>
-                <li>
-                    Bienvenido, <%= nombreRol %>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
-                </li>
-            </ul>
+        
+        <header class="bg-light">
+            <div class="container">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <span class="nav-link">Sistema Wazaaa</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link">Bienvenido, <%= nombreRol %></span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
         </header>
-
+        
         <%
             int idPedido = Integer.parseInt(request.getParameter("idPedido"));
-            
             List<DetallePedido> detalles = DetallePedidoDao.listarDetallePedido(idPedido);
             request.setAttribute("list", detalles);
         %>
-
-        <main>
+        
+        <main class="container mt-3">
             <article>
                 <section>
-                    <a href="${pageContext.request.contextPath}/admin/pedidos.jsp">Regresar</a>
+                    <a href="${pageContext.request.contextPath}/admin/pedidos.jsp" class="btn btn-secondary mb-3">Regresar</a>
                     <h1>Detalle del Pedido: <%= idPedido %></h1>
-                    <c:forEach items="${list}" var="det">
-                        <p>Nro. Detalle: ${det.getIdDetalleVenta()}</p>
-                        <p>Producto: ${det.getNombre()}</p>
-                        <p>Cantidad: ${det.getCantidad()}</p>
-                        <hr/>
-                    </c:forEach>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nro. Detalle</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${list}" var="det">
+                                    <tr>
+                                        <td>${det.getIdDetalleVenta()}</td>
+                                        <td>${det.getNombre()}</td>
+                                        <td>${det.getCantidad()}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </article>
         </main>
-
-        <footer>
-            <p>Copyright@Todos los derechos reservados</p>
-            <p>Sistema Mammamía</p> 
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+            </div>
         </footer>
-    </body>
+        
+        <!-- Bootstrap JS y dependencias -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        </body>
 </html>
