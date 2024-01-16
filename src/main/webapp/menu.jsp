@@ -68,7 +68,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-                </li class="nav-item">
+                </li>
                 <!-- Menú para cliente -->
                 <%
                     if (isLoggedIn) {
@@ -76,7 +76,7 @@
                 <li class="nav-item">
                     <a  class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
                 </li>
-                <li class="nav-item">
+                <li>
                     <a class="nav-link active" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi Cuenta</a>
                 </li>
                 <!-- Menú para invitado-->
