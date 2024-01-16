@@ -26,7 +26,7 @@
     </c:forEach>
     
     </tbody>
-    <a href="<%=request.getContextPath()%>/controlCarrito?accion=FinalizarCompra">Volver al menú</a>
+    <a href="<%=request.getContextPath()%>/index.jsp">Volver al menú</a>
 </table>
 </body>
 </html>
