@@ -112,7 +112,6 @@
         <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
             <img src="img/inicio/pizza-siciliana.png" class="card-img-top" alt="Imagen 2" height="250px">
         </a>
-        <img src="img/inicio/MicrosoftTeams-image.png" alt="">
         <div class="card-body">
             <!-- Contenido de la Tarjeta 2 -->
             <h5 class="card-title">Pizza Siciliana</h5>

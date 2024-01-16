@@ -66,10 +66,10 @@
 <main>
     <article class="container text-center">
         <section>
-            <a href="<%=request.getContextPath()%>menu/pizzas.jsp" class="sub-menu">Pizzas</a>
-            <a href="<%=request.getContextPath()%>menu/pastas.jsp" class="sub-menu">Pastas</a>
-            <a href="<%=request.getContextPath()%>menu/postres.jsp" class="sub-menu">Postres</a>
-            <a href="<%=request.getContextPath()%>menu/bebidas.jsp" class="sub-menu">Bebidas</a>
+            <a href="<%=request.getContextPath()%>/menu/pizzas.jsp" class="sub-menu">Pizzas</a>
+            <a href="<%=request.getContextPath()%>/menu/pastas.jsp" class="sub-menu">Pastas</a>
+            <a href="<%=request.getContextPath()%>/menu/postres.jsp" class="sub-menu">Postres</a>
+            <a href="<%=request.getContextPath()%>/menu/bebidas.jsp" class="sub-menu">Bebidas</a>
         </section>
         <div class="container mt-4">
             <h1>¡Disfruta de nuestra variedad de Pizzas!</h1>

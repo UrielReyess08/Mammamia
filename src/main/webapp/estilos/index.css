@@ -100,3 +100,10 @@ footer {
         height: 120px;
     }
 }
+/* CARD*/
+h5,a {
+    color: black
+}
+.card-body{
+    background-color: #ebebeb;
+}
