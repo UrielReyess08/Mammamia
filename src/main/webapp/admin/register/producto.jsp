@@ -12,81 +12,104 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agregar Producto | Sistema Mammamía</title>
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100 mt-5">
+
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
-            
+        
             // Verificación de inicio de sesión
             if (sesion == null || sesion.getAttribute("usuario") == null){
                 System.out.println("Sesión inválida o usuario no presente");
                 response.sendRedirect(request.getContextPath() + "/customer/login.jsp");
                 return;
             }
-            
+        
             //Variable para el nombre del rol
             String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
         %>
-
-        <header>
-            <ul>
-                <li>
-                    Sistema
-                </li>
-                <li>
-                    Bienvenido, <%= nombreRol %>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
-                </li>
-            </ul>
+        
+        <header class="bg-light">
+            <div class="container">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <span class="nav-link">Sistema Wazaaa</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link">Bienvenido, <%= nombreRol %></span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
         </header>
-
-        <%
-            List<Categoria> categorias = CategoriaDao.listarCategorias();
-        %>
-
-        <main>
-            <a href="${pageContext.request.contextPath}/admin/inventario.jsp">Regresar</a>
-            <h1>Agregar Producto</h1>
-            <article class="...">
-                <section>
-                    <form action="${pageContext.request.contextPath}/ControlProducto?action=registrar" method="post">
-
-                        <label>Categoria:</label>
-                        <select name="idCategoria">
-                            <% for (Categoria categoria : categorias) { %>
-                            <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getNombre() %></option>
-                            <% } %>
-                        </select><br>
-
-                        <label>Nombre:</label>
-                        <input type="text" name="nombre" required><br>
-
-                        <label>Descripción:</label>
-                        <textarea name="descripcion" required></textarea><br>
-
-                        <label>Precio:</label>
-                        <input type="text" name="precio" required><br>
-
-                        <label>Stock:</label>
-                        <input type="text" name="stock" required><br>
-
-                        <label>Estado:</label>
-                        <select name="estado">
-                            <option value="1">Disponible</option>
-                            <option value="0">No Disponible</option>
-                        </select><br>
-
-                        <input type="submit" value="Registrar Producto">
+        
+        <main class="container mt-3">
+            <a href="${pageContext.request.contextPath}/admin/inventario.jsp" class="btn btn-secondary mb-3">Regresar</a>
+            <h1 class="text-center">Modificar Producto</h1>
+        
+            <article class="card">
+                <section class="card-body">
+                    <form action="${pageContext.request.contextPath}/ControlProducto?action=actualizar" method="post">
+        
+                        <input type="hidden" name="idProducto" value="${producto.idProducto}">
+        
+                        <div class="mb-3">
+                            <label class="form-label">Categoría:</label>
+                            <select name="idCategoria" class="form-select" required>
+                                <option value="1" ${producto.idCategoria == 1 ? "selected" : ""}>Bebidas</option>
+                                <option value="2" ${producto.idCategoria == 2 ? "selected" : ""}>Pizzas</option>
+                                <option value="3" ${producto.idCategoria == 3 ? "selected" : ""}>Pastas</option>
+                                <option value="4" ${producto.idCategoria == 4 ? "selected" : ""}>Postres</option>
+                            </select>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label">Nombre:</label>
+                            <input type="text" name="nombre" value="${producto.nombre}" class="form-control" required>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label">Descripción:</label>
+                            <textarea name="descripcion" class="form-control" required>${producto.descripcion}</textarea>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label">Precio:</label>
+                            <input type="text" name="precio" value="${producto.precio}" class="form-control" required>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label">Stock:</label>
+                            <input type="text" name="stock" value="${producto.stock}" class="form-control" required>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label">Estado:</label>
+                            <select name="estado" class="form-select" required>
+                                <option value="0" ${producto.estado == 0 ? "selected" : ""}>Inactivo</option>
+                                <option value="1" ${producto.estado == 1 ? "selected" : ""}>Activo</option>
+                            </select>
+                        </div>
+        
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+                        </div>
+        
                     </form>
                 </section>
             </article>
         </main>
-
-        <footer>
-            <p>Copyright@Todos los derechos reservados</p>
-            <p>Sistema Mammamía</p> 
+        
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+            </div>
         </footer>
-    </body>
+        
+        <!-- Bootstrap JS y dependencias -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        </body>
 </html>
