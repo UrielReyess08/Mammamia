@@ -50,7 +50,7 @@ public class controlLogin extends HttpServlet {
                 session.setAttribute("usuario", usuario);
 
                 String rol = usuario.getRol();
-                if ("Encargado Web".equals(rol)) {
+                if ("Encargado Ventas".equals(rol)) {
                     response.sendRedirect(request.getContextPath() + "/admin/pedidos.jsp");
                 } else if ("Encargado Almacen".equals(rol)) {
                     response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp"); // Página para administradores de almacén
