@@ -10,30 +10,30 @@
     <title>Checkout | Mammamía</title>
 </head>
 <body>
-    <%
-        // Obtener la sesión
-        HttpSession sesion = request.getSession(false);
+<%
+    // Obtener la sesión
+    HttpSession sesion = request.getSession(false);
     
-        // Obtener la sesion para cliente
-        Boolean isLoggedIn = (sesion != null && sesion.getAttribute("isLoggedIn") != null && (Boolean) sesion.getAttribute("isLoggedIn"));
+    // Obtener la sesion para cliente
+    Boolean isLoggedIn = (sesion != null && sesion.getAttribute("isLoggedIn") != null && (Boolean) sesion.getAttribute("isLoggedIn"));
     
-        // Obtener la sesion para invitado
-        Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
+    // Obtener la sesion para invitado
+    Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
     
-        //Declarar variable para nombre del cliente
-        int idCliente = -1;
-        String nombreCliente = null;
-        String apellidoCliente = null;
-        String emailCliente = null;
+    //Declarar variable para nombre del cliente
+    int idCliente = -1;
+    String nombreCliente = null;
+    String apellidoCliente = null;
+    String emailCliente = null;
     
-        if(isLoggedIn){
-            Cliente cliente = (Cliente) sesion.getAttribute("cliente");
-            idCliente = cliente.getIdCliente();
-            nombreCliente = cliente.getNombre();
-            apellidoCliente = cliente.getApellido();
-            emailCliente = cliente.getEmail();
-        }
-    %>
+    if (isLoggedIn) {
+        Cliente cliente = (Cliente) sesion.getAttribute("cliente");
+        idCliente = cliente.getIdCliente();
+        nombreCliente = cliente.getNombre();
+        apellidoCliente = cliente.getApellido();
+        emailCliente = cliente.getEmail();
+    }
+%>
 
 <header>
     <ul>
@@ -60,13 +60,13 @@
         </li>
         <!-- Menú para invitado-->
         <%
-            } else if (isGuest){
+        } else if (isGuest) {
         %>
         <li>
             <a href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado)</a>
         </li>
         <%
-            } else {
+        } else {
         %>
         <li>
             <a href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
@@ -103,25 +103,26 @@
                 
                 </tbody>
             </table>
-
+            
             <%
                 ClienteDao clienteDao = new ClienteDao();
                 List<Direccion> direcciones = clienteDao.listarDireccionPorId(idCliente);
                 List<Tarjeta> tarjetas = clienteDao.listarTarjetaPorId(idCliente);
             %>
-
+            
             <form action="<%=request.getContextPath()%>/controlCarrito?accion=RealizarPedido" method="POST">
                 <h2>Dirección:</h2>
-
+                
                 <label>Seleccionar Dirección:</label>
                 <select name="idDireccionCliente" id="direccionSelect">
+                    <option value="" disabled selected class="invisible">Seleccionar opción</option>
                     <% for (Direccion direccion : direcciones) { %>
                     <option value="<%= direccion.getIdDireccionCliente() %>"
                             data-direccion="<%= direccion.getDireccion() %>"
                             data-referencia="<%= direccion.getReferencia() %>"
                             data-telefono="<%= direccion.getTelefono() %>"
                             data-tipo-vivienda="<%= direccion.getTipoVivienda() %>">
-                            <%= direccion.getNombreDireccion() %>
+                        <%= direccion.getNombreDireccion() %>
                     </option>
                     <% } %>
                 </select><br>
@@ -143,6 +144,7 @@
                 <label>
                     Tipo de vivienda:
                     <select name="tipoVivienda" id="tipoVivienda" required>
+                        <option value="" disabled selected class="invisible">Seleccionar opción</option>
                         <option disabled selected type="hidden">Seleccionar opción</option>
                         <option value="1">Departamento</option>
                         <option value="2">Casa</option>
@@ -156,7 +158,7 @@
                     Referencia:
                     <input required type="text" name="referencia" id="referencia"/>
                 </label>
-
+                
                 <label>
                     Teléfono:
                     <input required type="tel" name="telefono" id="telefono"/>
@@ -166,13 +168,14 @@
                 
                 <label>Seleccionar Tarjeta:</label>
                 <select name="idTarjetaCliente" id="tarjetaSelect">
+                    <option value="" disabled selected class="invisible">Seleccionar opción</option>
                     <% for (Tarjeta tarjeta : tarjetas) { %>
                     <option value="<%= tarjeta.getIdTarjetaCliente() %>"
                             data-metodo="<%= tarjeta.getMetodoPago() %>"
                             data-fecha="<%= tarjeta.getFechaExpiracion() %>"
                             data-tipo="<%= tarjeta.getTipoTarjeta() %>"
                             data-numero="<%= tarjeta.getNumeroTarjeta() %>">
-                    <%= tarjeta.getNombreTarjeta() %>
+                        <%= tarjeta.getNombreTarjeta() %>
                     </option>
                     <% } %>
                 </select><br>
@@ -184,9 +187,9 @@
                             <input type="radio" name="tipoTarjeta" id="tipoTarjetaCredito" value="1" required/>
                             Crédito
                         </label>
-
+                        
                         <label>
-                            <input type="radio" name="tipoTarjeta" id="tipoTarjetaDebito" value="2" />
+                            <input type="radio" name="tipoTarjeta" id="tipoTarjetaDebito" value="2"/>
                             Débito
                         </label>
                     </div>
@@ -260,7 +263,7 @@
         var selectedOption = this.options[this.selectedIndex];
         document.getElementById('metodoPago').value = selectedOption.getAttribute('data-metodo');
         document.getElementById('fechaExpiracion').value = selectedOption.getAttribute('data-fecha');
-        
+
         var tipoTarjeta = selectedOption.getAttribute('data-tipo');
         switch (tipoTarjeta) {
             case '1':
