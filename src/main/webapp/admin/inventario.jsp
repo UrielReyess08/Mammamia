@@ -1,9 +1,3 @@
-<%-- 
-    Document   : inventario
-    Created on : 11 ene. 2024, 22:08:19
-    Author     : daiko
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Usuario, model.Producto, conexion.Conexion, dao.ProductoDao, java.util.*"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -75,7 +69,7 @@
                                 <c:forEach items="${list}" var="prod">
                                     <tr>
                                         <td>${prod.getIdProducto()}</td>
-                                        <td>${prod.getNombreCat()}</td>
+                                        <td>${prod.getNombreCategoria()}</td>
                                         <td>${prod.getNombre()}</td>
                                         <td>${prod.getDescripcion()}</td>
                                         <td>${prod.getPrecio()}</td>
