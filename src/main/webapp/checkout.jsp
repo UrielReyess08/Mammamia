@@ -1,15 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page import="jakarta.servlet.http.HttpSession" %>
+<%@page import="model.Cliente" %>
 <%@page import="model.Usuario, controller.controlCarrito" %>
-<%@page import="model.Cliente, model.Producto, model.Direccion, model.Tarjeta" %>
-<%@ page import="dao.ProductoDao, dao.ClienteDao" %>
+<%@page import="jakarta.servlet.http.HttpSession" %>
+<%@ page import="dao.ProductoDao" %>
+<%@ page import="model.Producto" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <title>Checkout | Mammamía</title>
+    <title>Checkout</title>
 </head>
 <body>
+<<<<<<< HEAD
 <%
     // Obtener la sesión
     HttpSession sesion = request.getSession(false);
@@ -35,36 +37,36 @@
     }
 %>
 
+=======
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
 <header>
     <ul>
         <li>
-            <a href="${pageContext.request.contextPath}/index.jsp">
-                <img src="..." alt="logo"/> | Inicio
+            <a href="../../../index.html">
+                <img src="..." alt="logo"/>
+                PIZZERÍA MAMMAMÍA
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/menu.jsp">Menú</a>
+            <a href="../menu/menu.html">Menú</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-        </li>
-        <!-- Menú para cliente -->
-        <%
-            if (isLoggedIn) {
-        %>
-        <li>
-            <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+            <a href="../../../viewExtra/nosotros.html">Nosotros</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi Cuenta</a>
+            <a href="../../../viewCliente/loginCliente.html">Iniciar Sesión</a>
         </li>
+<<<<<<< HEAD
         <!-- Menú para invitado-->
         <%
         } else if (isGuest) {
         %>
+=======
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
         <li>
-            <a href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado)</a>
+            <a href="../../../viewCliente/cliente/panelUsuario.html">Mi Cuenta</a>
         </li>
+<<<<<<< HEAD
         <%
         } else {
         %>
@@ -74,6 +76,8 @@
         <%
             }
         %>
+=======
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
     </ul>
 </header>
 
@@ -103,6 +107,7 @@
                 
                 </tbody>
             </table>
+<<<<<<< HEAD
             
             <%
                 ClienteDao clienteDao = new ClienteDao();
@@ -126,9 +131,20 @@
                     </option>
                     <% } %>
                 </select><br>
+=======
+            <form action="<%=request.getContextPath()%>/controlCarrito?accion=RealizarPedido" method="POST">
+                <h2>Dirección:</h2>
+<%--                <label>--%>
+                    Selecciona tu dirección:
+<%--                    <select name="">--%>
+<%--                        <option>getDirecciones</option>--%>
+<%--                    </select>--%>
+<%--                </label>--%>
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
                 
                 <label>
-                    <input type="hidden" name="idCliente" value="<%= idCliente %>"/>
+                    idCliente
+                    <input type="number" name="idCliente"/>
                 </label>
                 
                 <label>
@@ -138,13 +154,17 @@
                 
                 <label>
                     Dirección a entregar:
-                    <input required type="text" name="direccion" id="direccion"/>
+                    <input required type="text" name="direccion"/>
                 </label>
                 
                 <label>
                     Tipo de vivienda:
+<<<<<<< HEAD
                     <select name="tipoVivienda" id="tipoVivienda" required>
                         <option value="" disabled selected class="invisible">Seleccionar opción</option>
+=======
+                    <select name="tipoVivienda" required>
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
                         <option disabled selected type="hidden">Seleccionar opción</option>
                         <option value="1">Departamento</option>
                         <option value="2">Casa</option>
@@ -156,16 +176,21 @@
                 
                 <label>
                     Referencia:
-                    <input required type="text" name="referencia" id="referencia"/>
+                    <input required type="text" name="referencia"/>
                 </label>
+<<<<<<< HEAD
                 
+=======
+<%--                --%>
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
                 <label>
                     Teléfono:
-                    <input required type="tel" name="telefono" id="telefono"/>
+                    <input required type="tel" name="telefono"/>
                 </label>
                 
                 <h2>Información de pago:</h2>
                 
+<<<<<<< HEAD
                 <label>Seleccionar Tarjeta:</label>
                 <select name="idTarjetaCliente" id="tarjetaSelect">
                     <option value="" disabled selected class="invisible">Seleccionar opción</option>
@@ -179,17 +204,30 @@
                     </option>
                     <% } %>
                 </select><br>
+=======
+<%--                <label>--%>
+<%--                    Selecciona tarjeta:--%>
+<%--                    <select name="">--%>
+<%--                        <option>getDirecciones</option>--%>
+<%--                    </select>--%>
+<%--                </label>--%>
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
                 
                 <fieldset>
                     <legend>Tipo de tarjeta:</legend>
                     <div>
+                        
                         <label>
-                            <input type="radio" name="tipoTarjeta" id="tipoTarjetaCredito" value="1" required/>
+                            <input type="radio" name="tipoTarjeta" value="1" required/>
                             Crédito
                         </label>
                         
                         <label>
+<<<<<<< HEAD
                             <input type="radio" name="tipoTarjeta" id="tipoTarjetaDebito" value="2"/>
+=======
+                            <input type="radio" name="tipoTarjeta" value="2" />
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
                             Débito
                         </label>
                     </div>
@@ -197,7 +235,7 @@
                 
                 <label>
                     Método de pago
-                    <select name="metodoPago" id="metodoPago" required>
+                    <select name="metodoPago" required>
                         <option disabled selected type="hidden">Seleccionar opción</option>
                         <option value="1">Visa</option>
                         <option value="2">Mastercard</option>
@@ -207,12 +245,12 @@
                 
                 <label>
                     Número de tarjeta:
-                    <input required type="text" name="numeroTarjeta" id="numeroTarjeta"/>
+                    <input required type="text" name="numeroTarjeta"/>
                 </label>
                 
                 <label>
                     Fecha de expiración:
-                    <input type="text" name="fechaExpiracion" id="fechaExpiracion"/>
+                    <input type="text" name="fechaExpiracion">
                 </label>
                 
                 <input type="submit" value="Finalizar Compra"/>
@@ -249,6 +287,7 @@
         </li>
     </ul>
 </footer>
+<<<<<<< HEAD
 
 <script>
     document.getElementById('direccionSelect').addEventListener('change', function () {
@@ -276,5 +315,7 @@
         document.getElementById('numeroTarjeta').value = selectedOption.getAttribute('data-numero');
     });
 </script>
+=======
+>>>>>>> parent of 6dff2cb (Se agregó la funcionalidad de listar direcciones y tarjetas de clientes registrados.)
 </body>
 </html>
