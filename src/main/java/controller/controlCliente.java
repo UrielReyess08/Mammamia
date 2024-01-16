@@ -135,7 +135,7 @@ public class controlCliente extends HttpServlet {
             dire.setIdCliente(idCliente);
             dire.setNombreDireccion(nombreDireccion);
             dire.setDireccion(direccion);
-            dire.setTipoVivienda(tipoVivienda);
+            dire.setTipoVivienda(Integer.parseInt(tipoVivienda));
             dire.setReferencia(referencia);
             dire.setTelefono(telefono);
 
@@ -161,7 +161,7 @@ public class controlCliente extends HttpServlet {
             dire.setIdCliente(idCliente);
             dire.setNombreDireccion(nombreDireccion);
             dire.setDireccion(direccion);
-            dire.setTipoVivienda(tipoVivienda);
+            dire.setTipoVivienda(Integer.parseInt(tipoVivienda));
             dire.setReferencia(referencia);
             dire.setTelefono(telefono);
 
@@ -184,9 +184,9 @@ public class controlCliente extends HttpServlet {
             Tarjeta tar = new Tarjeta();
             tar.setIdCliente(idCliente);
             tar.setNombreTarjeta(nombreTarjeta);
-            tar.setMetodoPago(metodoPago);
+            tar.setMetodoPago(Integer.parseInt(metodoPago));
             tar.setFechaExpiracion(fechaExpiracion);
-            tar.setTipoTarjeta(tipoTarjeta);
+            tar.setTipoTarjeta(Integer.parseInt(tipoTarjeta));
             tar.setNumeroTarjeta(numeroTarjeta);
 
             int result = ClienteDao.registrarTarjeta(tar);

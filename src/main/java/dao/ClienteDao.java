@@ -94,7 +94,7 @@ public class ClienteDao {
                 dire.setIdCliente(rs.getInt("idCliente"));
                 dire.setNombreDireccion(rs.getString("nombreDireccion"));
                 dire.setDireccion(rs.getString("direccion"));
-                dire.setTipoVivienda(rs.getString("tipoVivienda"));
+                dire.setTipoVivienda(rs.getInt("tipoVivienda"));
                 dire.setReferencia(rs.getString("referencia"));
                 dire.setTelefono(rs.getString("telefono"));
 
@@ -115,7 +115,7 @@ public class ClienteDao {
             ps.setInt(1, direc.getIdCliente());
             ps.setString(2, direc.getNombreDireccion());
             ps.setString(3, direc.getDireccion());
-            ps.setString(4, direc.getTipoVivienda());
+            ps.setInt(4, direc.getTipoVivienda());
             ps.setString(5, direc.getReferencia());
             ps.setString(6, direc.getTelefono());
 
@@ -140,7 +140,7 @@ public class ClienteDao {
                 direccionCli.setIdCliente(rs.getInt("idCliente"));
                 direccionCli.setNombreDireccion(rs.getString("nombreDireccion"));
                 direccionCli.setDireccion(rs.getString("direccion"));
-                direccionCli.setTipoVivienda(rs.getString("tipoVivienda"));
+                direccionCli.setTipoVivienda(rs.getInt("tipoVivienda"));
                 direccionCli.setReferencia(rs.getString("referencia"));
                 direccionCli.setTelefono(rs.getString("telefono"));
             }
@@ -159,7 +159,7 @@ public class ClienteDao {
             ps.setInt(1, dire.getIdCliente());
             ps.setString(2, dire.getNombreDireccion());
             ps.setString(3, dire.getDireccion());
-            ps.setString(4, dire.getTipoVivienda());
+            ps.setInt(4, dire.getTipoVivienda());
             ps.setString(5, dire.getReferencia());
             ps.setString(6, dire.getTelefono());
             ps.setInt(7, dire.getIdDireccionCliente());
@@ -199,9 +199,9 @@ public class ClienteDao {
                 tar.setIdTarjetaCliente(rs.getInt("idTarjetaCliente"));
                 tar.setIdCliente(rs.getInt("idCliente"));
                 tar.setNombreTarjeta(rs.getString("nombreTarjeta"));
-                tar.setMetodoPago(rs.getString("metodoPago"));
+                tar.setMetodoPago(rs.getInt("metodoPago"));
                 tar.setFechaExpiracion(rs.getString("fechaExpiracion"));
-                tar.setTipoTarjeta(rs.getString("tipoTarjeta"));
+                tar.setTipoTarjeta(rs.getInt("tipoTarjeta"));
                 tar.setNumeroTarjeta(rs.getString("numeroTarjeta"));
                 tarjetas.add(tar);
             }
@@ -219,9 +219,9 @@ public class ClienteDao {
             PreparedStatement ps = con.prepareStatement("INSERT INTO tarjetacliente(idCliente, nombreTarjeta, metodoPago, fechaExpiracion, tipoTarjeta, numeroTarjeta) VALUES (?,?,?,?,?,?) ");
             ps.setInt(1, tar.getIdCliente());
             ps.setString(2, tar.getNombreTarjeta());
-            ps.setString(3, tar.getMetodoPago());
+            ps.setInt(3, tar.getMetodoPago());
             ps.setString(4, tar.getFechaExpiracion());
-            ps.setString(5, tar.getTipoTarjeta());
+            ps.setInt(5, tar.getTipoTarjeta());
             ps.setString(6, tar.getNumeroTarjeta());
 
             estado = ps.executeUpdate();
