@@ -195,6 +195,7 @@ public class controlCarrito extends HttpServlet {
 
                 Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
                 int res = dao.generarPedido(pedido);
+                sessionCart.invalidate();
                 break;
 
             default:
