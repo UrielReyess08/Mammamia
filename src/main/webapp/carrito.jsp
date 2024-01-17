@@ -11,6 +11,8 @@
 <html>
 <head>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.5.1/css/pro.min.css">
     <title>Carrito de compras</title>
 </head>
 <body>
@@ -26,15 +28,22 @@
 
 <table border="1">
     <thead>
-    <tr>
-        <th>Item</th>
-        <th>Id Producto</th>
-        <th>Producto</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>SubTotal</th>
-        <th>Acciones</th>
-    </tr>
+    <c:if test="${totalPagar > 0}">
+        <p>Total a pagar: ${totalPagar}</p>
+        <tr>
+            <th>Item</th>
+            <th>Id Producto</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>SubTotal</th>
+            <th>Acciones</th>
+        </tr>
+    </c:if>
+    <c:if test="${totalPagar <= 0}">
+        EL carrito está vacío.
+        <i class="fa-duotone fa-cart-xmark fa-10x" style="--fa-primary-opacity: 0.5; --fa-secondary-opacity: 0.2;"></i>
+    </c:if>
     </thead>
     <tbody>
     <c:forEach var="car" items="${carrito}">
@@ -50,13 +59,15 @@
             <td>${car.getSubtotal()}</td>
             <td>
                 <input type="hidden" id="id" value="${car.getIdProducto()}">
-                <a href="<%=request.getContextPath()%>/controlCarrito?accion=Delete&idp=${car.getIdProducto()}" id="btnDetele">Eliminar</a>
+                <a href="<%=request.getContextPath()%>/controlCarrito?accion=Delete&idp=${car.getIdProducto()}"
+                   id="btnDetele">Eliminar</a>
             </td>
         </tr>
     </c:forEach>
-    <p>Total a pagar: ${totalPagar}</p>
     </tbody>
 </table>
+
+
 <a href="#" id="btnRealizarPago">Realizar pago</a>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/functions.js" type="text/javascript"></script>
