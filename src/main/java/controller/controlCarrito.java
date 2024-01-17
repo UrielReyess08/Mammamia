@@ -201,7 +201,7 @@ public class controlCarrito extends HttpServlet {
             case "ResumenPedido":
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.getRequestDispatcher("order.jsp").forward(request, response);
-                sessionCart.invalidate();
+                listaCarrito.clear();
                 break;
 
             case "FinalizarCompra":
