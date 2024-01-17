@@ -32,6 +32,8 @@
         nombreCliente = cliente.getNombre();
         apellidoCliente = cliente.getApellido();
         emailCliente = cliente.getEmail();
+    } else if(isGuest){
+        idCliente = (int) sesion.getAttribute("idCliente");
     }
 %>
 
