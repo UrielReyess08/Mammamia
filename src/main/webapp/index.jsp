@@ -35,7 +35,7 @@
         <header>
             <nav class="navbar navbar-dark navbar-1">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
-                    <span><img src="img/img-icon/i" alt="logo" width="30" height="30"></span>
+                    <span><img src="img/img-icon/icono.png" alt="logo" width="30" height="30"></span>
                     Mammamia
                 </a>
                 
@@ -86,7 +86,7 @@
 
     
         <div class="img-container">
-            <img src="img/img-icon/icono.png" alt="icon" class="rounded mx-auto d-block img-fluid">
+            <img src="img/inicio/MicrosoftTeams-image.png" class="rounded mx-auto d-block img-fluid">
         </div>
         
         <!-- Card -->
