@@ -30,30 +30,54 @@
         request.setAttribute("Productos", miLista);
     %>
     <header>
-        <div class="text-center">
-            <h1>Mammamia</h1>
-        </div>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                               href="${pageContext.request.contextPath}/menu.jsp">Menú</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="viewCliente/loginCliente.html" tabindex="-1"
-                               aria-current="page">Iniciar Sesion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="viewCliente/cliente/panelUsuario.html">Mi cuenta</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar navbar-dark navbar-1">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
+                <span><img src="img/img-icon/pizza.png" alt="logo" width="30" height="30"></span>
+                Mammamia
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+          aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+      
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Menú <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/menu.jsp">Nosotros</a>
+              </li>
+              <%
+                if (isLoggedIn) {
+                %>
+              <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi cuenta</a>
+                </li>
+                <%
+                } else if (isGuest){
+                %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado)</a>
+                </li>
+                <%
+                } else {
+                %>
+            <li class="nav-item">
+                <a class="nav-link active" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
+            </li>
+                <%
+                }
+                %>
+            </ul>
+            
+        
+          </div>
         </nav>
         <ul>
             <li>
