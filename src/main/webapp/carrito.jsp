@@ -16,12 +16,22 @@
     <title>Carrito de compras</title>
 </head>
 <body>
+<%
+    // Obtener la sesión
+    HttpSession sesion = request.getSession(false);
+    // Obtener la última página visitada de la sesión
+    String lastPage = (String) sesion.getAttribute("lastPage");
+    if (lastPage == null) {
+        lastPage = "menu.jsp";
+    }
+%>
+
+
+
 <header>
     <ul>
         <li>
-            <%--            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Home&menu=">Seguir comprando</a>--%>
-            <a href="${pageContext.request.contextPath}/menu.jsp">Volver a la página
-                anterior</a>
+                <a href="<%=request.getContextPath()%>/<%=lastPage%>">Seguir comprando</a>
         </li>
     </ul>
 </header>

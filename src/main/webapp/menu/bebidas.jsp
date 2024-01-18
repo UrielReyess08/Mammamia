@@ -25,6 +25,10 @@
 <%
     List<Producto> miLista = ProductoDao.listarBebidas();
     request.setAttribute("Productos", miLista);
+    
+    HttpSession sesion = request.getSession(false);
+    
+    sesion.setAttribute("lastPage", "menu/bebidas.jsp");
 %>
 <header>
     <div class="text-center">

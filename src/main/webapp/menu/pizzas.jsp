@@ -26,6 +26,10 @@
 <%
     List<Producto> miLista = ProductoDao.listarPizzas();
     request.setAttribute("Productos", miLista);
+    
+    HttpSession sesion = request.getSession(false);
+    
+    sesion.setAttribute("lastPage", "menu/pizzas.jsp");
 %>
 
 
@@ -81,8 +85,8 @@
                 <c:forEach var="prod" items="${Productos}">
                     <div class="col-lg-4 col-md-6 col-sm-12 mx-auto my-4">
                         <div class="card w-100" style="width: 18rem;">
-                            <img class="card-img-top" 
-                            src="<%=request.getContextPath()%>/img/Pizzas/<%=contador%>.png" 
+                            <img class="card-img-top"
+                            src="<%=request.getContextPath()%>/img/Pizzas/<%=contador%>.png"
                             alt="img_pizza_1">
                             <div class="card-body">
                                 <h5 class="card-title${prod.getNombre()}">${prod.getNombre()}</h5>
