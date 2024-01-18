@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Agregar Producto | Sistema Mammamía</title>
     </head>
     <body class="text-center mt-5">
@@ -109,4 +110,3 @@
         </footer>
     </body>
 </html>
->>>>>>> 4595d29 (Se quitó los estilos Bootstrap a los módulos de administrador)
