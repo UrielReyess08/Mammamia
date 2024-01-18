@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Detalle del Pedido | Mammamía</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>
+    <body class="text-center mt-5">
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
@@ -23,16 +25,16 @@
             String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
         %>
 
-        <header>
-            <ul>
-                <li>
-                    Sistema
+        <header class="bg-light">
+            <ul class="nav container">
+                <li class="nav-item">
+                    <span class="nav-link">Sistema</span>
                 </li>
-                <li>
-                    Bienvenido, <%= nombreRol %>
+                <li class="nav-item">
+                    <span class="nav-link">Bienvenido, <%= nombreRol %></span>
                 </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
                 </li>
             </ul>
         </header>
@@ -45,23 +47,31 @@
         %>
 
         <main>
-            <article>
-                <section>
-                    <a href="${pageContext.request.contextPath}/admin/pedidos.jsp">Regresar</a>
-                    <h1>Detalle del Pedido: <%= idPedido %></h1>
-                    <c:forEach items="${list}" var="det">
-                        <p>Nro. Detalle: ${det.getIdDetalleVenta()}</p>
-                        <p>Producto: ${det.getNombre()}</p>
-                        <p>Cantidad: ${det.getCantidad()}</p>
-                        <hr/>
-                    </c:forEach>
-                </section>
+            <article class="container">
+                <div class="table-responsive-md">
+                    <section class="table">
+                        <a class="btn btn-secondary mt-3" href="${pageContext.request.contextPath}/admin/pedidos.jsp">Regresar</a>
+                        <h1 class="mt-4">Detalle del Pedido: <%= idPedido %></h1>
+                        <div class="mt-3">
+                            <c:forEach items="${list}" var="det">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="card-text">Nro. Detalle: ${det.getIdDetalleVenta()}</p>
+                                        <p class="card-text">Producto: ${det.getNombre()}</p>
+                                        <p class="card-text">Cantidad: ${det.getCantidad()}</p>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </section>
+                </div>
             </article>
         </main>
 
-        <footer>
-            <p>Copyright@Todos los derechos reservados</p>
-            <p>Sistema Mammamía</p> 
+        <br><footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+            </div>
         </footer>
     </body>
 </html>

@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Detalle Entrega | Mammamía</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>
+    <body class="text-center mt-5">
         <%@page import="model.Pedido, conexion.Conexion, dao.PedidoDao, java.util.*"%>
         <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -24,16 +26,16 @@
             //Variable para el nombre del rol
             String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
         %>
-        <header>
-            <ul>
-                <li>
-                    Sistema
+        <header class="bg-light">
+            <ul class="nav container">
+                <li class="nav-item">
+                    <span class="nav-link">Sistema</span>
                 </li>
-                <li>
-                    Bienvenido, <%= nombreRol %>
+                <li class="nav-item">
+                    <span class="nav-link">Bienvenido, <%= nombreRol %></span>
                 </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
                 </li>
             </ul>
         </header>
@@ -44,13 +46,14 @@
             Pedido det = PedidoDao.obtenerEntregaporId(idPedido);
         %>
 
-        <main>
-            <article class="...">
+        <main class="container mt-5">
+            <article>
                 <section>
                     <h1>Detalles de la Entrega: <%= det.getIdPedido() %></h1>
-                    <p>Nombre Receptor: <%= det.getReceptor() %></p>
-                    <p>Dirección: <%= det.getDireccion() %></p>
-                    <p>Tipo de Vivienda:
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Nombre Receptor: <%= det.getReceptor() %></li>
+                        <li class="list-group-item">Dirección: <%= det.getDireccion() %></li>
+                        <li class="list-group-item">Tipo de Vivienda: <%= getTipoVivienda(det.getTipoVivienda()) %></li>
                         <%
                             int tipoVivienda = det.getTipoVivienda();
                             switch (tipoVivienda){
@@ -73,11 +76,10 @@
                                     out.print("No especificado");
                             }
                         %>
-                    </p>
-                    <p>Referencia: <%= det.getReferencia() %></p>
-                    <p>Teléfono: <%= det.getTelefono() %></p>
-                    <p>Hora: <%= det.getHoraPedido() %></p>
-                    <p>Estado:
+                        <li class="list-group-item">Referencia: <%= det.getReferencia() %></li>
+                        <li class="list-group-item">Teléfono: <%= det.getTelefono() %></li>
+                        <li class="list-group-item">Hora: <%= det.getHoraPedido() %></li>
+                        <li class="list-group-item">Estado: <%= getEstadoEntrega(det.getEstado()) %></li>
                         <% 
                             int estado = det.getEstado();
                             switch (estado){
@@ -88,17 +90,23 @@
                                     out.print("Estado Desconocido");
                             }
                         %>
-                    </p>
-                    <p>Total: <%= det.getTotal() %></p>
+                        <li class="list-group-item">Total: <%= det.getTotal() %></li>
+                    </ul>
+                    
+                    <form action="${pageContext.request.contextPath}/ControlEntrega" method="post" class="mt-3">
+                        <input type="hidden" id="idPedido" name="idPedido" value="<%= det.getIdPedido() %>">
+                        <input type="hidden" name="action" value="confirmarEntrega">
+                        <button type="submit" class="btn btn-primary">Confirmar Entrega</button>
+                    </form>
                 </section>
-
-                <form action="${pageContext.request.contextPath}/ControlEntrega" method="post">
-                    <input type="hidden" id="idPedido" name="idPedido" value="<%= det.getIdPedido() %>">
-                    <input type="hidden" name="action" value="confirmarEntrega">
-                    <button type="submit">Confirmar Entrega</button>
-                </form>
             </article>
         </main>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+            </div>
+        </footer>
     </body>
 </html>
 >>>>>>> 4595d29 (Se quitó los estilos Bootstrap a los módulos de administrador)
