@@ -29,7 +29,9 @@
 <table border="1">
     <thead>
     <c:if test="${totalPagar > 0}">
-        <p>Total a pagar: ${totalPagar}</p>
+        <p>Subtotal: S/ ${totalPagar}</p>
+        <p>Envío: S/ 5.90</p>
+        <p>Total a pagar: S/ ${totalPagar + 5.90}</p>
         <tr>
             <th>Item</th>
             <th>Id Producto</th>
