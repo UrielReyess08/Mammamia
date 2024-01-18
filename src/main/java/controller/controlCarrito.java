@@ -127,9 +127,6 @@ public class controlCarrito extends HttpServlet {
                         menu = "postres.jsp";
                         break;
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
                 String retorno = "menu/";
                 request.getRequestDispatcher(retorno + menu).forward(request, response);
                 break;
@@ -143,9 +140,6 @@ public class controlCarrito extends HttpServlet {
                     }
 
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
 //                request.setAttribute("totalPagar", totalPagar);
                 request.getRequestDispatcher("controlCarrito?accion=Carrito").forward(request, response);
 
@@ -163,9 +157,6 @@ public class controlCarrito extends HttpServlet {
 //                        listaCarrito.get(j).setSubtotal(listaCarrito.get(j).getPrecio() * cant);
                     }
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
                 break;
 
             case "Carrito":
@@ -182,9 +173,6 @@ public class controlCarrito extends HttpServlet {
                     }
                     request.setAttribute("totalPagar", totalPagar);
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
 
                 request.getRequestDispatcher("carrito.jsp").forward(request, response);
                 break;
@@ -207,10 +195,6 @@ public class controlCarrito extends HttpServlet {
 
                 Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
                 int res = dao.generarPedido(pedido);
-                
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-                
                 request.getRequestDispatcher("controlCarrito?accion=ResumenPedido").forward(request, response);
                 break;
 
