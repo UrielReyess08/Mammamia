@@ -57,7 +57,13 @@ public class PedidoDao {
                 ps.setInt(3, detalle.getCantidad());
 
                 estado = ps.executeUpdate();
+                rs.close();
 
+                String UPDATE = "UPDATE producto SET stock = stock -? WHERE idProducto =?";
+                ps = con.prepareStatement(UPDATE);
+                ps.setInt(1, detalle.getIdProducto());
+                ps.setInt(2, detalle.getCantidad());
+                estado = ps.executeUpdate();
             }
 
 
