@@ -82,7 +82,7 @@
             <article class="...">
                 <section>
                     <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
-                    <a href="${pageContext.request.contextPath}/customer/account/">Información de la Cuenta</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/">Editar Información</a>|
                     <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
                     <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
                 </section>
@@ -93,7 +93,7 @@
                 </section>
 
                 <section>
-                    <h3>Información de Cuenta</h3>
+                    <h3>Información de la Cuenta</h3>
                     Nombres: <%= nombreCliente + " " + apellidoCliente %><br>
                     Correo Electrónico: <%= emailCliente %>
                 </section>
