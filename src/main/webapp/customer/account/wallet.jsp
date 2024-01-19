@@ -122,12 +122,26 @@
                                     <tr>
                                         <td>${tar.getIdTarjetaCliente()}</td>
                                         <td>${tar.getNombreTarjeta()}</td>
-                                        <td>${tar.getMetodoPago()}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${tar.getMetodoPago() == 1}">Visa</c:when>
+                                                <c:when test="${tar.getMetodoPago() == 2}">Mastercard</c:when>
+                                                <c:when test="${tar.getMetodoPago() == 3}">American Express</c:when>
+                                                <c:otherwise>Desconocido</c:otherwise>
+                                            </c:choose>
+                                        </td>
                                         <td>${tar.getFechaExpiracion()}</td>
-                                        <td>${tar.getTipoTarjeta()}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${tar.getTipoTarjeta() == 1}">Crédito</c:when>
+                                                <c:when test="${tar.getTipoTarjeta() == 2}">Débito</c:when>
+                                                <c:otherwise>Desconocido</c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        
                                         <td>${tar.getNumeroTarjeta()}</td>
                                         <td>
-                                            <a href="${pageContext.request.contextPath}/ControlCliente?action=eliminarTarjeta&id=${tar.getIdTarjetaCliente()}">Eliminar</a>
+                                            <a href="${pageContext.request.contextPath}/controlCliente?action=eliminarTarjeta&id=${tar.getIdTarjetaCliente()}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
