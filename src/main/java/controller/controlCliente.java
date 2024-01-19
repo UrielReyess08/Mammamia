@@ -176,17 +176,17 @@ public class controlCliente extends HttpServlet {
 
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
             String nombreTarjeta = request.getParameter("nombreTarjeta");
-            String metodoPago = request.getParameter("metodoPago");
+            int metodoPago = Integer.parseInt(request.getParameter("metodoPago"));
             String fechaExpiracion = request.getParameter("fechaExpiracion");
-            String tipoTarjeta = request.getParameter("tipoTarjeta");
+            int tipoTarjeta = Integer.parseInt(request.getParameter("tipoTarjeta"));
             String numeroTarjeta = request.getParameter("numeroTarjeta");
 
             Tarjeta tar = new Tarjeta();
             tar.setIdCliente(idCliente);
             tar.setNombreTarjeta(nombreTarjeta);
-            tar.setMetodoPago(Integer.parseInt(metodoPago));
+            tar.setMetodoPago(metodoPago);
             tar.setFechaExpiracion(fechaExpiracion);
-            tar.setTipoTarjeta(Integer.parseInt(tipoTarjeta));
+            tar.setTipoTarjeta(tipoTarjeta);
             tar.setNumeroTarjeta(numeroTarjeta);
 
             int result = ClienteDao.registrarTarjeta(tar);

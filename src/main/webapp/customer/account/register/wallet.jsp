@@ -85,7 +85,7 @@
             <h1>Agregar Tarjeta</h1>
             <article class="...">
                 <section>
-                    <form action="${pageContext.request.contextPath}/ControlCliente?action=registrarTarjeta" method="post">
+                    <form action="${pageContext.request.contextPath}/controlCliente?action=registrarTarjeta" method="post">
 
                         <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
 
@@ -95,9 +95,9 @@
                         <label>Metodo de Pago:</label>
                         <select name="metodoPago" required>
                             <option disabled selected type="hidden">Seleccionar opción</option>
-                            <option value="Visa">Visa</option>
-                            <option value="Mastercard">Mastercard</option>
-                            <option value="American Express">American Express</option>
+                            <option value="1">Visa</option>
+                            <option value="2">Mastercard</option>
+                            <option value="3">American Express</option>
                         </select><br>
 
                         <label>Fecha de Expiración:</label>
@@ -107,12 +107,12 @@
                         <label>Tipo:</label>
                         <div>
                             <label>
-                                <input type="radio" name="tipoTarjeta" value="Credito" required/>
+                                <input type="radio" name="tipoTarjeta" value="1" required/>
                                 Crédito
                             </label>
 
                             <label>
-                                <input type="radio" name="tipoTarjeta" value="Debito" />
+                                <input type="radio" name="tipoTarjeta" value="2" />
                                 Débito
                             </label>
                         </div>
