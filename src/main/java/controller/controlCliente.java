@@ -127,7 +127,7 @@ public class controlCliente extends HttpServlet {
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
             String nombreDireccion = request.getParameter("nombreDireccion");
             String direccion = request.getParameter("direccion");
-            String tipoVivienda = request.getParameter("tipoVivienda");
+            int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
             String referencia = request.getParameter("referencia");
             String telefono = request.getParameter("telefono");
 
@@ -135,7 +135,7 @@ public class controlCliente extends HttpServlet {
             dire.setIdCliente(idCliente);
             dire.setNombreDireccion(nombreDireccion);
             dire.setDireccion(direccion);
-            dire.setTipoVivienda(Integer.parseInt(tipoVivienda));
+            dire.setTipoVivienda(tipoVivienda);
             dire.setReferencia(referencia);
             dire.setTelefono(telefono);
 
@@ -152,7 +152,7 @@ public class controlCliente extends HttpServlet {
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
             String nombreDireccion = request.getParameter("nombreDireccion");
             String direccion = request.getParameter("direccion");
-            String tipoVivienda = request.getParameter("tipoVivienda");
+            int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
             String referencia = request.getParameter("referencia");
             String telefono = request.getParameter("telefono");
 
@@ -161,7 +161,7 @@ public class controlCliente extends HttpServlet {
             dire.setIdCliente(idCliente);
             dire.setNombreDireccion(nombreDireccion);
             dire.setDireccion(direccion);
-            dire.setTipoVivienda(Integer.parseInt(tipoVivienda));
+            dire.setTipoVivienda(tipoVivienda);
             dire.setReferencia(referencia);
             dire.setTelefono(telefono);
 

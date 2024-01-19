@@ -86,11 +86,11 @@
             <h1>Editar Dirección</h1>
             <article class="...">
                 <section>
-                    <form action="${pageContext.request.contextPath}/ControlCliente?action=actualizarDireccion" method="post">
+                    <form action="${pageContext.request.contextPath}/controlCliente?action=actualizarDireccion" method="post">
                         
-                        <input type="text" name="idDireccionCliente" value="${dire.idDireccionCliente}">
+                        <input type="hidden" name="idDireccionCliente" value="${dire.idDireccionCliente}">
                         
-                        <input type="text" name="idCliente" value="${dire.idCliente}"><br>
+                        <input type="hidden" name="idCliente" value="${dire.idCliente}"><br>
 
                         <label for="nombreDireccion">¿Cómo te gustaría guardar esta dirección?</label>
                         <input type="text" name="nombreDireccion" value="${dire.nombreDireccion}" required /><br>
@@ -99,7 +99,13 @@
                         <input type="text" name="direccion" value="${dire.direccion}" required /><br>
 
                         <label for="tipoVivienda">Tipo de Vivienda:</label>
-                        <input type="text" name="tipoVivienda" value="${dire.tipoVivienda}" required><br>
+                        <select name="tipoVivienda" class="form-select" required>
+                            <option value="1" ${dire.tipoVivienda == 1 ? "selected" : ""}>Departamento</option>
+                            <option value="2" ${dire.tipoVivienda == 2 ? "selected" : ""}>Casa</option>
+                            <option value="3" ${dire.tipoVivienda == 3 ? "selected" : ""}>Condominio</option>
+                            <option value="4" ${dire.tipoVivienda == 4 ? "selected" : ""}>Empresa</option>
+                            <option value="4" ${dire.tipoVivienda == 4 ? "selected" : ""}>Hotel</option>
+                        </select>
 
                         <label for="referencia">Referencia:</label>
                         <input type="text" name="referencia" value="${dire.referencia}" required /><br>

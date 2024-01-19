@@ -121,12 +121,21 @@
                                         <td>${dire.getIdDireccionCliente()}</td>
                                         <td>${dire.getNombreDireccion()}</td>
                                         <td>${dire.getDireccion()}</td>
-                                        <td>${dire.getTipoVivienda()}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${dire.getTipoVivienda() == 1}">Departamento</c:when>
+                                                <c:when test="${dire.getTipoVivienda() == 2}">Casa</c:when>
+                                                <c:when test="${dire.getTipoVivienda() == 3}">Condominio</c:when>
+                                                <c:when test="${dire.getTipoVivienda() == 4}">Empresa</c:when>
+                                                <c:when test="${dire.getTipoVivienda() == 5}">Hotel</c:when>
+                                                <c:otherwise>Desconocido</c:otherwise>
+                                            </c:choose>
+                                        </td>
                                         <td>${dire.getReferencia()}</td>
                                         <td>${dire.getTelefono()}</td>
                                         <td>
-                                            <a href="${pageContext.request.contextPath}/ControlCliente?action=editarDireccion&id=${dire.getIdDireccionCliente()}">Modificar</a>|
-                                            <a href="${pageContext.request.contextPath}/ControlCliente?action=eliminarDireccion&id=${dire.getIdDireccionCliente()}">Eliminar</a>
+                                            <a href="${pageContext.request.contextPath}/controlCliente?action=editarDireccion&id=${dire.getIdDireccionCliente()}">Modificar</a>|
+                                            <a href="${pageContext.request.contextPath}/controlCliente?action=eliminarDireccion&id=${dire.getIdDireccionCliente()}">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
