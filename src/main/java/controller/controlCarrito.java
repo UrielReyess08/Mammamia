@@ -193,7 +193,7 @@ public class controlCarrito extends HttpServlet {
                 fechaExpiracion = request.getParameter("fechaExpiracion");
                 numeroTarjeta = request.getParameter("numeroTarjeta");
 
-                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
+                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar + 5.9);
                 int res = dao.generarPedido(pedido);
                 request.getRequestDispatcher("controlCarrito?accion=ResumenPedido").forward(request, response);
                 break;
