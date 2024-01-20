@@ -322,7 +322,33 @@
                 <hr>
                 <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
             </div>
-        </footer>  
+        </footer>
+<script>
+    document.getElementById('direccionSelect').addEventListener('change', function () {
+        var selectedOption = this.options[this.selectedIndex];
+        document.getElementById('direccion').value = selectedOption.getAttribute('data-direccion');
+        document.getElementById('referencia').value = selectedOption.getAttribute('data-referencia');
+        document.getElementById('telefono').value = selectedOption.getAttribute('data-telefono');
+        document.getElementById('tipoVivienda').value = selectedOption.getAttribute('data-tipo-vivienda');
+    });
+
+    document.getElementById('tarjetaSelect').addEventListener('change', function () {
+        var selectedOption = this.options[this.selectedIndex];
+        document.getElementById('metodoPago').value = selectedOption.getAttribute('data-metodo');
+        document.getElementById('fechaExpiracion').value = selectedOption.getAttribute('data-fecha');
+
+        var tipoTarjeta = selectedOption.getAttribute('data-tipo');
+        switch (tipoTarjeta) {
+            case '1':
+                document.getElementById('tipoTarjetaCredito').checked = true;
+                break;
+            case '2':
+                document.getElementById('tipoTarjetaDebito').checked = true;
+                break;
+        }
+        document.getElementById('numeroTarjeta').value = selectedOption.getAttribute('data-numero');
+    });
+</script>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
         </body>
