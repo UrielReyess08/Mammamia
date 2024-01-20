@@ -4,11 +4,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar Producto | Sistema Mammamía</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>
+    <body class="text-center mt-5 table-responsive-md">
 
         <%
         // Obtener la sesión
@@ -48,58 +50,59 @@
         <form action="${pageContext.request.contextPath}/ControlProducto?action=actualizar" method="post">
             <input type="hidden" name="idProducto" value="${producto.idProducto}">
     
-            <table class="table">
-                <tr>
-                    <th>Categoría:</th>
-                    <td>
-                        <select name="idCategoria" class="form-select" required>
-                            <option value="1" ${producto.idCategoria == 1 ? "selected" : ""}>Bebidas</option>
-                            <option value="2" ${producto.idCategoria == 2 ? "selected" : ""}>Pizzas</option>
-                            <option value="3" ${producto.idCategoria == 3 ? "selected" : ""}>Pastas</option>
-                            <option value="4" ${producto.idCategoria == 4 ? "selected" : ""}>Postres</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Nombre:</th>
-                    <td><input type="text" name="nombre" value="${producto.nombre}" class="form-control" required></td>
-                </tr>
-                <tr>
-                    <th>Descripción:</th>
-                    <td><textarea name="descripcion" class="form-control" required>${producto.descripcion}</textarea></td>
-                </tr>
-                <tr>
-                    <th>Precio:</th>
-                    <td><input type="text" name="precio" value="${producto.precio}" class="form-control" required></td>
-                </tr>
-                <tr>
-                    <th>Stock:</th>
-                    <td><input type="text" name="stock" value="${producto.stock}" class="form-control" required></td>
-                </tr>
-                <tr>
-                    <th>Estado:</th>
-                    <td>
-                        <select name="estado" class="form-select" required>
-                            <option value="0" ${producto.estado == 0 ? "selected" : ""}>Inactivo</option>
-                            <option value="1" ${producto.estado == 1 ? "selected" : ""}>Activo</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+            <div class="container mt-3">           
+                <table class="table">
+                  <thead>
+                    <tr>
+                        <th>Categoría:</th>
+                        <td>
+                            <select name="idCategoria" class="form-select" required>
+                                <option value="1" ${producto.idCategoria == 1 ? "selected" : ""}>Bebidas</option>
+                                <option value="2" ${producto.idCategoria == 2 ? "selected" : ""}>Pizzas</option>
+                                <option value="3" ${producto.idCategoria == 3 ? "selected" : ""}>Pastas</option>
+                                <option value="4" ${producto.idCategoria == 4 ? "selected" : ""}>Postres</option>
+                            </select>
+                        </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <th>Nombre:</th>
+                        <td><input type="text" name="nombre" value="${producto.nombre}" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Descripción:</th>
+                        <td><textarea name="descripcion" class="form-control" required>${producto.descripcion}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th>Precio:</th>
+                        <td><input type="text" name="precio" value="${producto.precio}" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Stock:</th>
+                        <td><input type="text" name="stock" value="${producto.stock}" class="form-control" required></td>
+                    </tr>
+                    <tr>
+                        <th>Estado:</th>
+                        <td>
+                            <select name="estado" class="form-select" required>
+                                <option value="0" ${producto.estado == 0 ? "selected" : ""}>Inactivo</option>
+                                <option value="1" ${producto.estado == 1 ? "selected" : ""}>Activo</option>
+                            </select>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
     
             <button type="submit" class="btn btn-primary">Actualizar Producto</button>
         </form>
     </main>
-    
-    <footer class="footer mt-auto py-3 bg-light">
+   <br>
+   <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
         </div>
     </footer>
-    
-    <!-- Bootstrap JS y dependencias -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
     </body>
 </html>
->>>>>>> 4595d29 (Se quitó los estilos Bootstrap a los módulos de administrador)
