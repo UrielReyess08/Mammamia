@@ -98,8 +98,8 @@
             <button type="submit" class="btn btn-primary">Actualizar Producto</button>
         </form>
     </main>
-    
-    <footer class="footer mt-auto py-3 bg-light">
+   <br>
+   <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
         </div>

@@ -45,8 +45,8 @@
             <article class="container">
                 <section>
                     <div class="container">
-                        <a class="btn btn-primary mt-1" href="${pageContext.request.contextPath}/admin/register/producto.jsp">Agregar Producto</a>
-                        <a class="btn btn-warning mt-1" href="${pageContext.request.contextPath}/admin/categorias.jsp">Gestionar Categorias</a>
+                        <a class="btn btn-primary mt-2" href="${pageContext.request.contextPath}/admin/register/producto.jsp">Agregar Producto</a>
+                        <a class="btn btn-warning mt-2" href="${pageContext.request.contextPath}/admin/categorias.jsp">Gestionar Categorias</a>
                     </div>
 
                     <%-- Impresion de Errores --%>

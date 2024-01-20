@@ -43,7 +43,7 @@
             request.setAttribute("list",entrega);
         %>
         <main>
-            <article class="container">
+            <article class="container mt-3">
                 <section>
                     <!-- Filtro de Búsqueda -->
                     <form action="${pageContext.request.contextPath}/ControlEntrega" method="post">

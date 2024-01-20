@@ -96,12 +96,12 @@
                 <form action="${pageContext.request.contextPath}/ControlEntrega" method="post">
                     <input type="hidden" id="idPedido" name="idPedido" value="<%= det.getIdPedido() %>">
                     <input type="hidden" name="action" value="confirmarEntrega">
-                    <button type="submit">Confirmar Entrega</button>
+                    <button class="btn btn-primary mt-2" type="submit">Confirmar Entrega</button>
                 </form>
             </article>
         </main>
 
-        <footer class="footer mt-auto py-3 bg-light">
+        <br><footer class="footer mt-auto py-3 bg-light">
             <div class="container">
                 <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
             </div>
