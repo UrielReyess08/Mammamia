@@ -85,7 +85,7 @@
             <h1>Agregar Dirección</h1>
             <article class="...">
                 <section>
-                    <form action="${pageContext.request.contextPath}/ControlCliente?action=registrarDireccion" method="post">
+                    <form action="${pageContext.request.contextPath}/controlCliente?action=registrarDireccion" method="post">
 
                         <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
 
@@ -98,11 +98,11 @@
                         <label>Tipo de Vivienda:</label>
                         <select name="tipoVivienda" required>
                             <option disabled selected type="hidden">Seleccionar opción</option>
-                            <option value="Departamento">Departamento</option>
-                            <option value="Casa">Casa</option>
-                            <option value="Condominio">Condominio</option>
-                            <option value="Empresa">Empresa</option>
-                            <option value="Hotel">Hotel</option>
+                            <option value="1">Departamento</option>
+                            <option value="2">Casa</option>
+                            <option value="3">Condominio</option>
+                            <option value="4">Empresa</option>
+                            <option value="5">Hotel</option>
                         </select><br>
 
                         <label>Referencia:</label>

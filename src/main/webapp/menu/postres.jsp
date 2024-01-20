@@ -28,6 +28,10 @@
     <%
         List<Producto> miLista = ProductoDao.listarPostres();
         request.setAttribute("Productos", miLista);
+        
+        HttpSession sesion = request.getSession(false);
+        
+        sesion.setAttribute("lastPage", "menu/postres.jsp");
     %>
     <header>
         <nav class="navbar navbar-dark navbar-1">
@@ -112,7 +116,7 @@
                                         <p class="card-text">${prod.getDescripcion()}</p>
                                         <p class="card-text">Precio: S/ ${prod.getPrecio()}</p>
                                         <a href="<%=request.getContextPath()%>/controlCarrito?accion=AgregarCarrito&id=${prod.getIdProducto()}"
-                                        class="btn btn-warning">Añadir a carrito</a>|
+                                        class="btn btn-warning">Añadir a carrito</a>
                                     </div>
                                 </div>
                             </div>

@@ -127,9 +127,6 @@ public class controlCarrito extends HttpServlet {
                         menu = "postres.jsp";
                         break;
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
                 String retorno = "menu/";
                 request.getRequestDispatcher(retorno + menu).forward(request, response);
                 break;
@@ -143,9 +140,6 @@ public class controlCarrito extends HttpServlet {
                     }
 
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
 //                request.setAttribute("totalPagar", totalPagar);
                 request.getRequestDispatcher("controlCarrito?accion=Carrito").forward(request, response);
 
@@ -163,9 +157,6 @@ public class controlCarrito extends HttpServlet {
 //                        listaCarrito.get(j).setSubtotal(listaCarrito.get(j).getPrecio() * cant);
                     }
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
                 break;
 
             case "Carrito":
@@ -182,9 +173,6 @@ public class controlCarrito extends HttpServlet {
                     }
                     request.setAttribute("totalPagar", totalPagar);
                 }
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-
 
                 request.getRequestDispatcher("carrito.jsp").forward(request, response);
                 break;
@@ -205,12 +193,8 @@ public class controlCarrito extends HttpServlet {
                 fechaExpiracion = request.getParameter("fechaExpiracion");
                 numeroTarjeta = request.getParameter("numeroTarjeta");
 
-                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
+                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar + 5.9);
                 int res = dao.generarPedido(pedido);
-                
-                // Ayuda a guardar info del carrito en sesión
-                sessionCart.setAttribute("carrito", listaCarrito);
-                
                 request.getRequestDispatcher("controlCarrito?accion=ResumenPedido").forward(request, response);
                 break;
 
@@ -231,18 +215,6 @@ public class controlCarrito extends HttpServlet {
         }
 
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet direcServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet direcServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     @Override
