@@ -10,7 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body>
+    <body class="text-center mt-5">
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
@@ -26,16 +26,16 @@
             String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
         %>
 
-        <header>
-            <ul>
-                <li>
-                    Sistema Wazaaa
+        <header class="bg-light">
+            <ul class="nav container">
+                <li class="nav-item">
+                    <span class="nav-link">Sistema</span>
                 </li>
-                <li>
-                    Bienvenido, <%= nombreRol %>
+                <li class="nav-item">
+                    <span class="nav-link">Bienvenido, <%= nombreRol %></span>
                 </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
                 </li>
             </ul>
         </header>
@@ -44,74 +44,67 @@
             request.setAttribute("list",categoria);
         %>
         <main>
-            <a href="${pageContext.request.contextPath}/admin/inventario.jsp">Regresar</a>
+            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/admin/inventario.jsp">Regresar</a>
             <h1>Categorías</h1>
-            <article class="...">
+            <article class="container">
                 <section>
                     <%-- Impresion de Errores --%>
                     <c:if test="${empty list}">
-                        <p>No hay pedidos disponibles.</p>
+                        <p class="alert alert-danger">No hay pedidos disponibles.</p>
                     </c:if>
-                    
+    
                     <c:if test="${not empty list}">
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>NOMBRE y DESCRIPCIÓN</th>
-                                    <th>ESTADO</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${list}" var="cat">
+                        <div class="table-responsive-md">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
                                     <tr>
-                                        <td>${cat.getIdCategoria()}</td>
-                                        <td>
-                                            <form action="${pageContext.request.contextPath}/ControlCategoria" method="post">
-                                                <input type="hidden" name="idCategoria" value="${cat.getIdCategoria()}">
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <label for="nombre_${cat.getIdCategoria()}">Nombre:</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" id="nombre_${cat.getIdCategoria()}" name="nombre" value="${cat.getNombre()}" required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <label for="descripcion_${cat.getIdCategoria()}">Descripción:</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" id="descripcion_${cat.getIdCategoria()}" name="descripcion" value="${cat.getDescripcion()}">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="submit" value="Modificar Categoria">
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <c:choose>
-                                                <c:when test="${cat.getEstado() == 1}">Activo</c:when>
-                                                <c:otherwise>Estado Desconocido</c:otherwise>
-                                            </c:choose>
-                                        </td>
+                                        <th>ID</th>
+                                        <th>NOMBRE y DESCRIPCIÓN</th>
+                                        <th>ESTADO</th>
                                     </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${list}" var="cat">
+                                        <tr>
+                                            <td>${cat.getIdCategoria()}</td>
+                                            <td>
+                                                <form action="${pageContext.request.contextPath}/ControlCategoria" method="post">
+                                                    <input type="hidden" name="idCategoria" value="${cat.getIdCategoria()}">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="nombre_${cat.getIdCategoria()}" class="form-label">Nombre:</label>
+                                                            <input type="text" id="nombre_${cat.getIdCategoria()}" name="nombre" value="${cat.getNombre()}" class="form-control" required>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="descripcion_${cat.getIdCategoria()}" class="form-label">Descripción:</label>
+                                                            <input type="text" id="descripcion_${cat.getIdCategoria()}" name="descripcion" value="${cat.getDescripcion()}" class="form-control">
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="submit" value="Modificar Categoria" class="btn btn-primary mt-4">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${cat.getEstado() == 1}">Activo</c:when>
+                                                    <c:otherwise>Estado Desconocido</c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </c:if>
                 </section>
             </article>
         </main>
 
-        <footer>
-            <p>Copyright@Todos los derechos reservados</p>
-            <p>Sistema Mammamía</p> 
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+            </div>
         </footer>
     </body>
 </html>
