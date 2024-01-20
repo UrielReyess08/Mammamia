@@ -42,7 +42,7 @@ public class ClienteDao {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM cliente WHERE idCliente = ?");
-            ps.setInt(1, 3);
+            ps.setInt(1, 1);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){

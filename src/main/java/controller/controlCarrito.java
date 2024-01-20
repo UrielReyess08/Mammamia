@@ -193,7 +193,7 @@ public class controlCarrito extends HttpServlet {
                 fechaExpiracion = request.getParameter("fechaExpiracion");
                 numeroTarjeta = request.getParameter("numeroTarjeta");
 
-                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar);
+                Pedido pedido = new Pedido(tipoVivienda, metodoPago, tipoTarjeta, 1, idCliente, listaCarrito, receptor, direccion, referencia, telefono, fechaExpiracion, numeroTarjeta, totalPagar + 5.9);
                 int res = dao.generarPedido(pedido);
                 request.getRequestDispatcher("controlCarrito?accion=ResumenPedido").forward(request, response);
                 break;
@@ -201,7 +201,7 @@ public class controlCarrito extends HttpServlet {
             case "ResumenPedido":
                 listaCarrito = (List<Carrito>) sessionCart.getAttribute("carrito");
                 request.getRequestDispatcher("order.jsp").forward(request, response);
-                sessionCart.invalidate();
+                listaCarrito.clear();
                 break;
 
             case "FinalizarCompra":
@@ -215,18 +215,6 @@ public class controlCarrito extends HttpServlet {
         }
 
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet direcServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet direcServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     @Override

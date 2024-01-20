@@ -127,7 +127,7 @@ public class controlCliente extends HttpServlet {
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
             String nombreDireccion = request.getParameter("nombreDireccion");
             String direccion = request.getParameter("direccion");
-            String tipoVivienda = request.getParameter("tipoVivienda");
+            int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
             String referencia = request.getParameter("referencia");
             String telefono = request.getParameter("telefono");
 
@@ -135,7 +135,7 @@ public class controlCliente extends HttpServlet {
             dire.setIdCliente(idCliente);
             dire.setNombreDireccion(nombreDireccion);
             dire.setDireccion(direccion);
-            dire.setTipoVivienda(Integer.parseInt(tipoVivienda));
+            dire.setTipoVivienda(tipoVivienda);
             dire.setReferencia(referencia);
             dire.setTelefono(telefono);
 
@@ -152,7 +152,7 @@ public class controlCliente extends HttpServlet {
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
             String nombreDireccion = request.getParameter("nombreDireccion");
             String direccion = request.getParameter("direccion");
-            String tipoVivienda = request.getParameter("tipoVivienda");
+            int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
             String referencia = request.getParameter("referencia");
             String telefono = request.getParameter("telefono");
 
@@ -161,7 +161,7 @@ public class controlCliente extends HttpServlet {
             dire.setIdCliente(idCliente);
             dire.setNombreDireccion(nombreDireccion);
             dire.setDireccion(direccion);
-            dire.setTipoVivienda(Integer.parseInt(tipoVivienda));
+            dire.setTipoVivienda(tipoVivienda);
             dire.setReferencia(referencia);
             dire.setTelefono(telefono);
 
@@ -176,17 +176,17 @@ public class controlCliente extends HttpServlet {
 
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
             String nombreTarjeta = request.getParameter("nombreTarjeta");
-            String metodoPago = request.getParameter("metodoPago");
+            int metodoPago = Integer.parseInt(request.getParameter("metodoPago"));
             String fechaExpiracion = request.getParameter("fechaExpiracion");
-            String tipoTarjeta = request.getParameter("tipoTarjeta");
+            int tipoTarjeta = Integer.parseInt(request.getParameter("tipoTarjeta"));
             String numeroTarjeta = request.getParameter("numeroTarjeta");
 
             Tarjeta tar = new Tarjeta();
             tar.setIdCliente(idCliente);
             tar.setNombreTarjeta(nombreTarjeta);
-            tar.setMetodoPago(Integer.parseInt(metodoPago));
+            tar.setMetodoPago(metodoPago);
             tar.setFechaExpiracion(fechaExpiracion);
-            tar.setTipoTarjeta(Integer.parseInt(tipoTarjeta));
+            tar.setTipoTarjeta(tipoTarjeta);
             tar.setNumeroTarjeta(numeroTarjeta);
 
             int result = ClienteDao.registrarTarjeta(tar);

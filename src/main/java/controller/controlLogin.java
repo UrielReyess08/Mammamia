@@ -26,6 +26,7 @@ public class controlLogin extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("cliente", invitado);
                 session.setAttribute("isGuest", true);
+                session.setAttribute("idCliente", invitado.getIdCliente());
 
                 String redirectPage = (String) session.getAttribute("redirectPage");
                 if (redirectPage != null) {

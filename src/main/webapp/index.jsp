@@ -33,56 +33,59 @@
         %>
 
         <header>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">
-                        <img src="..." alt="logo"/> | Inicio
+            
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
+                    <span><img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="logo" width="30" height="30"></span>
+                                        Mammamia
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/menu.jsp">Menú</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-                </li class="nav-item">
-                <!-- Menú para cliente -->
-                <%
-                    if (isLoggedIn) {
-                %>
-                <li class="nav-item">
-                    <a  class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi Cuenta</a>
-                </li>
-                <!-- Menú para invitado-->
-                <%
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="${pageContext.request.contextPath}/menu.jsp">Menú <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros <span class="sr-only">(current)</span></a>
+                      </li>
+                      <!-- Menú para cliente -->
+                      <%
+                      if (isLoggedIn) {
+                      %>
+                      <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi cuenta <span class="sr-only">(current)</span></a>
+                      </li>
+                      <!-- Menú para invitado-->
+                      <%
                     } else if (isGuest){
-                %>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado)</a>
-                </li>
-                <%
-                    } else {
-                %>
-                <li class="nav-item">
-                    <a class="nav-link active" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
-                </li>
-                <%
-                    }
-                %>
-            </ul>
-            </div>
-        </div>
-            </nav>
+                      %>
+                      <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado) <span class="sr-only">(current)</span></a>
+                      </li>
+                      <%
+                            } else {
+                        %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
+                        </li>
+                        <%
+                            }
+                        %>
+                  </ul>
+                 
+                </div>
+              </nav>
         </header>
 
     
         <div class="img-container">
-            <img src="img/inicio/MicrosoftTeams-image.png" alt="" class="rounded mx-auto d-block img-fluid">
+            <img src="img/inicio/banner.png" alt="" class="rounded mx-auto d-block img-fluid">
         </div>
         
         <!-- Card -->
@@ -236,8 +239,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <img src="img/img-footer/logo.png" alt="" class="rounded-circle mx-auto d-block img-logo p-3">
+            <img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="" class="mx-auto d-block img-logo p-3">
             <div class="text-center">
                 <hr>
                 <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
