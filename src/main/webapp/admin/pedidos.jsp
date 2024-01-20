@@ -113,32 +113,36 @@
                                         <td>${filteredPedido.getTotal()}</td>
     
                                         <%-- AQUI --%>
-                                        <td>
-                                            <div class="container">
-                                                <div>
+                                        <td style="width: 45%">
+                                            <div class="container row">
+                                                <div class="col-sm-3 mb-2"> <!-- Añadí la clase "mb-2" para agregar margen inferior -->
                                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                                         <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
                                                         <input type="hidden" name="newEstado" value="0">
-                                                        <button class="btn btn-primary btn-sm" type="submit" style="min-width: 115px;;">En Preparación</button>
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="min-width: 20%;">En Preparación</button>
                                                     </form>
                                                 </div>
-                                                <div>
+                                                <div class="col-sm-3 mb-2"> <!-- Añadí la clase "mb-2" para agregar margen inferior -->
                                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                                         <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
                                                         <input type="hidden" name="newEstado" value="1">
-                                                        <button class="btn btn-success btn-sm container" type="submit">En Camino</button>
+                                                        <button class="btn btn-success btn-sm" type="submit" style="min-width: 20%;">En Camino</button>
                                                     </form>
                                                 </div>
-                                                <div>
+                                                <div class="col-sm-3 mb-2"> <!-- Añadí la clase "mb-2" para agregar margen inferior -->
                                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                                         <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
                                                         <input type="hidden" name="newEstado" value="2">
-                                                        <button class="btn btn-secondary btn-sm container" type="submit">Entregado</button>
-                                                        <a class="mt-3 btn btn-warning btn-sm container" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${filteredPedido.getIdPedido()}">Más Detalles</a>    
+                                                        <button class="btn btn-secondary btn-sm" type="submit" style="min-width: 20%;">Entregado</button>
                                                     </form>
+                                                </div>
+                                                <div class="col-sm-3 mb-2"> <!-- Añadí la clase "mb-2" para agregar margen inferior -->
+                                                    <a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${filteredPedido.getIdPedido()}">Más Detalles</a>
                                                 </div>
                                             </div>
                                         </td>
+
+
     
                                     </tr>
                                 </tbody>
@@ -190,34 +194,34 @@
                                                 </c:choose>
                                             </td>
                                             <td>${ped.getTotal()}</td>
-                                            <td>
-                                                <div class="container">
-                                                    <div>
+                                            <td style="width: 45%">
+                                                <div class="container row align-items-center">
+                                                    <div class="col-sm-3">
                                                         <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                                             <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
                                                             <input type="hidden" name="newEstado" value="0">
-                                                            <button class="btn btn-primary btn-sm" type="submit" style="min-width: 115px;">En Preparación</button>
+                                                            <button class="btn btn-primary btn-sm" type="submit" style="min-width: 20%;">En Preparación</button>
                                                         </form>
                                                     </div>
-                                                    <div>
+                                                    <div class="col-sm-3">
                                                         <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                                             <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
                                                             <input type="hidden" name="newEstado" value="1">
-                                                            <button class="btn btn-success btn-sm" type="submit" style="min-width: 115px;">En Camino</button>
+                                                            <button class="btn btn-success btn-sm" type="submit" style="min-width: 20%;">En Camino</button>
                                                         </form>
                                                     </div>
-                                                    <div>
+                                                    <div class="col-sm-3">
                                                         <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                                             <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
                                                             <input type="hidden" name="newEstado" value="2">
-                                                            <button class="btn btn-secondary btn-sm" type="submit" style="min-width: 115px;">Entregado</button>
-            
-                                                            <a class="btn btn-warning btn-sm mt-3" style="min-width: 115px;" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${ped.getIdPedido()}">Más Detalles</a>
+                                                            <button class="btn btn-secondary btn-sm" type="submit" style="min-width: 20%;">Entregado</button>
                                                         </form>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <a class="btn btn-warning btn-sm" style="min-width: 20%;" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${ped.getIdPedido()}">Más Detalles</a>
                                                     </div>
                                                 </div>
                                             </td>
-    
                                         </tr>
                                     </c:forEach>
                                 </tbody>
