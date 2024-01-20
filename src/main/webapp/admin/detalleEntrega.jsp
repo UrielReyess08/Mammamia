@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Detalle Entrega | Mammamía</title>
     </head>
-    <body>
+    <body class="text-center mt-5">
         <%@page import="model.Pedido, conexion.Conexion, dao.PedidoDao, java.util.*"%>
         <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -24,16 +25,16 @@
             //Variable para el nombre del rol
             String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
         %>
-        <header>
-            <ul>
-                <li>
-                    Sistema
+        <header class="bg-light">
+            <ul class="nav container">
+                <li class="nav-item">
+                    <span class="nav-link">Sistema</span>
                 </li>
-                <li>
-                    Bienvenido, <%= nombreRol %>
+                <li class="nav-item">
+                    <span class="nav-link">Bienvenido, <%= nombreRol %></span>
                 </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
                 </li>
             </ul>
         </header>
@@ -45,7 +46,7 @@
         %>
 
         <main>
-            <article class="...">
+            <article class="container">
                 <section>
                     <h1>Detalles de la Entrega: <%= det.getIdPedido() %></h1>
                     <p>Nombre Receptor: <%= det.getReceptor() %></p>
@@ -99,6 +100,11 @@
                 </form>
             </article>
         </main>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+            </div>
+        </footer>
     </body>
 </html>
->>>>>>> 4595d29 (Se quitó los estilos Bootstrap a los módulos de administrador)
