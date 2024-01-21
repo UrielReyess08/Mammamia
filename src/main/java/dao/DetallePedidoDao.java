@@ -28,10 +28,9 @@ public class DetallePedidoDao {
 
             while (rs.next()) {
                 DetallePedido det = new DetallePedido();
-                det.setDetallePedido(rs.getInt("idDetalleVenta"));
+                det.setDetallePedido(rs.getInt("idDetallePedido"));
                 det.setIdPedido(rs.getInt("idPedido"));
                 det.setNombre(rs.getString("nombre"));
-                //det.setIdProducto(rs.getInt("idProducto"));
                 det.setCantidad(rs.getInt("cantidad"));
                 listaDetalles.add(det);
             }

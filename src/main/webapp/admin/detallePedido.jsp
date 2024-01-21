@@ -59,7 +59,7 @@
                     <c:forEach items="${list}" var="det">
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-text">Nro. Detalle: ${det.getIdDetalleVenta()}</p>
+                                <p class="card-text">Nro. Detalle: ${det.getDetallePedido()}</p>
                                 <p class="card-text">Producto: ${det.getNombre()}</p>
                                 <p class="card-text">Cantidad: ${det.getCantidad()}</p>
                             </div>
