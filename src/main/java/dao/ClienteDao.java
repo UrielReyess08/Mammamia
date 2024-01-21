@@ -77,6 +77,46 @@ public class ClienteDao {
         return estado;
     }
     
+    public static Cliente obtenerClientePorId(int idCliente){
+        Cliente cliente = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT idCliente, nombre, apellido, email, password FROM cliente WHERE idCliente=?");
+            ps.setInt(1, idCliente);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setPassword(rs.getString("password"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cliente;
+    }
+    
+    public static int actualizarCliente(Cliente cli){
+        int est = 0;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE cliente SET nombre=?, apellido=?, email=?, password=? WHERE idCliente=?");
+            ps.setString(1, cli.getNombre());
+            ps.setString(2, cli.getApellido());
+            ps.setString(3, cli.getEmail());
+            ps.setString(4, cli.getPassword());
+            ps.setInt(5, cli.getIdCliente());
+            est = ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return est;
+    }
+
     // DIRECCIONES
     
     public List<Direccion> listarDireccionPorId(int idCliente) {

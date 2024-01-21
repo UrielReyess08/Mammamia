@@ -24,15 +24,17 @@
             Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
             
             //Declarar variable para nombre del cliente
+            int idCliente = -1;
             String nombreCliente = null;
             String apellidoCliente = null;
             String emailCliente = null;
                 if(isLoggedIn){
                     Cliente cliente = (Cliente) sesion.getAttribute("cliente");
+                    idCliente = cliente.getIdCliente();
                     nombreCliente = cliente.getNombre();
                     apellidoCliente = cliente.getApellido();
                     emailCliente = cliente.getEmail();
-                }
+            }
         %>
 
         <header>
@@ -82,7 +84,7 @@
             <article class="...">
                 <section>
                     <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
-                    <a href="${pageContext.request.contextPath}/customer/account/">Editar Información</a>|
+                    <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>|
                     <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
                     <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
                 </section>
@@ -94,8 +96,10 @@
 
                 <section>
                     <h3>Información de la Cuenta</h3>
-                    Nombres: <%= nombreCliente + " " + apellidoCliente %><br>
-                    Correo Electrónico: <%= emailCliente %>
+
+                    <p>Nombres: <%= nombreCliente %></p>
+                    <p>Apellidos: <%= apellidoCliente %></p>
+                    <p>Correo Electrónico: <%= emailCliente %></p>
                 </section>
             </article>
         </main>

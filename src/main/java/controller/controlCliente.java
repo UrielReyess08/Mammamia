@@ -62,7 +62,14 @@ public class controlCliente extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if ("editarDireccion".equals(action)) {
+        if ("editarCliente".equals(action)) {
+            int idCliente = Integer.parseInt(request.getParameter("id"));
+            Cliente cli = ClienteDao.obtenerClientePorId(idCliente);
+
+            request.setAttribute("cli", cli);
+            request.getRequestDispatcher("/customer/account/edit.jsp").forward(request, response);
+
+        } else if ("editarDireccion".equals(action)) {
             int idDireccionCliente = Integer.parseInt(request.getParameter("id"));
             Direccion dire = ClienteDao.obtenerDireccionPorId(idDireccionCliente);
 
@@ -122,6 +129,37 @@ public class controlCliente extends HttpServlet {
             } else {
                 response.getWriter().println("Error al registrar cliente.");
             }
+        } else if ("actualizarCliente".equals(action)) {
+
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+
+            Cliente cli = new Cliente();
+            cli.setIdCliente(idCliente);
+            cli.setNombre(nombre);
+            cli.setApellido(apellido);
+            cli.setEmail(email);
+            cli.setPassword(password);
+
+            int result = ClienteDao.actualizarCliente(cli);
+
+            if (result > 0) {
+                
+                HttpSession sesion = request.getSession(false);
+                if (sesion != null) {
+                    Cliente clienteActualizado = ClienteDao.obtenerClientePorId(idCliente);
+                    sesion.setAttribute("cliente", clienteActualizado);
+                }
+
+                response.sendRedirect(request.getContextPath() + "/customer/account/panel.jsp");
+                
+            } else {
+                response.getWriter().println("Error al actualizar la información.");
+            }
+
         } else if ("registrarDireccion".equals(action)) {
 
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));

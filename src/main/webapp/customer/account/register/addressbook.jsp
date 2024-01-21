@@ -85,6 +85,13 @@
             <h1>Agregar Dirección</h1>
             <article class="...">
                 <section>
+                    <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
+                    <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
+                    <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                </section>
+
+                <section>
                     <form action="${pageContext.request.contextPath}/controlCliente?action=registrarDireccion" method="post">
 
                         <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
