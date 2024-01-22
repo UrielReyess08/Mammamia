@@ -16,39 +16,81 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/loginCliente.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/loginCliente.css">
     </head>
     <body>
         <!-- Declarar variable de mensaje de error -->
-        <% String error = (String) session.getAttribute("error"); %>
-        <header>
-            <nav class="navbar navbar-expand-lg">
-              <div class="container">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-    
-                        <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">
-                                <img src="..." alt="logo"/> | Inicio
-                            </a>
-                        </li>
-                        <li class="nav-item"></li>
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/menu.jsp">Menú</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
-                        </li>
-                    </ul>
-                </div>
-              </div>
-            </nav>
+        <%
+            String error = (String) session.getAttribute("error");
             
+            // Obtener la sesión
+            HttpSession sesion = request.getSession(false);
+            
+            // Obtener la sesion para cliente
+            Boolean isLoggedIn = (sesion != null && sesion.getAttribute("isLoggedIn") != null && (Boolean) sesion.getAttribute("isLoggedIn"));
+            
+            // Obtener la sesion para invitado
+            Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
+        
+        %>
+        
+        <header>
+            
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
+            <span><img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="logo" width="30"
+                       height="30"></span>
+                    Mammamia
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/menu.jsp">Menú <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- Menú para cliente -->
+                        <%
+                            if (isLoggedIn) {
+                        %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi cuenta
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- Menú para invitado-->
+                        <%
+                        } else if (isGuest) {
+                        %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
+                                (Invitado) <span class="sr-only">(current)</span></a>
+                        </li>
+                        <%
+                        } else {
+                        %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
+                        </li>
+                        <%
+                            }
+                        %>
+                    </ul>
+                
+                </div>
+            </nav>
         </header>
         <main>
         <div class="card mx-auto mt-4 shadow p-3 mb-5 bg-white rounded" style="max-width: 80%;">
@@ -72,7 +114,7 @@
                     <% } %>
                 </section>
                     <section class="mt-3">
-                        <a href="/registroCliente.html" class="btn btn-link btn-block">Crear Cuenta</a>
+                        <a href="${pageContext.request.contextPath}/customer/register.jsp" class="btn btn-link btn-block">Crear Cuenta</a>
                        <!-- <a href="#" class="btn btn-link btn-block">Recuperar Clave (Comentado)</a>-->
                     </section>
       

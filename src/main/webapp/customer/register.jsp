@@ -15,79 +15,86 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/registroCliente.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/registroCliente.css">
     </head>
     <body>
-        <%
-            // Obtener la sesión
-            HttpSession sesion = request.getSession(false);
+    <%
+        // Obtener la sesión
+        HttpSession sesion = request.getSession(false);
+        
+        // Obtener la sesion para cliente
+        Boolean isLoggedIn = (sesion != null && sesion.getAttribute("isLoggedIn") != null && (Boolean) sesion.getAttribute("isLoggedIn"));
+        
+        // Obtener la sesion para invitado
+        Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
+    
+    %>
+    
+    <header>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
+            <span><img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="logo" width="30"
+                       height="30"></span>
+                Mammamia
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             
-            // Obtener la sesion para cliente
-            Boolean isLoggedIn = (sesion != null && sesion.getAttribute("isLoggedIn") != null && (Boolean) sesion.getAttribute("isLoggedIn"));
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/menu.jsp">Menú <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <!-- Menú para cliente -->
+                    <%
+                        if (isLoggedIn) {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi cuenta
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+                    <!-- Menú para invitado-->
+                    <%
+                    } else if (isGuest) {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
+                            (Invitado) <span class="sr-only">(current)</span></a>
+                    </li>
+                    <%
+                    } else {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
+                    </li>
+                    <%
+                        }
+                    %>
+                </ul>
             
-            // Obtener la sesion para invitado
-            Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
-            
-        %>
-
-        <header>
-            <nav class="navbar navbar-expand-lg mb-4">
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">
-                                    <img src="..." alt="logo"/> | Inicio
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/menu.jsp">Menú</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-                            </li>
-                            <!-- Menú para cliente -->
-                            <%
-                                if (isLoggedIn) {
-                            %>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi Cuenta</a>
-                            </li>
-                            <!-- Menú para invitado-->
-                            <%
-                                } else if (isGuest){
-                            %>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado)</a>
-                            </li>
-                            <%
-                                } else {
-                            %>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar Sesión</a>
-                            </li>
-                            <%
-                                }
-                            %>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-        </header>
+            </div>
+        </nav>
+    </header>
 
         <main>
             <div class="card mx-auto">
                 <div class="card-body">
-                    <h1 class="card-title text-center">Registrar Usuario</h1>
+                    <h5 class="card-title text-center">Registrarse</h5>
                     
-                        <form action="${pageContext.request.contextPath}/ControlCliente?action=registrar" method="post">
+                        <form action="${pageContext.request.contextPath}/controlCliente?action=registrar" method="post">
                             <div class="form-group">
                                 <label>Nombre</label>
                                 <input type="text" class="form-control" name="nombre" required />
@@ -105,7 +112,7 @@
 
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input type="text" class="form-control" name="password" required /><br>
+                                <input type="password" class="form-control" name="password" required /><br>
                             </div>
 
                             <input type="submit" class="btn btn-warning btn-block" value="Crear Cuenta" />
