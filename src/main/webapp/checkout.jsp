@@ -262,7 +262,6 @@
                             <td>${car.getPrecio()}</td>
                             <td>${car.getCantidad()}</td>
                             <td>${car.getSubtotal()}</td>
-                        
                         </tr>
                     
                     </c:forEach>
@@ -361,6 +360,25 @@
                 break;
         }
         document.getElementById('numeroTarjeta').value = selectedOption.getAttribute('data-numero');
+    });
+
+    document.getElementById('numeroTarjeta').addEventListener('input', function() {
+        var numeroTarjeta = this.value.replace(/\s/g, '');
+        if (numeroTarjeta.length !== 16) {
+            this.setCustomValidity('El número de tarjeta debe tener 16 dígitos');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
+    document.getElementById('fechaExpiracion').addEventListener('input', function() {
+        var fechaExpiracion = this.value;
+        var regex = /^(0[1-9]|1[0-2])\/\d{2}$/; // Formato MM/YY
+        if (!regex.test(fechaExpiracion)) {
+            this.setCustomValidity('El formato de la fecha de expiración debe ser MM/YY');
+        } else {
+            this.setCustomValidity('');
+        }
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
