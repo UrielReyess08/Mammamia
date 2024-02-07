@@ -96,7 +96,7 @@
 </header>
 
 <main>
-    
+    <a href="<%=request.getContextPath()%>/controlCarrito?accion=Carrito">Carrito <label>${contador}</label></a>
     <article class="container text-center">
         <section>
             <a href="<%=request.getContextPath()%>/menu/pizzas.jsp" class="sub-menu">Pizzas</a>
@@ -132,6 +132,7 @@
                     </c:forEach>
                 </div>
             </div>
+        </div>
     </article>
 </main>
 
