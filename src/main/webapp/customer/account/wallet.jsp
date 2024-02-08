@@ -145,7 +145,6 @@
                             <table border="1" class="container mt-3">
                             <thead class="bg-warning">
                                 <tr>
-                                    <th>N°</th>
                                     <th>NOMBRE</th>
                                     <th>MÉTODO DE PAGO</th>
                                     <th>FECHA EXP.</th>
@@ -157,7 +156,6 @@
                             <tbody>
                                 <c:forEach items="${list}" var="tar">
                                     <tr>
-                                        <td>${tar.getIdTarjetaCliente()}</td>
                                         <td>${tar.getNombreTarjeta()}</td>
                                         <td>
                                             <c:choose>

@@ -145,7 +145,6 @@
                             <table border="1" class="container mt-3">
                             <thead class="bg-warning">
                                 <tr>
-                                    <th>N°</th>
                                     <th>NOMBRE</th>
                                     <th>DIRECCIÓN</th>
                                     <th>TIPO DE VIVIENDA</th>
@@ -157,7 +156,6 @@
                             <tbody>
                                 <c:forEach items="${list}" var="dire">
                                     <tr>
-                                        <td>${dire.getIdDireccionCliente()}</td>
                                         <td>${dire.getNombreDireccion()}</td>
                                         <td>${dire.getDireccion()}</td>
                                         <td>

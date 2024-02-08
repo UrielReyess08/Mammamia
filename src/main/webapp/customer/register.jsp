@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.Cliente" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -116,9 +117,9 @@
                             </div>
 
                             <c:if test="${not empty errorRegistro}">
-                                <div class="text-danger">
-                                    <c:out value="${errorRegistro}" />
-                                </div>
+                            <div class="text-danger">
+                                <c:out value="${errorRegistro}" />
+                            </div>
                             </c:if>
 
                             <input type="submit" class="btn btn-warning btn-block" value="Crear Cuenta" />

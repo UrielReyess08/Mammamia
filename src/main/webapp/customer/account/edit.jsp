@@ -150,16 +150,17 @@
           </div>
                     
           <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Correo Electrónico:</label>
-              <div class="col-sm-6">
-              <input type="text" class="form-control form-control-sm" name="email" value="${cli.email}">
-              </div>        
+            <label class="col-sm-3 col-form-label">Correo Electrónico:</label>
+            <div class="col-sm-6">
+                <label class="form-control form-control-sm">${cli.email}</label>
+            </div>
+            <input type="hidden" name="email" value="${cli.email}">  
           </div>
                     
           <div class="form-group row">
               <label class="col-sm-3 col-form-label">Contraseña:</label>
               <div class="col-sm-6">
-              <input type="text" class="form-control form-control-sm" name="password" value="${cli.password}">
+              <input type="password" class="form-control form-control-sm" name="password" value="${cli.password}">
               </div>        
           </div>
                     
