@@ -11,8 +11,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="w<idth=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Editar Información | Mammamía</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/index.css">
   </head>
   <body>
     <%
@@ -82,69 +92,132 @@
       </ul>
     </header>
 
-    <main>
-      <article class="...">
-        <section>
-          <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
-          <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>|
-          <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
-          <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
-        </section>
+    <main class="text-center">
+      <a class="btn btn-primary" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Regresar</a>
+      <h1 class="mt-2">Editar Información</h1>
+  <article class="...">
+    <section>
+        <div class="container">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <section>
-          <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Regresar</a>
-          <h1>Editar Información</h1>
+    <section class="container text-center mt-4">
+                
+      <form action="${pageContext.request.contextPath}/controlCliente?action=actualizarCliente" method="post" class="mx-auto">
+                
+          <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
                     
-          <form action="${pageContext.request.contextPath}/controlCliente?action=actualizarCliente" method="post">
+          <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nombres:</label>
+              <div class="col-sm-6">
+              <input type="text" class="form-control form-control-sm" name="nombre" value="${cli.nombre}">
+              </div>
+          </div>
                     
-            <input type="text" name="idCliente" value="<%= idCliente %>"><br>
-                        
-            <label>Nombres:</label>
-            <input type="text" name="nombre" value="${cli.nombre}"><br>
-                        
-            <label>Apellidos:</label>
-            <input type="text" name="apellido" value="${cli.apellido}"><br>
-                        
-            <label>Correo Electrónico:</label>
-            <input type="text" name="email" value="${cli.email}"><br>
-                        
-            <label>Contraseña:</label>
-            <input type="text" name="password" value="${cli.password}"><br>
-                        
-            <input type="submit" value="Editar">
-          </form>
+          <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Apellidos:</label>
+              <div class="col-sm-6">
+              <input type="text" class="form-control form-control-sm" name="apellido" value="${cli.apellido}">
+              </div>
+          </div>
                     
-        </section>
-      </article>
-    </main>
+          <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Correo Electrónico:</label>
+              <div class="col-sm-6">
+              <input type="text" class="form-control form-control-sm" name="email" value="${cli.email}">
+              </div>        
+          </div>
+                    
+          <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Contraseña:</label>
+              <div class="col-sm-6">
+              <input type="text" class="form-control form-control-sm" name="password" value="${cli.password}">
+              </div>        
+          </div>
+                    
+        <input class="btn btn-success" type="submit" value="Editar">
+      </form>
+                
+    </section>
+  </article>
+</main>
 
-    <footer>
-      <ul>
-        <li>
-          <img src="..." alt="logo"/>
-          <a href="...">Facebook</a>
-        </li>
-        <li>
-          <img src="..." alt="logo"/>
-          <a href="...">Instagram</a>
-        </li>
-        <li>
-          <img src="..." alt="logo"/>
-          <a href="...">Twitter</a>
-        </li>
-      </ul>
+  <br>
+<footer>
+<div class="container-fluid mt-3">
+    <div class="social-icons">
+        <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
+        <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
+        <i class="fa-brands fa-tiktok fa-2x"></i>
+    </div>
+</div>
 
-      <ul>
-        <li>
-          <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Terminos y Condiciones</a>
-        </li>
-        <li>
-          <a href="${pageContext.request.contextPath}/contacto.jsp">Atención al Cliente</a>
-        </li>
-        <li>
-          <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a>
-        </li>
-      </ul>
-    </footer>
+
+<div class="container mt-5">
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <h5>Enlaces</h5>
+            <div class="footer-links">
+                <a href="#">Local</a><br>
+                <a href="#">Zona reparto</a><br>
+                <a href="#">Nosotros</a><br>
+                <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al
+                    cliente</a><br>
+                <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
+                <a href="#">Mapa de sitio</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <h5>Políticas</h5>
+            <div class="footer-links">
+                <a href="#">Políticas de Datos Personales</a><br>
+                <a href="#">Términos y condiciones de Promociones</a><br>
+                <a href="#">Derechos ARCO</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <h5>Formas de pago</h5>
+            <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;"></i>
+            <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
+            <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <form class="small-form">
+                <div class="mb-2">
+                    <input type="text" class="form-control" placeholder="Ingrese su correo" name="email">
+                </div>
+                <div class="mb-2 form-check">
+                    <input class="form-check-input" type="checkbox" name="remember">
+                    <label class="form-check-label">
+                        He leído y revisado los <a class="text-white"
+                                                   href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos
+                        y condiciones</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+</div>
+<img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="" class="mx-auto d-block img-logo p-3">
+<div class="text-center">
+    <hr>
+    <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
+</div>
+</footer>
   </body>
 </html>

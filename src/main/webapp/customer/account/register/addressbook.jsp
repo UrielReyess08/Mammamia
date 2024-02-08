@@ -9,8 +9,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="w<idth=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agregar Dirección | Mammamía</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/index.css">
     </head>
     <body>
         <%
@@ -80,77 +90,147 @@
             </ul>
         </header>
 
-        <main>
-            <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Regresar</a>
-            <h1>Agregar Dirección</h1>
+        <main class="text-center">
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Regresar</a>
+            <h1 class="mt-2">Agregar Dirección</h1>
             <article class="...">
                 <section>
-                    <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
-                    <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>|
-                    <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
-                    <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                    <div class="container">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
 
-                <section>
-                    <form action="${pageContext.request.contextPath}/controlCliente?action=registrarDireccion" method="post">
+<section class="container mt-4 text-center">
+  <form action="${pageContext.request.contextPath}/controlCliente?action=registrarDireccion" method="post" class="mx-auto">
 
-                        <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
+    <input type="hidden" name="idCliente" value="<%= idCliente %>"><br>
 
-                        <label>¿Cómo te gustaría guardar esta dirección?</label>
-                        <input type="text" name="nombreDireccion" required /><br>
+    <div class="form-group row">
+      <label for="nombreDireccion" class="col-sm-2 col-form-label">¿Cómo te gustaría guardar esta dirección?</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control form-control-sm" id="nombreDireccion" name="nombreDireccion" required>
+      </div>
+    </div>
 
-                        <label>Dirección:</label>
-                        <input type="text" name="direccion" required /><br>
+    <div class="form-group row">
+      <label for="direccion" class="col-sm-2 col-form-label">Dirección:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control form-control-sm" id="direccion" name="direccion" required>
+      </div>
+    </div>
 
-                        <label>Tipo de Vivienda:</label>
-                        <select name="tipoVivienda" required>
-                            <option disabled selected type="hidden">Seleccionar opción</option>
-                            <option value="1">Departamento</option>
-                            <option value="2">Casa</option>
-                            <option value="3">Condominio</option>
-                            <option value="4">Empresa</option>
-                            <option value="5">Hotel</option>
-                        </select><br>
+    <div class="form-group row">
+      <label for="tipoVivienda" class="col-sm-2 col-form-label">Tipo de Vivienda:</label>
+      <div class="col-sm-6">
+        <select class="form-control form-control-sm" id="tipoVivienda" name="tipoVivienda" required>
+          <option disabled selected value="">Seleccionar opción</option>
+          <option value="1">Departamento</option>
+          <option value="2">Casa</option>
+          <option value="3">Condominio</option>
+          <option value="4">Empresa</option>
+          <option value="5">Hotel</option>
+        </select>
+      </div>
+    </div>
 
-                        <label>Referencia:</label>
-                        <input type="text" name="referencia" required /><br>
+    <div class="form-group row">
+      <label for="referencia" class="col-sm-2 col-form-label">Referencia:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control form-control-sm" id="referencia" name="referencia" required>
+      </div>
+    </div>
 
-                        <label>Telefóno:</label>
-                        <input type="text" name="telefono" required /><br>
+    <div class="form-group row">
+      <label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control form-control-sm" id="telefono" name="telefono" required>
+      </div>
+    </div>
 
-                        <input type="submit" value="Agregar">
-                    </form>
-                </section>
+    <div class="form-group row">
+      <div class="col-sm-6 offset-sm-2">
+        <button type="submit" class="btn btn-success btn">Agregar</button>
+      </div>
+    </div>
+  </form>
+</section>
             </article>
         </main>
-
+          <br>            
         <footer>
-            <ul>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Facebook</a>
-                </li>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Instagram</a>
-                </li>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Twitter</a>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Terminos y Condiciones</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/contacto.jsp">Atención al Cliente</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a>
-                </li>
-            </ul>
-        </footer>
+    <div class="container-fluid mt-3">
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
+            <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
+            <i class="fa-brands fa-tiktok fa-2x"></i>
+        </div>
+    </div>
+    
+    
+    <div class="container mt-5">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <h5>Enlaces</h5>
+                <div class="footer-links">
+                    <a href="#">Local</a><br>
+                    <a href="#">Zona reparto</a><br>
+                    <a href="#">Nosotros</a><br>
+                    <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al
+                        cliente</a><br>
+                    <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
+                    <a href="#">Mapa de sitio</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Políticas</h5>
+                <div class="footer-links">
+                    <a href="#">Políticas de Datos Personales</a><br>
+                    <a href="#">Términos y condiciones de Promociones</a><br>
+                    <a href="#">Derechos ARCO</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Formas de pago</h5>
+                <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <form class="small-form">
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="Ingrese su correo" name="email">
+                    </div>
+                    <div class="mb-2 form-check">
+                        <input class="form-check-input" type="checkbox" name="remember">
+                        <label class="form-check-label">
+                            He leído y revisado los <a class="text-white"
+                                                       href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos
+                            y condiciones</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="" class="mx-auto d-block img-logo p-3">
+    <div class="text-center">
+        <hr>
+        <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
+    </div>
+</footer>
     </body>
 </html>

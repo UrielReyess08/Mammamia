@@ -8,8 +8,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="w<idth=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar Dirección | Mammamía</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/index.css">
     </head>
     <body>
         <%@page import="model.Cliente, model.Direccion, conexion.Conexion, dao.ClienteDao, java.util.*"%>
@@ -81,78 +91,149 @@
             </ul>
         </header>
             
-        <main>
-            <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Regresar</a>
-            <h1>Editar Dirección</h1>
+        <main class="text-center">
+            <br>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Regresar</a>
+            <h1 class="mt-2">Editar Dirección</h1>
             <article class="...">
                 <section>
-                    <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>|
-                    <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>|
-                    <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>|
-                    <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                    <div class="container">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/customer/account/panel.jsp">Panel de mi Cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
 
-                <section>
-                    <form action="${pageContext.request.contextPath}/controlCliente?action=actualizarDireccion" method="post">
-                        
-                        <input type="hidden" name="idDireccionCliente" value="${dire.idDireccionCliente}">
-                        
-                        <input type="hidden" name="idCliente" value="${dire.idCliente}"><br>
+                <section class="container text-center mt-4">
+    <form action="${pageContext.request.contextPath}/controlCliente?action=actualizarDireccion" method="post" class="mx-auto">
 
-                        <label for="nombreDireccion">¿Cómo te gustaría guardar esta dirección?</label>
-                        <input type="text" name="nombreDireccion" value="${dire.nombreDireccion}" required /><br>
+        <input type="hidden" name="idDireccionCliente" value="${dire.idDireccionCliente}">
+        <input type="hidden" name="idCliente" value="${dire.idCliente}">
 
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" name="direccion" value="${dire.direccion}" required /><br>
+        <div class="form-group row">
+            <label for="nombreDireccion" class="col-sm-3 col-form-label">¿Cómo te gustaría guardar esta dirección?</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" name="nombreDireccion" value="${dire.nombreDireccion}" required />
+            </div>
+        </div>
 
-                        <label for="tipoVivienda">Tipo de Vivienda:</label>
-                        <select name="tipoVivienda" class="form-select" required>
-                            <option value="1" ${dire.tipoVivienda == 1 ? "selected" : ""}>Departamento</option>
-                            <option value="2" ${dire.tipoVivienda == 2 ? "selected" : ""}>Casa</option>
-                            <option value="3" ${dire.tipoVivienda == 3 ? "selected" : ""}>Condominio</option>
-                            <option value="4" ${dire.tipoVivienda == 4 ? "selected" : ""}>Empresa</option>
-                            <option value="4" ${dire.tipoVivienda == 4 ? "selected" : ""}>Hotel</option>
-                        </select>
+        <div class="form-group row">
+            <label for="direccion" class="col-sm-3 col-form-label">Dirección:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" name="direccion" value="${dire.direccion}" required /><br>
+            </div>
+        </div>
 
-                        <label for="referencia">Referencia:</label>
-                        <input type="text" name="referencia" value="${dire.referencia}" required /><br>
+        <div class="form-group row">
+            <label for="tipoVivienda" class="col-sm-3 col-form-label">Tipo de Vivienda:</label>
+            <div class="col-sm-6">
+                <select class="form-control form-control-sm" name="tipoVivienda" class="form-select" required>
+                    <option value="1" ${dire.tipoVivienda == 1 ? "selected" : ""}>Departamento</option>
+                    <option value="2" ${dire.tipoVivienda == 2 ? "selected" : ""}>Casa</option>
+                    <option value="3" ${dire.tipoVivienda == 3 ? "selected" : ""}>Condominio</option>
+                    <option value="4" ${dire.tipoVivienda == 4 ? "selected" : ""}>Empresa</option>
+                    <option value="5" ${dire.tipoVivienda == 5 ? "selected" : ""}>Hotel</option>
+                </select>
+            </div>
+        </div>
 
-                        <label for="telefono">Telefóno:</label>
-                        <input type="text" name="telefono" value="${dire.telefono}" required /><br>
+        <div class="form-group row">
+            <label for="referencia" class="col-sm-3 col-form-label">Referencia:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" name="referencia" value="${dire.referencia}" required />
+            </div>
+        </div>
 
-                        <input type="submit" value="Editar">
-                    </form>
-                </section>
+        <div class="form-group row">
+            <label for="telefono" class="col-sm-3 col-form-label">Teléfono:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-sm" name="telefono" value="${dire.telefono}" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6 offset-sm-3">
+                <input class="btn btn-success" type="submit" value="Editar">
+            </div>
+        </div>
+    </form>
+</section>
             </article>
         </main>
 
+        <br>
         <footer>
-            <ul>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Facebook</a>
-                </li>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Instagram</a>
-                </li>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Twitter</a>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Terminos y Condiciones</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/contacto.jsp">Atención al Cliente</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a>
-                </li>
-            </ul>
-        </footer>
+    <div class="container-fluid mt-3">
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
+            <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
+            <i class="fa-brands fa-tiktok fa-2x"></i>
+        </div>
+    </div>
+    
+    
+    <div class="container mt-5">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <h5>Enlaces</h5>
+                <div class="footer-links">
+                    <a href="#">Local</a><br>
+                    <a href="#">Zona reparto</a><br>
+                    <a href="#">Nosotros</a><br>
+                    <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al
+                        cliente</a><br>
+                    <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
+                    <a href="#">Mapa de sitio</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Políticas</h5>
+                <div class="footer-links">
+                    <a href="#">Políticas de Datos Personales</a><br>
+                    <a href="#">Términos y condiciones de Promociones</a><br>
+                    <a href="#">Derechos ARCO</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Formas de pago</h5>
+                <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <form class="small-form">
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="Ingrese su correo" name="email">
+                    </div>
+                    <div class="mb-2 form-check">
+                        <input class="form-check-input" type="checkbox" name="remember">
+                        <label class="form-check-label">
+                            He leído y revisado los <a class="text-white"
+                                                       href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos
+                            y condiciones</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="" class="mx-auto d-block img-logo p-3">
+    <div class="text-center">
+        <hr>
+        <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
+    </div>
+</footer>
     </body>
 </html>

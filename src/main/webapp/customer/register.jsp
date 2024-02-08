@@ -97,23 +97,29 @@
                         <form action="${pageContext.request.contextPath}/controlCliente?action=registrar" method="post">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="nombre" required />
+                                <input type="text" class="form-control" name="nombre" placeholder="Ingresa tus nombres" required />
                             </div>
 
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" name="apellido" required /><br>
+                                <input type="text" class="form-control" name="apellido" placeholder="Ingresa tus apellidos" required /><br>
                             </div>
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="email" required /><br>
+                                <input type="email" class="form-control" name="email" placeholder="Ingresa tu correo electrónico" required /><br>
                             </div>
 
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input type="password" class="form-control" name="password" required /><br>
+                                <input type="password" class="form-control" name="password" placeholder="Ingresa tu contraseña" required /><br>
                             </div>
+
+                            <c:if test="${not empty errorRegistro}">
+                                <div class="text-danger">
+                                    <c:out value="${errorRegistro}" />
+                                </div>
+                            </c:if>
 
                             <input type="submit" class="btn btn-warning btn-block" value="Crear Cuenta" />
                         </form>
