@@ -129,7 +129,7 @@
                     <c:if test="${not empty list}">
                         <div class="table-responsive">
                             <table border="1" class="container mt-3">
-                            <thead class="table-warning">
+                            <thead class="bg-warning">
                                 <tr>
                                     <th>N°</th>
                                     <th>NOMBRE</th>
