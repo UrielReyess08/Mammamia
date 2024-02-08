@@ -101,32 +101,66 @@
         </main>
 
         <footer>
-            <ul>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Facebook</a>
-                </li>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Instagram</a>
-                </li>
-                <li>
-                    <img src="..." alt="logo"/>
-                    <a href="...">Twitter</a>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Terminos y Condiciones</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/contacto.jsp">Atención al Cliente</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a>
-                </li>
-            </ul>
+            <div class="container-fluid mt-3">
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
+                    <i class="fa-brands fa-instagram fa-2x" style="margin-right: 10px;"></i>
+                    <i class="fa-brands fa-tiktok fa-2x"></i>
+                </div>
+            </div>
+            
+            
+            <div class="container mt-5">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <h4>Enlaces</h4>
+                        <div class="footer-links">
+                            <a href="#">Local</a><br>
+                            <a href="#">Zona reparto</a><br>
+                            <a href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a><br>
+                            <a href="">Atención al
+                                cliente</a><br>
+                            <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a><br>
+                            <a href="#">Mapa de sitio</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4>Políticas</h4>
+                        <div class="footer-links">
+                            <a href="#">Políticas de Datos Personales</a><br>
+                            <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Términos y condiciones de Promociones</a><br>
+                            <a href="#">Derechos ARCO</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4>Formas de pago</h4>
+                        <i class="fa-brands fa-cc-visa fa-3x" style="color: #ffffff;"></i>
+                        <i class="fa-brands fa-cc-mastercard fa-3x" style="color: #ffffff;"></i>
+                        <i class="fa-brands fa-cc-amex fa-3x" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <form class="small-form">
+                            <div class="mb-2">
+                                <input type="text" class="form-control" placeholder="Ingrese su correo" name="email">
+                            </div>
+                            <div class="mb-2 form-check">
+                                <input class="form-check-input" type="checkbox" name="remember">
+                                <label class="form-check-label">
+                                    He leído y revisado los <a class="text-white"
+                                                               href="${pageContext.request.contextPath}/terminos-condiciones.jsp">términos
+                                    y condiciones</a>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">ENVIAR</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="" class="mx-auto d-block img-logo p-3">
+            <div class="text-center">
+                <hr>
+                <span class="text-white">Todos los derechos reservados © <script>document.write(new Date().getFullYear())</script> </span>
+            </div>
         </footer>
     </body>
 </html>

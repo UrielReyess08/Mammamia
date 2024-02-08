@@ -274,7 +274,7 @@
 </main>
 
 
-<footer class="mt-4">
+<footer>
     <div class="container-fluid mt-3">
         <div class="social-icons">
             <i class="fa-brands fa-facebook-f fa-2x" style="color: #ffffff; margin-right: 10px;"></i>
@@ -291,10 +291,10 @@
                 <div class="footer-links">
                     <a href="#">Local</a><br>
                     <a href="#">Zona reparto</a><br>
-                    <a href="#">Nosotros</a><br>
-                    <a href="${pageContext.request.contextPath}/views/viewExtras/contacto.jsp">Atención al
+                    <a href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a><br>
+                    <a href="">Atención al
                         cliente</a><br>
-                    <a href="${pageContext.request.contextPath}/views/viewExtras/preguntas.jsp">Preguntas Frecuentes</a><br>
+                    <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a><br>
                     <a href="#">Mapa de sitio</a>
                 </div>
             </div>
@@ -302,7 +302,7 @@
                 <h4>Políticas</h4>
                 <div class="footer-links">
                     <a href="#">Políticas de Datos Personales</a><br>
-                    <a href="#">Términos y condiciones de Promociones</a><br>
+                    <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Términos y condiciones de Promociones</a><br>
                     <a href="#">Derechos ARCO</a>
                 </div>
             </div>
@@ -321,7 +321,7 @@
                         <input class="form-check-input" type="checkbox" name="remember">
                         <label class="form-check-label">
                             He leído y revisado los <a class="text-white"
-                                                       href="${pageContext.request.contextPath}/views/viewExtras/terminos.jsp">términos
+                                                       href="${pageContext.request.contextPath}/terminos-condiciones.jsp">términos
                             y condiciones</a>
                         </label>
                     </div>
