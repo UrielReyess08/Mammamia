@@ -35,4 +35,18 @@ public class UsuarioDao {
         }
         return false;
     }
+
+    public boolean emailUsuario(String email) {
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM usuario WHERE email=?");
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+        } catch (Exception e) {
+            
+        }
+        return false;
+    }
 }
