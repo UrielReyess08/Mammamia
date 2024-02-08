@@ -2,6 +2,7 @@ package controller;
 
 import java.io.*;
 
+import dao.UsuarioDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
