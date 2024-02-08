@@ -46,17 +46,46 @@ public class controlProducto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String action = request.getParameter("action");
 
-        if ("editar".equals(action)) {
-            int idProducto = Integer.parseInt(request.getParameter("id"));
-            Producto producto = ProductoDao.obtenerProductoPorId(idProducto);
+        switch (action) {
+            case "editar":
+                int idProducto = Integer.parseInt(request.getParameter("id"));
+                Producto producto = ProductoDao.obtenerProductoPorId(idProducto);
+                request.setAttribute("producto", producto);
+                request.getRequestDispatcher("/admin/edit/producto.jsp").forward(request, response);
+                return;
 
-            request.setAttribute("producto", producto);
+            case "buscar":
+                String idProductoParam = request.getParameter("idProducto");
 
-            request.getRequestDispatcher("/admin/edit/producto.jsp").forward(request, response);
+                if (idProductoParam != null && !idProductoParam.isEmpty()) {
+                    try {
+                        int idProd = Integer.parseInt(idProductoParam);
+                        Producto prodBuscar = ProductoDao.obtenerProductoFiltro(idProd);
+
+                        if (prodBuscar != null) {
+                            request.setAttribute("filtroProducto", prodBuscar);
+                        } else {
+                            request.setAttribute("errorFiltro", "El producto no ha sido encontrado");
+                            request.getRequestDispatcher("/admin/inventario.jsp").forward(request, response);
+                        }
+
+                    } catch (NumberFormatException e) {
+                        request.setAttribute("errorFiltro", "El ID no es válido");
+                        request.getRequestDispatcher("/admin/inventario.jsp").forward(request, response);
+                    }
+
+                }
+                request.getRequestDispatcher("/admin/inventario.jsp").forward(request, response);
+                return;
+
+            default:
+                request.setAttribute("errorFiltro", "Accion Inválida.");
+                request.getRequestDispatcher("/admin/inventario.jsp").forward(request, response);
+                return;
         }
-
     }
 
     /**
@@ -70,69 +99,73 @@ public class controlProducto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String action = request.getParameter("action");
 
-        if ("actualizar".equals(action)) {
-            int idProducto = Integer.parseInt(request.getParameter("idProducto"));
-            int idCategoria = Integer.parseInt(request.getParameter("idCategoria"));
-            String nombre = request.getParameter("nombre");
-            String descripcion = request.getParameter("descripcion");
-            double precio = Double.parseDouble(request.getParameter("precio"));
-            int stock = Integer.parseInt(request.getParameter("stock"));
-            int estado = Integer.parseInt(request.getParameter("estado"));
+        switch (action) {
+            case "actualizar":
+                int idProducto = Integer.parseInt(request.getParameter("idProducto"));
+                int idCategoria = Integer.parseInt(request.getParameter("idCategoria"));
+                String nombre = request.getParameter("nombre");
+                String descripcion = request.getParameter("descripcion");
+                double precio = Double.parseDouble(request.getParameter("precio"));
+                int stock = Integer.parseInt(request.getParameter("stock"));
+                int estado = Integer.parseInt(request.getParameter("estado"));
 
-            Producto producto = new Producto();
-            producto.setIdProducto(idProducto);
-            producto.setIdCategoria(idCategoria);
-            producto.setNombre(nombre);
-            producto.setDescripcion(descripcion);
-            producto.setPrecio(precio);
-            producto.setStock(stock);
-            producto.setEstado(estado);
+                Producto producto = new Producto();
+                producto.setIdProducto(idProducto);
+                producto.setIdCategoria(idCategoria);
+                producto.setNombre(nombre);
+                producto.setDescripcion(descripcion);
+                producto.setPrecio(precio);
+                producto.setStock(stock);
+                producto.setEstado(estado);
 
-            int result = ProductoDao.actualizarProducto(producto);
+                int result = ProductoDao.actualizarProducto(producto);
 
-            if (result > 0) {
+                if (result > 0) {
+                    response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp");
+                } else {
+                    response.getWriter().println("Error al actualizar el producto.");
+                }
+                return;
+
+            case "eliminar":
+                int idProductoEliminar = Integer.parseInt(request.getParameter("idProducto"));
+
+                Producto productoEliminar = new Producto();
+                productoEliminar.setIdProducto(idProductoEliminar);
+                productoEliminar.setEstado(0);
+                int resultEliminar = ProductoDao.actualizarEstado(productoEliminar);
+
                 response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp");
-            } else {
-                response.getWriter().println("Error al actualizar el producto.");
-            }
+                return;
 
-        } else if ("eliminar".equals(action)) {
-            int idProducto = Integer.parseInt(request.getParameter("idProducto"));
+            case "registrar":
+                int idCategoriaRegistrar = Integer.parseInt(request.getParameter("idCategoria"));
+                String nombreRegistrar = request.getParameter("nombre");
+                String descripcionRegistrar = request.getParameter("descripcion");
+                double precioRegistrar = Double.parseDouble(request.getParameter("precio"));
+                int stockRegistrar = Integer.parseInt(request.getParameter("stock"));
+                int estadoRegistrar = Integer.parseInt(request.getParameter("estado"));
 
-            Producto producto = new Producto();
-            producto.setIdProducto(idProducto);
-            producto.setEstado(0);
-            int result = ProductoDao.actualizarEstado(producto);
+                Producto productoRegistrar = new Producto();
+                productoRegistrar.setIdCategoria(idCategoriaRegistrar);
+                productoRegistrar.setNombre(nombreRegistrar);
+                productoRegistrar.setDescripcion(descripcionRegistrar);
+                productoRegistrar.setPrecio(precioRegistrar);
+                productoRegistrar.setStock(stockRegistrar);
+                productoRegistrar.setEstado(estadoRegistrar);
 
-            response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp");
+                int resultRegistrar = ProductoDao.registrarProducto(productoRegistrar);
 
-        } else if ("registrar".equals(action)) {
-            int idCategoria = Integer.parseInt(request.getParameter("idCategoria"));
-            String nombre = request.getParameter("nombre");
-            String descripcion = request.getParameter("descripcion");
-            double precio = Double.parseDouble(request.getParameter("precio"));
-            int stock = Integer.parseInt(request.getParameter("stock"));
-            int estado = Integer.parseInt(request.getParameter("estado"));
-            
-            Producto producto = new Producto();
-            producto.setIdCategoria(idCategoria);
-            producto.setNombre(nombre);
-            producto.setDescripcion(descripcion);
-            producto.setPrecio(precio);
-            producto.setStock(stock);
-            producto.setEstado(estado);
-            
-            int result = ProductoDao.registrarProducto(producto);
-            
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp");
-            } else {
-                response.getWriter().println("Error al actualizar el producto.");
-            }
+                if (resultRegistrar > 0) {
+                    response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp");
+                } else {
+                    response.getWriter().println("Error al actualizar el producto.");
+                }
+                return;
         }
-
     }
 
     /**

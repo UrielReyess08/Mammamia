@@ -52,13 +52,82 @@
                 <a class="btn btn-warning mt-2" href="${pageContext.request.contextPath}/admin/categorias.jsp">Gestionar
                     Categorias</a>
             </div>
+
             
-            <%-- Impresion de Errores --%>
+            
+<!-- Filtro <%-- Impresion de Errores --%>
             <c:if test="${empty list}">
                 <p class="mt-4">No hay productos disponibles.</p>
             </c:if>
+
+            <c:if test="${not empty errorFiltro}">
+                <div class="text-danger">
+                    <c:out value="${errorFiltro}" /> 
+                </div> 
+            </c:if>
+            <%-- --%>de Búsqueda -->
+            <form action="${pageContext.request.contextPath}/ControlProducto" method="get">
+                <input type="hidden" name="action" value="buscar">
+                <label for="idProducto">Ingresa el ID del producto</label>
+                <input type="text" id="idProducto" name="idProducto">
+                <button class="btn btn-primary mt-0" type="submit">Buscar</button>
+                <button class="btn btn-success mt-0" type="submit">Limpiar</button>
+            </form>            
             
+            <%-- TABLA DEL FILTRO --%>
+            <c:if test="${not empty filtroProducto}">
+                <h3>TABLA DE PRODUCTO: ${filtroProducto.getIdProducto()}</h3>
+                <div class="table-responsive mt-5">
+                    <table class="table table-bordered table-sm" border="1">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>CATEGORÍA</th>
+                                <th>NOMBRE</th>
+                                <th>DESCRIPCIÓN</th>
+                                <th>PRECIO</th>
+                                <th>STOCK</th>
+                                <th>ESTADO</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>${filtroProducto.getIdProducto()}</td>
+                                <td>${filtroProducto.getNombreCategoria()}</td>
+                                <td>${filtroProducto.getNombre()}</td>
+                                <td>${filtroProducto.getDescripcion()}</td>
+                                <td>${filtroProducto.getPrecio()}</td>
+                                <td>${filtroProducto.getStock()}</td>
+                                <td>
+                                <c:choose>
+                                    <c:when test="${filtroProducto.getEstado() == 0}">Inactivo</c:when>
+                                    <c:when test="${filtroProducto.getEstado() == 1}">Activo</c:when>
+                                    <c:otherwise>Estado Desconocido</c:otherwise>
+                                </c:choose>
+                                </td>
+                                <td>
+                                    <div class="container text-center">
+                                        <a class="btn btn-primary btn-sm"
+                                            href="${pageContext.request.contextPath}/ControlProducto?action=editar&id=${filtroProducto.getIdProducto()}">Modificar</a>
+
+                                        <form action="${pageContext.request.contextPath}/ControlProducto" method="post">
+                                            <input type="hidden" id="idProducto" name="idProducto"
+                                                    value="${filtroProducto.getIdProducto()}">
+                                            <input type="hidden" name="action" value="eliminar">
+                                                <button class="btn btn-danger btn-sm mt-1" type="submit">Eliminar</button>
+                                            </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </c:if>
+
+            <%-- TABLA GENERAL --%>
             <c:if test="${not empty list}">
+                <h3>TABLA GENERAL</h3>
                 <div class="table-responsive mt-5">
                     <table class="table table-bordered table-sm" border="1">
                         <thead>
@@ -106,7 +175,6 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <br>
                 </div>
             </c:if>
         </section>

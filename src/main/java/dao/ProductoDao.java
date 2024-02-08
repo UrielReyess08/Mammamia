@@ -193,6 +193,31 @@ public class ProductoDao {
         return producto;
     }
 
+    public static Producto obtenerProductoFiltro(int idProducto) {
+        Producto producto = null;
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT prod.idProducto, cat.nombre as nombreCategoria, prod.nombre, prod.descripcion, prod.precio, prod.stock, prod.estado FROM producto prod INNER JOIN categoria cat ON prod.idCategoria = cat.idCategoria WHERE idProducto=?");
+            ps.setInt(1, idProducto);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreCategoria(rs.getString("nombreCategoria"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(rs.getInt("estado"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return producto;
+    }
+
     public static int actualizarEstado(Producto prod) {
         int est = 0;
         try {

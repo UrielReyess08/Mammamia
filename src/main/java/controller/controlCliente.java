@@ -115,7 +115,14 @@ public class controlCliente extends HttpServlet {
             String apellido = request.getParameter("apellido");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-
+            
+            UsuarioDao usuarioDao = new UsuarioDao();
+            if(usuarioDao.emailUsuario(email)){
+                request.setAttribute("errorRegistro", "Correo no válido");
+                 request.getRequestDispatcher("/customer/register.jsp").forward(request, response);
+                return;
+            }
+            
             Cliente cliente = new Cliente();
             cliente.setNombre(nombre);
             cliente.setApellido(apellido);
@@ -125,10 +132,12 @@ public class controlCliente extends HttpServlet {
             int result = ClienteDao.registrarCliente(cliente);
 
             if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                response.sendRedirect(request.getContextPath() + "/customer/login.jsp");
             } else {
-                response.getWriter().println("Error al registrar cliente.");
+                request.setAttribute("errorRegistro", "Correo no válido");
+                request.getRequestDispatcher("/customer/register.jsp").forward(request, response);
             }
+  
         } else if ("actualizarCliente".equals(action)) {
 
             int idCliente = Integer.parseInt(request.getParameter("idCliente"));
