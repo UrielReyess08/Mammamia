@@ -109,9 +109,11 @@ public class controlCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
         String action = request.getParameter("action");
 
         if ("registrar".equals(action)) {
+            
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
             String email = request.getParameter("email");

@@ -69,189 +69,197 @@
             <%-- --%>
             
             <%-- TABLA DEL FILTRO --%>
-            <c:if test="${not empty filteredPedido}">
-                <h3>TABLA DE PEDIDO: ${filteredPedido.getIdPedido()}</h3>
-                <div class="table-responsive-md">
-                    <table class="table table-bordered container" border="1">
-                        <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>CLIENTE</th>
-                            <th>RECEPTOR</th>
-                            <th>DIRECCIÓN</th>
-                            <th>METODO DE PAGO</th>
-                            <th>HORA</th>
-                            <th>ESTADO</th>
-                            <th>TOTAL</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>${filteredPedido.getIdPedido()}</td>
-                            <td>${filteredPedido.getNombre()} ${filteredPedido.getApellido()}</td>
-                            <td>${filteredPedido.getReceptor()}</td>
-                            <td>${filteredPedido.getDireccion()}</td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${filteredPedido.getMetodoPago() == 0}">Visa</c:when>
-                                    <c:when test="${filteredPedido.getMetodoPago() == 1}">Mastercard</c:when>
-                                    <c:when test="${filteredPedido.getMetodoPago() == 2}">American Express</c:when>
-                                    <c:otherwise>Método Desconocido</c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td>${filteredPedido.getHoraPedido()}</td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${filteredPedido.getEstado() == 0}">En Preparación</c:when>
-                                    <c:when test="${filteredPedido.getEstado() == 1}">En Camino</c:when>
-                                    <c:when test="${filteredPedido.getEstado() == 2}">Entregado</c:when>
-                                    <c:otherwise>Estado Desconocido</c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td>${filteredPedido.getTotal()}</td>
-                                
-                                <%-- AQUI --%>
-                            <td style="width: 45%">
-                                <div class="container row">
-                                    <div class="col-sm-3 mb-2">
-                                        <!-- Añadí la clase "mb-2" para agregar margen inferior -->
-                                        <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
-                                            <input type="hidden" name="idPedido"
-                                                   value="${filteredPedido.getIdPedido()}">
-                                            <input type="hidden" name="newEstado" value="0">
-                                            <button class="btn btn-primary btn-sm" type="submit"
-                                                    style="min-width: 20%;">En Preparación
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-3 mb-2">
-                                        <!-- Añadí la clase "mb-2" para agregar margen inferior -->
-                                        <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
-                                            <input type="hidden" name="idPedido"
-                                                   value="${filteredPedido.getIdPedido()}">
-                                            <input type="hidden" name="newEstado" value="1">
-                                            <button class="btn btn-success btn-sm" type="submit"
-                                                    style="min-width: 20%;">En Camino
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-3 mb-2">
-                                        <!-- Añadí la clase "mb-2" para agregar margen inferior -->
-                                        <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
-                                            <input type="hidden" name="idPedido"
-                                                   value="${filteredPedido.getIdPedido()}">
-                                            <input type="hidden" name="newEstado" value="2">
-                                            <button class="btn btn-secondary btn-sm" type="submit"
-                                                    style="min-width: 20%;">Entregado
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-sm-3 mb-2">
-                                        <!-- Añadí la clase "mb-2" para agregar margen inferior -->
-                                        <a class="btn btn-warning btn-sm"
-                                           href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${filteredPedido.getIdPedido()}">Más
-                                            Detalles</a>
-                                    </div>
-                                </div>
-                            </td>
-                        
-                        
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </c:if>
-            
-            <%-- TABLA GENERAL --%>
-            <c:if test="${not empty list}">
-                <h3>TABLA GENERAL</h3>
-                <div class="table-responsive-md">
-                    <table class="table table-bordered container" border="1">
-                        <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>CLIENTE</th>
-                            <th>RECEPTOR</th>
-                            <th>DIRECCIÓN</th>
-                            <th>METODO DE PAGO</th>
-                            <th>HORA</th>
-                            <th>ESTADO</th>
-                            <th>TOTAL</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        
-                        <tbody>
-                        <c:forEach items="${list}" var="ped">
-                            <tr>
-                                <td>${ped.getIdPedido()}</td>
-                                <td>${ped.getNombre()} ${ped.getApellido()}</td>
-                                <td>${ped.getReceptor()}</td>
-                                <td>${ped.getDireccion()}</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${ped.getMetodoPago() == 0}">Visa</c:when>
-                                        <c:when test="${ped.getMetodoPago() == 1}">Mastercard</c:when>
-                                        <c:when test="${ped.getMetodoPago() == 2}">American Express</c:when>
-                                        <c:otherwise>Método Desconocido</c:otherwise>
-                                    </c:choose>
-                                </td>
-                                <td>${ped.getHoraPedido()}</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${ped.getEstado() == 0}">En Preparación</c:when>
-                                        <c:when test="${ped.getEstado() == 1}">En Camino</c:when>
-                                        <c:when test="${ped.getEstado() == 2}">Entregado</c:when>
-                                        <c:otherwise>Estado Desconocido</c:otherwise>
-                                    </c:choose>
-                                </td>
-                                <td>${ped.getTotal()}</td>
-                                <td style="width: 45%">
-                                    <div class="container row align-items-center">
-                                        <div class="col-sm-3">
-                                            <form action="${pageContext.request.contextPath}/ControlPedido"
-                                                  method="post">
-                                                <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
+                    <c:if test="${not empty filteredPedido}">
+                        <h3>TABLA DE PEDIDO: ${filteredPedido.getIdPedido()}</h3>
+                        <div class="table-responsive-md">
+                            <table class="table table-bordered container" border="1">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>CLIENTE</th>
+                                        <th>RECEPTOR</th>
+                                        <th>DIRECCIÓN</th>
+                                        <th>METODO DE PAGO</th>
+                                        <th>HORA</th>
+                                        <th>ESTADO</th>
+                                        <th>TOTAL</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>${filteredPedido.getIdPedido()}</td>
+                                        <td>${filteredPedido.getNombre()} ${filteredPedido.getApellido()}</td>
+                                        <td>${filteredPedido.getReceptor()}</td>
+                                        <td>${filteredPedido.getDireccion()}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${filteredPedido.getMetodoPago() == 0}">Visa</c:when>
+                                                <c:when test="${filteredPedido.getMetodoPago() == 1}">Mastercard</c:when>
+                                                <c:when test="${filteredPedido.getMetodoPago() == 2}">American Express</c:when>
+                                                <c:otherwise>Método Desconocido</c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        <td>${filteredPedido.getHoraPedido()}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${filteredPedido.getEstado() == 0}">En Preparación</c:when>
+                                                <c:when test="${filteredPedido.getEstado() == 1}">En Camino</c:when>
+                                                <c:otherwise>Estado Desconocido</c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        <td>${filteredPedido.getTotal()}</td>
+
+                                        <td>
+                                            <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
+                                                <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
                                                 <input type="hidden" name="newEstado" value="0">
-                                                <button class="btn btn-primary btn-sm" type="submit"
-                                                        style="min-width: 20%;">En Preparación
+                                                <button class="btn btn-primary btn-sm" type="submit">En Preparación
                                                 </button>
-                                            </form>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <form action="${pageContext.request.contextPath}/ControlPedido"
-                                                  method="post">
-                                                <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
+                                            </form> 
+                                        </td>
+
+                                        <td>
+                                            <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
+                                                <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
                                                 <input type="hidden" name="newEstado" value="1">
-                                                <button class="btn btn-success btn-sm" type="submit"
-                                                        style="min-width: 20%;">En Camino
+                                                <button class="btn btn-success btn-sm" type="submit">En Camino
                                                 </button>
                                             </form>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <form action="${pageContext.request.contextPath}/ControlPedido"
-                                                  method="post">
-                                                <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
-                                                <input type="hidden" name="newEstado" value="2">
-                                                <button class="btn btn-secondary btn-sm" type="submit"
-                                                        style="min-width: 20%;">Entregado
+                                        </td>
+
+                                        <td>
+                                            <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
+                                                <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
+                                                <input type="hidden" name="newEstado" value="3">
+                                                <button class="btn btn-secondary btn-sm" type="submit">Entregado
                                                 </button>
                                             </form>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <a class="btn btn-warning btn-sm" style="min-width: 20%;"
-                                               href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${ped.getIdPedido()}">Más
-                                                Detalles</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                        <br></table>
-                </div>
-            </c:if>
+                                        </td>
+
+                                        <td>
+                                            <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
+                                                <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
+                                                <input type="hidden" name="newEstado" value="4">
+                                                <button class="btn btn-secondary btn-sm" type="submit">Cancelar
+                                                </button>
+                                            </form>
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${filteredPedido.getIdPedido()}">
+                                                Más Detalles
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
+            
+                    <%-- TABLA GENERAL --%>
+                    <c:if test="${not empty list}">
+                        <h3>TABLA GENERAL</h3>
+                        <div class="table-responsive-md">
+                            <table class="table table-bordered container" border="1">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>CLIENTE</th>
+                                        <th>RECEPTOR</th>
+                                        <th>DIRECCIÓN</th>
+                                        <th>METODO DE PAGO</th>
+                                        <th>HORA</th>
+                                        <th>ESTADO</th>
+                                        <th>TOTAL</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <c:forEach items="${list}" var="ped">
+                                        <tr>
+                                            <td>${ped.getIdPedido()}</td>
+                                            <td>${ped.getNombre()} ${ped.getApellido()}</td>
+                                            <td>${ped.getReceptor()}</td>
+                                            <td>${ped.getDireccion()}</td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${ped.getMetodoPago() == 0}">Visa</c:when>
+                                                    <c:when test="${ped.getMetodoPago() == 1}">Mastercard</c:when>
+                                                    <c:when test="${ped.getMetodoPago() == 2}">American Express</c:when>
+                                                    <c:otherwise>Método Desconocido</c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                            <td>${ped.getHoraPedido()}</td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${ped.getEstado() == 0}">En Preparación</c:when>
+                                                    <c:when test="${ped.getEstado() == 1}">En Camino</c:when>
+                                                    <c:otherwise>Estado Desconocido</c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                            <td>${ped.getTotal()}</td>
+
+                                            <td>
+                                                <form action="${pageContext.request.contextPath}/ControlPedido"
+                                                      method="post">
+                                                    <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
+                                                    <input type="hidden" name="newEstado" value="0">
+                                                    <button class="btn btn-primary btn-sm" type="submit">En Preparación
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                            <td>
+                                                <form action="${pageContext.request.contextPath}/ControlPedido"
+                                                      method="post">
+                                                    <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
+                                                    <input type="hidden" name="newEstado" value="1">
+                                                    <button class="btn btn-success btn-sm" type="submit">En Camino
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                            <td>
+                                                <form action="${pageContext.request.contextPath}/ControlPedido"
+                                                      method="post">
+                                                    <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
+                                                    <input type="hidden" name="newEstado" value="3">
+                                                    <button class="btn btn-info btn-sm text-light" type="submit">Entregado
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                            <td>
+                                                <form action="${pageContext.request.contextPath}/ControlPedido"
+                                                      method="post">
+                                                    <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
+                                                    <input type="hidden" name="newEstado" value="4">
+                                                    <button class="btn btn-danger btn-sm" type="submit">Cancelar
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                            <td>
+
+                                                <a class="btn btn-warning btn-sm text-light" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${ped.getIdPedido()}">
+                                                    Más Detalles</a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
         </section>
     </article>
 </main>

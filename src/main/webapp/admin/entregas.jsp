@@ -59,6 +59,10 @@
             <c:if test="${empty list}">
                 <p>No hay pedidos para entregar.</p>
             </c:if>
+                
+            <c:if test="${not empty errorEntrega}">
+                <c:out value="${errorEntrega}" />
+            </c:if>
             
             <%-- TABLA GENERAL --%>
             <c:if test="${not empty list}">
@@ -82,7 +86,7 @@
                                 <td>${ent.getHoraPedido()}</td>
                                 <td>
                                     <c:choose>
-                                        <c:when test="${ent.getEstado() == 0}">Listo para Entrega</c:when>
+                                        <c:when test="${ent.getEstado() == 1}">Listo para Entrega</c:when>
                                         <c:otherwise>Estado Desconocido</c:otherwise>
                                     </c:choose>
                                 </td>

@@ -60,23 +60,53 @@ public class controlEntrega extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int idPedido = Integer.parseInt(request.getParameter("idPedido"));
+        String idPedidoParam = request.getParameter("idPedido");
         String action = request.getParameter("action");
 
-        if ("confirmarEntrega".equals(action)) {
-            Pedido pedido = new Pedido();
-            pedido.setIdPedido(idPedido);
-            pedido.setEstado(2);
-            int result = PedidoDao.actualizarEstado(pedido);
+        try {
+            int idPedido = Integer.parseInt(idPedidoParam);
 
-            response.sendRedirect(request.getContextPath() + "/admin/entregas.jsp");
-        } else if ("buscarEntrega".equals(action)) {
-            Pedido pedido = new Pedido();
-            pedido.setIdPedido(idPedido);
-            pedido.setEstado(1);
-            int result = PedidoDao.actualizarEstado(pedido);
+            switch (action) {
+                case "confirmarEntrega":
+                    Pedido pedConfirmar = new Pedido();
+                    pedConfirmar.setIdPedido(idPedido);
+                    pedConfirmar.setEstado(3);
+                    int resultConfirmar = PedidoDao.actualizarEstado(pedConfirmar);
 
-            response.sendRedirect(request.getContextPath() + "/admin/detalleEntrega.jsp?idPedido=" + idPedido);
+                    response.sendRedirect(request.getContextPath() + "/admin/entregas.jsp");
+                    return;
+
+                case "buscarEntrega":
+                    int estado = PedidoDao.obtenerEstadoPedido(idPedido);
+
+                    switch (estado) {
+                        case 1:
+                            Pedido pedBuscar = new Pedido();
+                            pedBuscar.setIdPedido(idPedido);
+                            pedBuscar.setEstado(2);
+                            int resultBuscar = PedidoDao.actualizarEstado(pedBuscar);
+
+                            response.sendRedirect(request.getContextPath() + "/admin/detalleEntrega.jsp?idPedido=" + idPedido);
+                            return;
+
+                        case -1:
+                            request.setAttribute("errorEntrega", "El Pedido no ha sido encontrado.");
+                            request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
+                            return;
+
+                        default:
+                            request.setAttribute("errorEntrega", "El Pedido ha sido entregado.");
+                            request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
+                            return;
+                    }
+                default:
+                    request.setAttribute("errorEntrega", "Accion Inválida.");
+                    request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
+                    return;
+            }
+        } catch (NumberFormatException e) {
+            request.setAttribute("errorEntrega", "El código no es válido.");
+            request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
         }
     }
 

@@ -90,7 +90,7 @@
                 <%
                     int estado = det.getEstado();
                     switch (estado) {
-                        case 1:
+                        case 2:
                             out.print("En Camino");
                             break;
                         default:

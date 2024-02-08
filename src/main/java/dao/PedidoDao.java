@@ -192,4 +192,23 @@ public class PedidoDao {
         }
         return entrega;
     }
+
+    public static int obtenerEstadoPedido(int idPedido){
+        int estado = -1;
+        
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT estado FROM pedido WHERE idPedido=?");
+            ps.setInt(1, idPedido);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()){
+                estado = rs.getInt("estado");
+            }
+            
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return estado;
+    }
 }
