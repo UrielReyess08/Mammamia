@@ -292,10 +292,10 @@
                     <a href="#">Local</a><br>
                     <a href="#">Zona reparto</a><br>
                     <a href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a><br>
-                    <a href="">Atención al
+                    <a href="${pageContext.request.contextPath}/contacto.jsp">Atención al
                         cliente</a><br>
                     <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a><br>
-                    <a href="#">Mapa de sitio</a>
+                   
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
