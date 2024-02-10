@@ -162,7 +162,7 @@
                         <div class="card border-0 shadow">
                             <div class="card-body bg-white rounded-3">
                                 <h4 class="card-title text-center fw-bold mb-3">Cantidad de Pedidos por Fechas</h4>
-                                <form action="${pageContext.request.contextPath}/controReportes" method="POST" class="mb-3 px-5 d-flex justify-content-center">
+                                <form action="${pageContext.request.contextPath}/controlReportes" method="POST" class="mb-3 px-5 d-flex justify-content-center">
                                     <input type="date" name="fechaPedido" class="form-control mx-2">
 
                                     <input type="submit" value="Buscar" class="btn btn-primary py-1 mx-2">
