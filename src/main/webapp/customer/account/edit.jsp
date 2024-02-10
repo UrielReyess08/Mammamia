@@ -108,6 +108,15 @@
 
     <main class="text-center">
       <h1 class="mt-2">Editar Información</h1>
+
+      <%-- Impresion de Errores --%>
+            <c:if test="${not empty errorActualizarCli}">
+                <div class="text-danger">
+                    <p>${errorActualizarCli}</p>
+                </div>
+            </c:if>
+        <%-- --%>
+
   <article class="...">
     <section>
         <div class="container">
@@ -164,6 +173,8 @@
           </div>
                     
         <input class="btn btn-success" type="submit" value="Editar">
+
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Regresar</a>
       </form>
                 
     </section>

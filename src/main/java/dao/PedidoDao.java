@@ -148,7 +148,7 @@ public class PedidoDao {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT idPedido, horaPedido, estado FROM pedido WHERE estado=0 ORDER BY idPedido ASC;");
+                    "SELECT idPedido, horaPedido, estado FROM pedido WHERE estado=1 ORDER BY idPedido ASC;");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

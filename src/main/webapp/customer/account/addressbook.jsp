@@ -122,7 +122,7 @@
                                 <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>
                             </li>
                             <li class="nav-item">
-                                <a href="${pageContext.request.contextPath}/controlCliente?action=editarCliente&id=<%= idCliente %>">Editar Información</a>
+                                <a href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Mis Direcciones</a>
                             </li>
                             <li class="nav-item">
                                 <a href="${pageContext.request.contextPath}/customer/account/wallet.jsp">Mis Tarjetas</a>

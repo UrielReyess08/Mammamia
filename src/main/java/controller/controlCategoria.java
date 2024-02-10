@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import model.Categoria;
 
@@ -62,33 +61,31 @@ public class controlCategoria extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String idCategoriaStr = request.getParameter("idCategoria");
         String newNombre = request.getParameter("nombre");
         String newDescripcion = request.getParameter("descripcion");
-        
-        if(idCategoriaStr != null && newNombre != null && newDescripcion != null){
-            try{
+
+        if (idCategoriaStr != null && newNombre != null && newDescripcion != null) {
+            try {
                 int idCategoria = Integer.parseInt(idCategoriaStr);
-                
+
                 Categoria categoria = new Categoria();
                 categoria.setIdCategoria(idCategoria);
                 categoria.setNombre(newNombre);
                 categoria.setDescripcion(newDescripcion);
-                
+
                 int result = CategoriaDao.actualizarCategoria(categoria);
-                if (result > 0){
-                    // Actualizar la lista de categorías antes de redirigir
-                    //List<Categoria> categorias = CategoriaDao.listarCategorias();
+                if (result > 0) {
                     response.sendRedirect(request.getContextPath() + "/admin/categorias.jsp");
-                }else{
-                    response.getWriter().println("Error al actualizar la categoría.");
                 }
-                
-            } catch (Exception e){
-                System.out.println(e);
+
+            } catch (Exception e) {
+                request.setAttribute("errorCategoria", "Error al actualizar la categoría.");
+                request.getRequestDispatcher("/admin/categorias.jsp").forward(request, response);
             }
         }
+        request.setAttribute("errorCategoria", "Error al actualizar la categoría.");
+        request.getRequestDispatcher("/admin/categorias.jsp").forward(request, response);
     }
 
     /**

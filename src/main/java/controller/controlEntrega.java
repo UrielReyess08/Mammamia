@@ -17,7 +17,7 @@ import model.Pedido;
  *
  * @author daiko
  */
-@WebServlet("/ControlEntrega") // url del servlet
+@WebServlet("/ControlEntrega")
 public class controlEntrega extends HttpServlet {
 
     /**
@@ -90,12 +90,12 @@ public class controlEntrega extends HttpServlet {
                             return;
 
                         case -1:
-                            request.setAttribute("errorEntrega", "El Pedido no ha sido encontrado.");
+                            request.setAttribute("errorEntrega", "El pedido no ha sido encontrado.");
                             request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
                             return;
 
                         default:
-                            request.setAttribute("errorEntrega", "El Pedido ha sido entregado.");
+                            request.setAttribute("errorEntrega", "El pedido ha sido entregado.");
                             request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
                             return;
                     }
@@ -105,7 +105,7 @@ public class controlEntrega extends HttpServlet {
                     return;
             }
         } catch (NumberFormatException e) {
-            request.setAttribute("errorEntrega", "El código no es válido.");
+            request.setAttribute("errorEntrega", "El código del pedido no es válido.");
             request.getRequestDispatcher("/admin/entregas.jsp").forward(request, response);
         }
     }

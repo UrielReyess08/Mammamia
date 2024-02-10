@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Entregas | Sistema Mammamía</title>
 </head>
-<body class="text-center mt-5">
+<body class="text-center">
 <%
     // Obtener la sesión
     HttpSession sesion = request.getSession(false);
@@ -26,18 +26,28 @@
     String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
 %>
 
-<header class="bg-light mt-5">
-    <ul class="nav container">
-        <li class="nav-item">
-            <span class="nav-link">Sistema</span>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link">Bienvenido, <%= nombreRol %></span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
-        </li>
-    </ul>
+<header class="p-3">
+    <nav class="navbar navbar-expand-sm navbar-dark text-light">
+        <div class="container-fluid">
+            <span class="">SISTEMA DE ENTREGAS</span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="">
+                        <span class="pe-3">Bienvenido, <%= nombreRol %>‎</span>
+                    </li>
+                    <li class="">
+                        <a class="ps-3 text-light" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
 </header>
 
 <%
@@ -47,51 +57,55 @@
 <main>
     <article class="container mt-3">
         <section>
+            <h1 class="mt-2">Panel de Entregas</h1>
+
             <!-- Filtro de Búsqueda -->
-            <form action="${pageContext.request.contextPath}/ControlEntrega" method="post">
+            <form action="${pageContext.request.contextPath}/ControlEntrega" method="post" class="my-3">
                 <label class="h5 form-label" for="idPedido">Ingresa código del pedido:</label>
                 <input type="text" id="idPedido" name="idPedido">
                 <input type="hidden" name="action" value="buscarEntrega">
                 <button class="btn btn-primary" type="submit">Buscar</button>
             </form>
-            
+
             <%-- Impresion de Errores --%>
             <c:if test="${empty list}">
                 <p>No hay pedidos para entregar.</p>
             </c:if>
-                
+
             <c:if test="${not empty errorEntrega}">
-                <c:out value="${errorEntrega}" />
+                <div class="text-danger">
+                    <c:out value="${errorEntrega}" />
+                </div>
             </c:if>
-            
+
             <%-- TABLA GENERAL --%>
             <c:if test="${not empty list}">
                 <h3>TABLA DE ENTREGAS</h3>
                 <div class="table-responsive">
                     <table class="table" border="1">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>HORA DEL PEDIDO</th>
-                            <th>ESTADO</th>
-                        </tr>
-                        </thead>
-                        
-                        <tbody>
-                        <c:forEach items="${list}" var="ent">
+                        <thead class="table-dark">
                             <tr>
-                                <td>
-                                    <input type="hidden" name="idPedido" value="${ent.getIdPedido()}"/>
-                                </td>
-                                <td>${ent.getHoraPedido()}</td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${ent.getEstado() == 1}">Listo para Entrega</c:when>
-                                        <c:otherwise>Estado Desconocido</c:otherwise>
-                                    </c:choose>
-                                </td>
+                                <th></th>
+                                <th>HORA DEL PEDIDO</th>
+                                <th>ESTADO</th>
                             </tr>
-                        </c:forEach>
+                        </thead>
+
+                        <tbody>
+                            <c:forEach items="${list}" var="ent">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="idPedido" value="${ent.getIdPedido()}"/>
+                                    </td>
+                                    <td>${ent.getHoraPedido()}</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${ent.getEstado() == 1}">Listo para Entrega</c:when>
+                                            <c:otherwise>Estado Desconocido</c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -100,9 +114,9 @@
     </article>
 </main>
 
-<footer class="footer mt-auto py-3 bg-light">
+<footer class="footer mt-auto py-3">
     <div class="container">
-        <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+        <p class="m-0">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
     </div>
 </footer>
 </body>

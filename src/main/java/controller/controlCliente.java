@@ -63,38 +63,42 @@ public class controlCliente extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if ("editarCliente".equals(action)) {
-            int idCliente = Integer.parseInt(request.getParameter("id"));
-            Cliente cli = ClienteDao.obtenerClientePorId(idCliente);
+        switch (action) {
+            case "editarCliente":
+                int idCliente = Integer.parseInt(request.getParameter("id"));
+                Cliente cli = ClienteDao.obtenerClientePorId(idCliente);
 
-            request.setAttribute("cli", cli);
-            request.getRequestDispatcher("/customer/account/edit.jsp").forward(request, response);
+                request.setAttribute("cli", cli);
+                request.getRequestDispatcher("/customer/account/edit.jsp").forward(request, response);
+                return;
 
-        } else if ("editarDireccion".equals(action)) {
-            int idDireccionCliente = Integer.parseInt(request.getParameter("id"));
-            Direccion dire = ClienteDao.obtenerDireccionPorId(idDireccionCliente);
+            case "editarDireccion":
+                int idDireccionCliente = Integer.parseInt(request.getParameter("id"));
+                Direccion dire = ClienteDao.obtenerDireccionPorId(idDireccionCliente);
 
-            request.setAttribute("dire", dire);
+                request.setAttribute("dire", dire);
+                request.getRequestDispatcher("/customer/account/edit/addressbook.jsp").forward(request, response);
+                return;
 
-            request.getRequestDispatcher("/customer/account/edit/addressbook.jsp").forward(request, response);
-        } else if ("eliminarDireccion".equals(action)) {
-            int idDireccionCliente = Integer.parseInt(request.getParameter("id"));
-            int result = ClienteDao.eliminarDireccion(idDireccionCliente);
+            case "eliminarDireccion":
+                int idDireccionEliminar = Integer.parseInt(request.getParameter("id"));
+                int result = ClienteDao.eliminarDireccion(idDireccionEliminar);
 
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
-            } else {
-                response.getWriter().println("Error al eliminar la dirección.");
-            }
-        }   else if ("eliminarTarjeta".equals(action)) {
-            int idTarjetaCliente = Integer.parseInt(request.getParameter("id"));
-            int result = ClienteDao.eliminarTarjeta(idTarjetaCliente);
+                if (result > 0) {
+                    response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
+                }
+                return;
 
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/customer/account/wallet.jsp");
-            } else {
-                response.getWriter().println("Error al eliminar la tarjeta.");
-            }
+            case "eliminarTarjeta":
+                int idTarjetaEliminar = Integer.parseInt(request.getParameter("id"));
+                int resultEliminar = ClienteDao.eliminarTarjeta(idTarjetaEliminar);
+
+                if (resultEliminar > 0) {
+                    response.sendRedirect(request.getContextPath() + "/customer/account/wallet.jsp");
+                } else {
+                    response.getWriter().println("Error al eliminar la tarjeta.");
+                }
+                return;
         }
     }
 
@@ -112,140 +116,157 @@ public class controlCliente extends HttpServlet {
                 
         String action = request.getParameter("action");
 
-        if ("registrar".equals(action)) {
-            
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            
-            UsuarioDao usuarioDao = new UsuarioDao();
-            if(usuarioDao.emailUsuario(email)){
-                request.setAttribute("errorRegistro", "Correo no válido");
-                 request.getRequestDispatcher("/customer/register.jsp").forward(request, response);
-                return;
-            }
-            
-            Cliente cliente = new Cliente();
-            cliente.setNombre(nombre);
-            cliente.setApellido(apellido);
-            cliente.setEmail(email);
-            cliente.setPassword(password);
+        switch (action) {
+            case "registrar":
+                String nombre = request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
 
-            int result = ClienteDao.registrarCliente(cliente);
-
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/customer/login.jsp");
-            } else {
-                request.setAttribute("errorRegistro", "Correo no válido");
-                request.getRequestDispatcher("/customer/register.jsp").forward(request, response);
-            }
-  
-        } else if ("actualizarCliente".equals(action)) {
-
-            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-
-            Cliente cli = new Cliente();
-            cli.setIdCliente(idCliente);
-            cli.setNombre(nombre);
-            cli.setApellido(apellido);
-            cli.setEmail(email);
-            cli.setPassword(password);
-
-            int result = ClienteDao.actualizarCliente(cli);
-
-            if (result > 0) {
-                
-                HttpSession sesion = request.getSession(false);
-                if (sesion != null) {
-                    Cliente clienteActualizado = ClienteDao.obtenerClientePorId(idCliente);
-                    sesion.setAttribute("cliente", clienteActualizado);
+                UsuarioDao usuarioDao = new UsuarioDao();
+                if (usuarioDao.emailUsuario(email)) {
+                    request.setAttribute("errorRegistro", "Correo no válido.");
+                    request.getRequestDispatcher("/customer/register.jsp").forward(request, response);
+                    return;
                 }
 
-                response.sendRedirect(request.getContextPath() + "/customer/account/panel.jsp");
-                
-            } else {
-                response.getWriter().println("Error al actualizar la información.");
-            }
+                Cliente cliRegistrar = new Cliente();
+                cliRegistrar.setNombre(nombre);
+                cliRegistrar.setApellido(apellido);
+                cliRegistrar.setEmail(email);
+                cliRegistrar.setPassword(password);
 
-        } else if ("registrarDireccion".equals(action)) {
+                int resultRegistrar = ClienteDao.registrarCliente(cliRegistrar);
 
-            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-            String nombreDireccion = request.getParameter("nombreDireccion");
-            String direccion = request.getParameter("direccion");
-            int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
-            String referencia = request.getParameter("referencia");
-            String telefono = request.getParameter("telefono");
+                if (resultRegistrar > 0) {
+                    response.sendRedirect(request.getContextPath() + "/customer/login.jsp");
+                } else {
+                    request.setAttribute("errorRegistro", "Error al crear la cuenta.");
+                    request.getRequestDispatcher("/customer/register.jsp").forward(request, response);
+                }
+                return;
 
-            Direccion dire = new Direccion();
-            dire.setIdCliente(idCliente);
-            dire.setNombreDireccion(nombreDireccion);
-            dire.setDireccion(direccion);
-            dire.setTipoVivienda(tipoVivienda);
-            dire.setReferencia(referencia);
-            dire.setTelefono(telefono);
+            case "actualizarCliente":
+                int idCli = Integer.parseInt(request.getParameter("idCliente"));
+                String nombreCli = request.getParameter("nombre");
+                String apellidoCli = request.getParameter("apellido");
+                String emailCli = request.getParameter("email");
+                String passwordCli = request.getParameter("password");
 
-            int result = ClienteDao.registrarDireccion(dire);
+                Cliente cliActualizar = new Cliente();
+                cliActualizar.setIdCliente(idCli);
+                cliActualizar.setNombre(nombreCli);
+                cliActualizar.setApellido(apellidoCli);
+                cliActualizar.setEmail(emailCli);
+                cliActualizar.setPassword(passwordCli);
 
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
-            } else {
-                response.getWriter().println("Error al reigstrar la direccion.");
-            }
-        } else if ("actualizarDireccion".equals(action)) {
+                int resultActualizar = ClienteDao.actualizarCliente(cliActualizar);
 
-            int idDireccionCliente = Integer.parseInt(request.getParameter("idDireccionCliente"));
-            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-            String nombreDireccion = request.getParameter("nombreDireccion");
-            String direccion = request.getParameter("direccion");
-            int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
-            String referencia = request.getParameter("referencia");
-            String telefono = request.getParameter("telefono");
+                if (resultActualizar > 0) {
 
-            Direccion dire = new Direccion();
-            dire.setIdDireccionCliente(idDireccionCliente);
-            dire.setIdCliente(idCliente);
-            dire.setNombreDireccion(nombreDireccion);
-            dire.setDireccion(direccion);
-            dire.setTipoVivienda(tipoVivienda);
-            dire.setReferencia(referencia);
-            dire.setTelefono(telefono);
+                    HttpSession sesion = request.getSession(false);
+                    if (sesion != null) {
+                        Cliente clienteActualizado = ClienteDao.obtenerClientePorId(idCli);
+                        sesion.setAttribute("cliente", clienteActualizado);
+                    }
 
-            int result = ClienteDao.actualizarDireccion(dire);
+                    response.sendRedirect(request.getContextPath() + "/customer/account/panel.jsp");
 
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
-            } else {
-                response.getWriter().println("Error al actualizar la direccion.");
-            }
-        }else if ("registrarTarjeta".equals(action)) {
+                } else {
 
-            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-            String nombreTarjeta = request.getParameter("nombreTarjeta");
-            int metodoPago = Integer.parseInt(request.getParameter("metodoPago"));
-            String fechaExpiracion = request.getParameter("fechaExpiracion");
-            int tipoTarjeta = Integer.parseInt(request.getParameter("tipoTarjeta"));
-            String numeroTarjeta = request.getParameter("numeroTarjeta");
+                    cliActualizar = ClienteDao.obtenerClientePorId(idCli);
+                    request.setAttribute("cli", cliActualizar);
+                    
+                    request.setAttribute("errorActualizarCli", "Error al actualizar la información.");
+                    request.getRequestDispatcher("/customer/account/edit.jsp").forward(request, response);
+                }
 
-            Tarjeta tar = new Tarjeta();
-            tar.setIdCliente(idCliente);
-            tar.setNombreTarjeta(nombreTarjeta);
-            tar.setMetodoPago(metodoPago);
-            tar.setFechaExpiracion(fechaExpiracion);
-            tar.setTipoTarjeta(tipoTarjeta);
-            tar.setNumeroTarjeta(numeroTarjeta);
+                return;
 
-            int result = ClienteDao.registrarTarjeta(tar);
+            case "registrarDireccion":
+                int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+                String nombreDireccion = request.getParameter("nombreDireccion");
+                String direccion = request.getParameter("direccion");
+                int tipoVivienda = Integer.parseInt(request.getParameter("tipoVivienda"));
+                String referencia = request.getParameter("referencia");
+                String telefono = request.getParameter("telefono");
 
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/customer/account/wallet.jsp");
-            } else {
-                response.getWriter().println("Error al registrar la tarjeta.");
-            }
+                Direccion direRegistrar = new Direccion();
+                direRegistrar.setIdCliente(idCliente);
+                direRegistrar.setNombreDireccion(nombreDireccion);
+                direRegistrar.setDireccion(direccion);
+                direRegistrar.setTipoVivienda(tipoVivienda);
+                direRegistrar.setReferencia(referencia);
+                direRegistrar.setTelefono(telefono);
+
+                int resultRegistarDire = ClienteDao.registrarDireccion(direRegistrar);
+
+                if (resultRegistarDire > 0) {
+                    response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
+                } else {
+                    request.setAttribute("errorRegistrarDire", "Error al registrar la dirección.");
+                    request.getRequestDispatcher("/customer/account/register/addressbook.jsp").forward(request, response);
+                }
+
+                return;
+
+            case "actualizarDireccion":
+                int idDireCliente = Integer.parseInt(request.getParameter("idDireccionCliente"));
+                int idClienteDire = Integer.parseInt(request.getParameter("idCliente"));
+                String nombreDire = request.getParameter("nombreDireccion");
+                String direCliente = request.getParameter("direccion");
+                int tipoViviendaDire = Integer.parseInt(request.getParameter("tipoVivienda"));
+                String referenciaDire = request.getParameter("referencia");
+                String telefonoDire = request.getParameter("telefono");
+
+                Direccion direActualizar = new Direccion();
+                direActualizar.setIdDireccionCliente(idDireCliente);
+                direActualizar.setIdCliente(idClienteDire);
+                direActualizar.setNombreDireccion(nombreDire);
+                direActualizar.setDireccion(direCliente);
+                direActualizar.setTipoVivienda(tipoViviendaDire);
+                direActualizar.setReferencia(referenciaDire);
+                direActualizar.setTelefono(telefonoDire);
+
+                int resultAcualizarDire = ClienteDao.actualizarDireccion(direActualizar);
+
+                if (resultAcualizarDire > 0) {
+                    response.sendRedirect(request.getContextPath() + "/customer/account/addressbook.jsp");
+                } else {
+                    
+                    direActualizar = ClienteDao.obtenerDireccionPorId(idDireCliente);
+                    request.setAttribute("dire", direActualizar);
+                    
+                    request.setAttribute("errorActualizarDire", "Error al actualizar la dirección.");
+                    request.getRequestDispatcher("/customer/account/edit/addressbook.jsp").forward(request, response);
+                }
+                return;
+
+            case "registrarTarjeta":
+                int idClienteTar = Integer.parseInt(request.getParameter("idCliente"));
+                String nombreTar = request.getParameter("nombreTarjeta");
+                int metodoPagoTar = Integer.parseInt(request.getParameter("metodoPago"));
+                String fechaExpTar = request.getParameter("fechaExpiracion");
+                int tipoTar = Integer.parseInt(request.getParameter("tipoTarjeta"));
+                String numeroTar = request.getParameter("numeroTarjeta");
+
+                Tarjeta tar = new Tarjeta();
+                tar.setIdCliente(idClienteTar);
+                tar.setNombreTarjeta(nombreTar);
+                tar.setMetodoPago(metodoPagoTar);
+                tar.setFechaExpiracion(fechaExpTar);
+                tar.setTipoTarjeta(tipoTar);
+                tar.setNumeroTarjeta(numeroTar);
+
+                int resultRegistrarTar = ClienteDao.registrarTarjeta(tar);
+
+                if (resultRegistrarTar > 0) {
+                    response.sendRedirect(request.getContextPath() + "/customer/account/wallet.jsp");
+                } else {
+                    //FALTA ACTUALIZAR
+                    response.getWriter().println("Error al registrar la tarjeta.");
+                }
+                return;
         }
     }
 

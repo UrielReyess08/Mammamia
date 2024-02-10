@@ -2,6 +2,13 @@ package model;
 
 public class DetallePedido {
     int detallePedido, idPedido, idProducto, cantidad;
+    int totalVenta; String nombreProducto;
+
+    public DetallePedido(int idProducto, String nombreProducto, int totalVenta) {
+        this.idProducto = idProducto;
+        this.nombreProducto = nombreProducto;
+        this.totalVenta = totalVenta;
+    }
 
     public DetallePedido(int detallePedido, int idPedido, int idProducto, int cantidad) {
         this.detallePedido = detallePedido;
@@ -55,5 +62,20 @@ public class DetallePedido {
         this.nombre = nombre;
     }
 
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public int getTotalVenta() {
+        return totalVenta;
+    }
+
+    public void setTotalVenta(int totalVenta) {
+        this.totalVenta = totalVenta;
+    }
 
 }

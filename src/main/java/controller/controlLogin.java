@@ -54,9 +54,11 @@ public class controlLogin extends HttpServlet {
                 if ("Encargado Ventas".equals(rol)) {
                     response.sendRedirect(request.getContextPath() + "/admin/pedidos.jsp");
                 } else if ("Encargado Almacen".equals(rol)) {
-                    response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp"); // Página para administradores de almacén
+                    response.sendRedirect(request.getContextPath() + "/admin/inventario.jsp");
                 } else if ("Repartidor".equals(rol)) {
-                    response.sendRedirect(request.getContextPath() + "/admin/entregas.jsp"); // Página para repartidores
+                    response.sendRedirect(request.getContextPath() + "/admin/entregas.jsp");
+                } else if ("Administrador".equals(rol)) {
+                    response.sendRedirect(request.getContextPath() + "/admin/reportes.jsp");
                 }
                 return;
             }

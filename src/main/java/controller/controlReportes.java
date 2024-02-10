@@ -4,22 +4,19 @@
  */
 package controller;
 
-import dao.PedidoDao;
+import dao.ReportesDao;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import model.Pedido;
+import java.io.PrintWriter;
 
 /**
  *
  * @author daiko
  */
-@WebServlet("/ControlPedido") // url del servlet
-public class controlPedido extends HttpServlet {
+public class controlReportes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +29,7 @@ public class controlPedido extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
     }
 
@@ -47,33 +45,7 @@ public class controlPedido extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String idPedidoParam = request.getParameter("idPedido");
-
-        if (idPedidoParam != null && !idPedidoParam.isEmpty()) {
-            try {
-                int idPedido = Integer.parseInt(idPedidoParam);
-                Pedido pedido = PedidoDao.obtenerPedidoPorId(idPedido);
-
-                if (pedido != null) {
-
-                    if (pedido.getEstado() == 0 || pedido.getEstado() == 1) {
-                        request.setAttribute("filtroPedido", pedido);
-                    } else {
-                        request.setAttribute("errorFiltroPed", "El pedido ha sido entregado.");
-                        request.getRequestDispatcher("/admin/pedidos.jsp").forward(request, response);
-                    }
-                } else {
-                    request.setAttribute("errorFiltroPed", "El pedido no ha sido encontrado.");
-                    request.getRequestDispatcher("/admin/pedidos.jsp").forward(request, response);
-                }
-
-            } catch (NumberFormatException e) {
-                request.setAttribute("errorFiltroPed", "El id del pedido no es válido.");
-                request.getRequestDispatcher("/admin/pedidos.jsp").forward(request, response);
-            }
-        }
-        request.getRequestDispatcher("/admin/pedidos.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -88,16 +60,14 @@ public class controlPedido extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int idPedido = Integer.parseInt(request.getParameter("idPedido"));
-        int nuevoEstado = Integer.parseInt(request.getParameter("newEstado"));
+        String fecha = request.getParameter("fechaPedido");
 
-        Pedido pedido = new Pedido();
-        pedido.setIdPedido(idPedido);
-        pedido.setEstado(nuevoEstado);
+        ReportesDao reportesDao = new ReportesDao();
+        int cantidadPedidos = reportesDao.obtenerPedidoFecha(fecha);
 
-        int result = PedidoDao.actualizarEstado(pedido);
+        request.setAttribute("cantidadPedidos", cantidadPedidos);
+        request.getRequestDispatcher("/admin/reportes.jsp").forward(request, response);
 
-        response.sendRedirect(request.getContextPath() + "/admin/pedidos.jsp");
     }
 
     /**

@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Detalle Entrega | Mammamía</title>
 </head>
-<body class="text-center mt-5">
+<body class="text-center">
 <%@page import="model.Pedido, conexion.Conexion, dao.PedidoDao, java.util.*" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -27,18 +27,28 @@
     //Variable para el nombre del rol
     String nombreRol = (String) ((Usuario) sesion.getAttribute("usuario")).getRol();
 %>
-<header class="bg-light">
-    <ul class="nav container">
-        <li class="nav-item">
-            <span class="nav-link">Sistema</span>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link">Bienvenido, <%= nombreRol %></span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
-        </li>
-    </ul>
+<header class="p-3">
+    <nav class="navbar navbar-expand-sm navbar-dark text-light">
+        <div class="container-fluid">
+            <span class="">SISTEMA DE ENTREGAS</span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="">
+                        <span class="pe-3">Bienvenido, <%= nombreRol %>‎</span>
+                    </li>
+                    <li class="">
+                        <a class="ps-3 text-light" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
 </header>
 
 <%
@@ -48,7 +58,7 @@
 %>
 
 <main>
-    <article class="container">
+    <article class="container my-4">
         <section>
             <h1>Detalles de la Entrega: <%= det.getIdPedido() %>
             </h1>
@@ -101,7 +111,7 @@
             <p>Total: <%= det.getTotal() %>
             </p>
         </section>
-        
+
         <form action="${pageContext.request.contextPath}/ControlEntrega" method="post">
             <input type="hidden" id="idPedido" name="idPedido" value="<%= det.getIdPedido() %>">
             <input type="hidden" name="action" value="confirmarEntrega">
@@ -110,10 +120,9 @@
     </article>
 </main>
 
-<br>
-<footer class="footer mt-auto py-3 bg-light">
+<footer class="footer mt-auto py-3">
     <div class="container">
-        <p class="text-muted">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
+        <p class="m-0">Copyright@Todos los derechos reservados | Sistema Mammamía</p>
     </div>
 </footer>
 </body>

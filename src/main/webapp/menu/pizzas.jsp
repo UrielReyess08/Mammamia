@@ -38,6 +38,10 @@
     // Obtener la sesion para invitado
     Boolean isGuest = (sesion != null && sesion.getAttribute("isGuest") != null && (Boolean) sesion.getAttribute("isGuest"));
 
+    // Redireccion a menu.jsp si no hay sesion activa
+            if((isLoggedIn == null || !isLoggedIn.booleanValue()) && (isGuest == null || !isGuest.booleanValue())){
+                response.sendRedirect(request.getContextPath() + "/menu.jsp");
+            }
 %>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
