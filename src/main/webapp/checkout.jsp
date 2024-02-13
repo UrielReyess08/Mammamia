@@ -155,7 +155,6 @@
                                     <label for="tipoVivienda">Tipo de vivienda:</label>
                                     <select name="tipoVivienda" id="tipoVivienda" class="form-control" required>
                                         <option value="" disabled selected class="invisible">Seleccionar opción</option>
-                                        <option disabled selected type="hidden">Seleccionar opción</option>
                                         <option value="1">Departamento</option>
                                         <option value="2">Casa</option>
                                         <option value="3">Condominio</option>
@@ -215,7 +214,7 @@
                                 <div class="col-md-6">
                                     <label for="metodoPago">Método de pago:</label>
                                     <select name="metodoPago" id="metodoPago" class="form-control" required>
-                                        <option disabled selected type="hidden">Seleccionar opción</option>
+                                        <option value="" disabled selected type="hidden">Seleccionar opción</option>
                                         <option value="1">Visa</option>
                                         <option value="2">Mastercard</option>
                                         <option value="3">American Express</option>
