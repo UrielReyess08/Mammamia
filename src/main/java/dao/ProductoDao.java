@@ -126,7 +126,7 @@ public class ProductoDao {
         try {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT prod.idProducto, cat.nombre as nombreCategoria, prod.nombre, prod.descripcion, prod.precio, prod.stock, prod.estado FROM producto prod INNER JOIN categoria cat ON prod.idCategoria = cat.idCategoria WHERE prod.estado = 1");
+                    "SELECT prod.idProducto, cat.nombre as nombreCategoria, prod.nombre, prod.descripcion, prod.precio, prod.stock, prod.estado FROM producto prod INNER JOIN categoria cat ON prod.idCategoria = cat.idCategoria WHERE prod.estado = 1 ORDER BY idProducto ASC");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

@@ -32,7 +32,7 @@ public class controlCategoria extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,6 +77,10 @@ public class controlCategoria extends HttpServlet {
                 int result = CategoriaDao.actualizarCategoria(categoria);
                 if (result > 0) {
                     response.sendRedirect(request.getContextPath() + "/admin/categorias.jsp");
+                    return;
+                } else {
+                    request.setAttribute("errorCategoria", "Error al actualizar la categoría.");
+                    request.getRequestDispatcher("/admin/categorias.jsp").forward(request, response);
                 }
 
             } catch (Exception e) {
@@ -84,8 +88,7 @@ public class controlCategoria extends HttpServlet {
                 request.getRequestDispatcher("/admin/categorias.jsp").forward(request, response);
             }
         }
-        request.setAttribute("errorCategoria", "Error al actualizar la categoría.");
-        request.getRequestDispatcher("/admin/categorias.jsp").forward(request, response);
+        
     }
 
     /**

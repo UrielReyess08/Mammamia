@@ -82,7 +82,7 @@ public class controlLogin extends HttpServlet {
                 }
             } else {
                 HttpSession session = request.getSession();
-                session.setAttribute("error", "Credenciales Inválidas");
+                session.setAttribute("error", "Credenciales Incorrectas");
                 response.sendRedirect(request.getContextPath() + "/customer/login.jsp");
             }
         }
