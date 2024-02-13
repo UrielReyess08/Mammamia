@@ -81,8 +81,7 @@
                 } else if (isGuest) {
                 %>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
-                        (Invitado) <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
                 </li>
                 <%
                 } else {

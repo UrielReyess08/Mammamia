@@ -86,8 +86,7 @@
                         } else if (isGuest) {
                         %>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
-                                (Invitado) <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
                         </li>
                         <%
                         } else {
@@ -186,6 +185,7 @@
     <div class="form-group row">
       <div class="col-sm-6 offset-sm-2">
         <button type="submit" class="btn btn-success btn">Agregar</button>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/customer/account/addressbook.jsp">Regresar</a>
       </div>
     </div>
   </form>

@@ -72,8 +72,7 @@
                     } else if (isGuest) {
                     %>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
-                            (Invitado) <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
                     </li>
                     <%
                     } else {
@@ -91,7 +90,7 @@
     </header>
 
         <main>
-            <div class="card mx-auto">
+            <div class="card mx-auto mt-4 shadow p-3 mb-5 bg-white rounded" style="max-width: 80%;">
                 <div class="card-body">
                     <h5 class="card-title text-center">Registrarse</h5>
                     

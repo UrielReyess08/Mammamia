@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/menu.css">
         
     </head>
-    <body>
+    <body class="text-center
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
@@ -96,8 +96,7 @@
                         %>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar
-                                Sesión
-                                (Invitado) <span class="sr-only">(current)</span></a>
+                                Sesión<span class="sr-only">(current)</span></a>
                         </li>
                         <%
                         } else {
@@ -117,6 +116,7 @@
 
         <main>
             <article class="container">
+                <h1>Menú de Productos<h1>
                 <section class="row">
                     <div class="col-md-6 mb-4">
                         <div class="card">

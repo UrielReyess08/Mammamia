@@ -67,7 +67,7 @@
                     } else if (isGuest){
                       %>
                       <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión (Invitado) <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
                       </li>
                       <%
                             } else {
@@ -84,8 +84,8 @@
               </nav>
         </header>
 
-        <div class="container">
-            <h1 class="mt-5 mb-4">Términos y Condiciones</h1>
+        <div class="container my-4">
+            <h1 class="mb-4">Términos y Condiciones</h1>
         
             <div class="card">
               <div class="card-body">

@@ -78,7 +78,7 @@
                     %>
                     <li class="nav-item">
                         <a class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar
-                            Sesión (Invitado)</a>
+                            Sesión</a>
                     </li>
                     <%
                     } else {

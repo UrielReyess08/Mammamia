@@ -75,8 +75,7 @@
                 } else if (isGuest) {
                 %>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
-                        (Invitado) <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
                 </li>
                 <%
                 } else {
@@ -92,7 +91,7 @@
         </div>
     </nav>
 </header>
-	<main class="mt-4">
+	<main class="my-4">
     <article class="contacto-container">
         <h1 class="text-center">Contáctate con nosotros</h1>
         <p class="text-center">Al llenar el formulario autoriza el tratamiento de sus datos personales</p>

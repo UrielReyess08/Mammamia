@@ -16,6 +16,7 @@ import java.io.PrintWriter;
  *
  * @author daiko
  */
+@WebServlet("/controlReportes")
 public class controlReportes extends HttpServlet {
 
     /**

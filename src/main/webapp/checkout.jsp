@@ -85,8 +85,7 @@
                 } else if (isGuest) {
                 %>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión
-                        (Invitado) <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
                 </li>
                 <%
                 } else {
@@ -121,19 +120,25 @@
                             
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="direccionSelect">Seleccionar Dirección:</label>
-                                    <select name="idDireccionCliente" id="direccionSelect" class="form-control">
-                                        <option value="" disabled selected class="invisible">Seleccionar opción</option>
-                                        <% for (Direccion direccion : direcciones) { %>
-                                        <option value="<%= direccion.getIdDireccionCliente() %>"
-                                                data-direccion="<%= direccion.getDireccion() %>"
-                                                data-referencia="<%= direccion.getReferencia() %>"
-                                                data-telefono="<%= direccion.getTelefono() %>"
-                                                data-tipo-vivienda="<%= direccion.getTipoVivienda() %>">
-                                            <%= direccion.getNombreDireccion() %>
-                                        </option>
-                                        <% } %>
-                                    </select>
+                                    <%
+                                                if (isLoggedIn) {
+                                            %>
+                                            <label for="direccionSelect">Seleccionar Dirección:</label>
+                                            <select name="idDireccionCliente" id="direccionSelect" class="form-control">
+                                                <option value="" disabled selected class="invisible">Seleccionar opción</option>
+                                                <% for (Direccion direccion : direcciones) { %>
+                                                <option value="<%= direccion.getIdDireccionCliente() %>"
+                                                        data-direccion="<%= direccion.getDireccion() %>"
+                                                        data-referencia="<%= direccion.getReferencia() %>"
+                                                        data-telefono="<%= direccion.getTelefono() %>"
+                                                        data-tipo-vivienda="<%= direccion.getTipoVivienda() %>">
+                                                    <%= direccion.getNombreDireccion() %>
+                                                </option>
+                                                <% } %>
+                                            </select>
+                                            <%
+                                                }
+                                            %>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -177,21 +182,27 @@
                             <h2>Información de pago:</h2>
                             
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="tarjetaSelect">Seleccionar Tarjeta:</label>
-                                    <select name="idTarjetaCliente" id="tarjetaSelect" class="form-control">
-                                        <option value="" disabled selected class="invisible">Seleccionar opción</option>
-                                        <% for (Tarjeta tarjeta : tarjetas) { %>
-                                        <option value="<%= tarjeta.getIdTarjetaCliente() %>"
-                                                data-metodo="<%= tarjeta.getMetodoPago() %>"
-                                                data-fecha="<%= tarjeta.getFechaExpiracion() %>"
-                                                data-tipo="<%= tarjeta.getTipoTarjeta() %>"
-                                                data-numero="<%= tarjeta.getNumeroTarjeta() %>">
-                                            <%= tarjeta.getNombreTarjeta() %>
-                                        </option>
-                                        <% } %>
-                                    </select>
-                                </div>
+                                <%
+                                                if (isLoggedIn) {
+                                        %>
+                                        <div class="col-md-6">
+                                            <label for="tarjetaSelect">Seleccionar Tarjeta:</label>
+                                            <select name="idTarjetaCliente" id="tarjetaSelect" class="form-control">
+                                                <option value="" disabled selected class="invisible">Seleccionar opción</option>
+                                                <% for (Tarjeta tarjeta : tarjetas) { %>
+                                                <option value="<%= tarjeta.getIdTarjetaCliente() %>"
+                                                        data-metodo="<%= tarjeta.getMetodoPago() %>"
+                                                        data-fecha="<%= tarjeta.getFechaExpiracion() %>"
+                                                        data-tipo="<%= tarjeta.getTipoTarjeta() %>"
+                                                        data-numero="<%= tarjeta.getNumeroTarjeta() %>">
+                                                    <%= tarjeta.getNombreTarjeta() %>
+                                                </option>
+                                                <% } %>
+                                            </select>                     
+                                        </div>
+                                        <%
+                                            }
+                                        %>
                                 
                                 <div class="col-md-6">
                                     <fieldset>
