@@ -139,7 +139,7 @@
 
                                 <td>
                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
-                                        <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
+                                        <input type="hidden" name="idPedido" value="${filtroPedido.getIdPedido()}">
                                         <input type="hidden" name="newEstado" value="1">
                                         <button class="btn btn-success btn-sm" type="submit">En Camino
                                         </button>
@@ -148,7 +148,7 @@
 
                                 <td>
                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
-                                        <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
+                                        <input type="hidden" name="idPedido" value="${filtroPedido.getIdPedido()}">
                                         <input type="hidden" name="newEstado" value="3">
                                         <button class="btn btn-warning btn-sm text-light" type="submit">Entregado
                                         </button>
@@ -157,7 +157,7 @@
 
                                 <td>
                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
-                                        <input type="hidden" name="idPedido" value="${filteredPedido.getIdPedido()}">
+                                        <input type="hidden" name="idPedido" value="${filtroPedido.getIdPedido()}">
                                         <input type="hidden" name="newEstado" value="4">
                                         <button class="btn btn-danger btn-sm" type="submit">Cancelar
                                         </button>
@@ -165,7 +165,7 @@
                                 </td>
 
                                 <td>
-                                    <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${filteredPedido.getIdPedido()}">
+                                    <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/admin/detallePedido.jsp?idPedido=${filtroPedido.getIdPedido()}">
                                         Más Detalles
                                     </a>
                                 </td>

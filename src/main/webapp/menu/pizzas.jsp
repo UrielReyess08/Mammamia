@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.5.1/css/pro.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -99,9 +100,14 @@
 </header>
 
 <main>
-    <a href="<%=request.getContextPath()%>/controlCarrito?accion=Carrito">Carrito <label>${contador}</label></a>
+    <div class="d-flex w-100 justify-content-end">
+        <div class="ml-auto m-2">
+            <a href="<%=request.getContextPath()%>/controlCarrito?accion=Carrito" class="text-dark w-100">Carrito<i class="fa-light fa-cart-shopping px-1"></i></a>
+        </div>
+    </div>
+
     <article class="container text-center">
-        <section>
+        <section class="m-0 mt-2">
             <a href="<%=request.getContextPath()%>/menu/pizzas.jsp" class="sub-menu">Pizzas</a>
             <a href="<%=request.getContextPath()%>/menu/pastas.jsp" class="sub-menu">Pastas</a>
             <a href="<%=request.getContextPath()%>/menu/postres.jsp" class="sub-menu">Postres</a>

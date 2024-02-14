@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/menu.css">
         
     </head>
-    <body class="text-center
+    <body class="text-center">
         <%
             // Obtener la sesión
             HttpSession sesion = request.getSession(false);
@@ -114,7 +114,7 @@
             </nav>
         </header>
 
-        <main>
+        <main class="my-4">
             <article class="container">
                 <h1>Menú de Productos<h1>
                 <section class="row">

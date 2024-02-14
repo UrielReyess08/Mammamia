@@ -9,22 +9,22 @@
 <%@ page import="model.Producto" %>
 <%@ page import="java.util.List" %>
 <html>
-<head>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.5.1/css/pro.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/menu.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de compras</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/carrito.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
+    <head>
+        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+              integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+              crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.5.1/css/pro.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+              integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/menu.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/estilos/carrito.css">
+        <title>Carrito de compras</title>
+    </head>
 <body>
 <%
     // Obtener la sesión
@@ -43,65 +43,74 @@
     }
 %>
 
-
 <header>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/index.jsp">
-                            <img src="..." alt="logo"/> | Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/menu.jsp">Menú</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros</a>
-                    </li>
-                    <!-- Menú para cliente -->
-                    <%
-                        if (isLoggedIn) {
-                    %>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar
-                            Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi
-                            Cuenta</a>
-                    </li>
-                    <!-- Menú para invitado-->
-                    <%
-                    } else if (isGuest) {
-                    %>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar
-                            Sesión</a>
-                    </li>
-                    <%
-                    } else {
-                    %>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar
-                            Sesión</a>
-                    </li>
-                    <%
-                        }
-                    %>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
+            <span><img src="${pageContext.request.contextPath}/img/inicio/logo.png" alt="logo" width="30"
+                       height="30"></span>
+            Mammamia
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/menu.jsp">Menú <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/nosotros.jsp">Nosotros <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <!-- Menú para cliente -->
+                <%
+                    if (isLoggedIn) {
+                %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Cerrar
+                        Sesión
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/account/panel.jsp">Mi
+                        cuenta
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Menú para invitado-->
+                <%
+                } else if (isGuest) {
+                %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar
+                        Sesión<span class="sr-only">(current)</span></a>
+                </li>
+                <%
+                } else {
+                %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/login.jsp">Iniciar
+                        Sesión</a>
+                </li>
+                <%
+                    }
+                %>
+            </ul>
+
         </div>
     </nav>
-    <ul>
-        <li>
-            <a href="<%=request.getContextPath()%>/<%=lastPage%>">Seguir comprando</a>
-        </li>
-    </ul>
 </header>
 
-<div class="container">
+<div class="container my-4">
+    <ul class="list-unstyled">
+        <li>
+            <a href="<%=request.getContextPath()%>/<%=lastPage%>" class="text-dark"><i class="fa-light fa-arrow-left px-2"></i>Seguir comprando</a>
+        </li>
+    </ul>
+
     <div class="row pt-5 pb-5">
         <c:if test="${totalPagar > 0}">
         <div class="col-lg-8 table-responsive">
