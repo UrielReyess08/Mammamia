@@ -4,6 +4,7 @@
 <html>
 <head>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
@@ -96,6 +97,9 @@
                     <td>1</td>
                     <td>5.90</td>
                 </tr>
+                <c:set var="subtotalGeneral" value="0"/>
+                <c:set var="cantidadTotal" value="1"/>
+                
                     <c:forEach var="car" items="${carrito}">
                         <c:set var="subtotalGeneral" value="${subtotalGeneral + car.getSubtotal()}"/>
                         <c:set var="cantidadTotal" value="${cantidadTotal + car.getCantidad()}"/>
@@ -118,7 +122,7 @@
                 <tbody>
                     <tr>
                         <td>${cantidadTotal}</td>
-                        <td>${subtotalGeneral +  5.90}</td>
+                        <td><fmt:formatNumber type="number" pattern="#.##" value="${subtotalGeneral +   5.90}" /></td>
                     </tr>
                 </tbody>
             </table>
