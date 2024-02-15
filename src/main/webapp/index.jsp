@@ -106,13 +106,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
-                    <img src="img/inicio/pizza-barbacoa.png" class="card-img-top" alt="Imagen 1" height="250px">
+                    <img src="img/Pizzas/1.png" class="card-img-top" alt="Imagen 1" height="250px">
                 </a>
                 <div class="card-body">
                     <!-- Contenido de la Tarjeta 1 -->
-                    <h5 class="card-title">Pizza Barbacoa</h5>
-                    <p class="card-text">Pizza al estilo de california pizza margherita tomate, pizza s, comida,
-                        queso</p>
+                    <h5 class="card-title">Mammamía Suprema</h5>
+                    <p class="card-text">Pizza hawaiana con mucha piña.</p>
                 </div>
             </div>
         </div>
@@ -122,13 +121,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
-                    <img src="img/inicio/pizza-siciliana.png" class="card-img-top" alt="Imagen 2" height="250px">
+                    <img src="img/Pizzas/2.png" class="card-img-top" alt="Imagen 2" height="250px">
                 </a>
                 <div class="card-body">
                     <!-- Contenido de la Tarjeta 2 -->
-                    <h5 class="card-title">Pizza Siciliana</h5>
-                    <p class="card-text">Pizza al estilo de california pizza margherita tomate, pizza s, comida,
-                        queso.</p>
+                    <h5 class="card-title">Pizza Margarita</h5>
+                    <p class="card-text">Pizza con un rico sabor.</p>
                 
                 </div>
             </div>
@@ -137,12 +135,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
-                    <img src="img/inicio/pizza-margherita.png" class="card-img-top" alt="Imagen 3" height="250px">
+                    <img src="img/Pizzas/3.png" class="card-img-top" alt="Imagen 3" height="250px">
                 </a>
                 <div class="card-body">
                     <!-- Contenido de la Tarjeta 3 -->
-                    <h5 class="card-title">Pizza Margherita</h5>
-                    <p class="card-text">sushi pizza pizza repartida, pizza, comida, queso</p>
+                    <h5 class="card-title">Pizza Marinara</h5>
+                    <p class="card-text">Pizza con salsa de tomate.</p>
                 
                 </div>
             </div>
@@ -153,12 +151,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
-                    <img src="img/inicio/pizza-tocino.png" class="card-img-top" alt="Imagen 4" height="250px">
+                    <img src="img/Pizzas/4.png" class="card-img-top" alt="Imagen 4" height="250px">
                 </a>
                 <div class="card-body">
                     <!-- Contenido de la Tarjeta 4 -->
-                    <h5 class="card-title">Pizza Tocino</h5>
-                    <p class="card-text">tocino cocina italiana restaurante, pizza, comida, receta, queso</p>
+                    <h5 class="card-title">Pizza Napolitana</h5>
+                    <p class="card-text">Pizza con masa gomosaa.</p>
                 
                 </div>
             </div>
@@ -167,12 +165,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
-                    <img src="img/inicio/pizza-peperoni.png" class="card-img-top" alt="Imagen 5" height="250px">
+                    <img src="img/Pizzas/5.png" class="card-img-top" alt="Imagen 5" height="250px">
                 </a>
                 <div class="card-body">
                     <!-- Contenido de la Tarjeta 5 -->
                     <h5 class="card-title">Pizza Pepperoni</h5>
-                    <p class="card-text">Sabor incomparable de pepperoni americano y queso mozzarella</p>
+                    <p class="card-text">Pizza con mozarella y pepperoni.</p>
                 
                 </div>
             </div>
@@ -181,12 +179,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <a href="<%=request.getContextPath()%>/menu/pizzas.jsp">
-                    <img src="img/inicio/pizza-estilocalifornia.png" class="card-img-top" alt="Imagen 6" height="250px">
+                    <img src="img/Pizzas/6.png" class="card-img-top" alt="Imagen 6" height="250px">
                 </a>
                 <div class="card-body">
                     <!-- Contenido de la Tarjeta 6 -->
-                    <h5 class="card-title">Pizza Estilo California</h5>
-                    <p class="card-text">pizza al estilo de california, margherita sushi, pizza, comida, queso</p>
+                    <h5 class="card-title">Pizza 4 Quesos</h5>
+                    <p class="card-text">Pizza con cuatro quesos diferentes.</p>
                 
                 </div>
             </div>

@@ -76,7 +76,7 @@
                 </div>
               </nav>
     </header>
-		 <main class="container mt-4">
+		 <main class="container my-4">
     <h1>Resumen del pedido</h1>
     <div class="row">
         <div class="col-12">
