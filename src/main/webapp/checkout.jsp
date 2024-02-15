@@ -85,7 +85,8 @@
                 } else if (isGuest) {
                 %>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar Sesión<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customer/logout.jsp">Iniciar
+                        Sesión<span class="sr-only">(current)</span></a>
                 </li>
                 <%
                 } else {
@@ -121,24 +122,24 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <%
-                                                if (isLoggedIn) {
-                                            %>
-                                            <label for="direccionSelect">Seleccionar Dirección:</label>
-                                            <select name="idDireccionCliente" id="direccionSelect" class="form-control">
-                                                <option value="" disabled selected class="invisible">Seleccionar opción</option>
-                                                <% for (Direccion direccion : direcciones) { %>
-                                                <option value="<%= direccion.getIdDireccionCliente() %>"
-                                                        data-direccion="<%= direccion.getDireccion() %>"
-                                                        data-referencia="<%= direccion.getReferencia() %>"
-                                                        data-telefono="<%= direccion.getTelefono() %>"
-                                                        data-tipo-vivienda="<%= direccion.getTipoVivienda() %>">
-                                                    <%= direccion.getNombreDireccion() %>
-                                                </option>
-                                                <% } %>
-                                            </select>
-                                            <%
-                                                }
-                                            %>
+                                        if (isLoggedIn) {
+                                    %>
+                                    <label for="direccionSelect">Seleccionar Dirección:</label>
+                                    <select name="idDireccionCliente" id="direccionSelect" class="form-control">
+                                        <option value="" disabled selected class="invisible">Seleccionar opción</option>
+                                        <% for (Direccion direccion : direcciones) { %>
+                                        <option value="<%= direccion.getIdDireccionCliente() %>"
+                                                data-direccion="<%= direccion.getDireccion() %>"
+                                                data-referencia="<%= direccion.getReferencia() %>"
+                                                data-telefono="<%= direccion.getTelefono() %>"
+                                                data-tipo-vivienda="<%= direccion.getTipoVivienda() %>">
+                                            <%= direccion.getNombreDireccion() %>
+                                        </option>
+                                        <% } %>
+                                    </select>
+                                    <%
+                                        }
+                                    %>
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -183,26 +184,26 @@
                             
                             <div class="row">
                                 <%
-                                                if (isLoggedIn) {
-                                        %>
-                                        <div class="col-md-6">
-                                            <label for="tarjetaSelect">Seleccionar Tarjeta:</label>
-                                            <select name="idTarjetaCliente" id="tarjetaSelect" class="form-control">
-                                                <option value="" disabled selected class="invisible">Seleccionar opción</option>
-                                                <% for (Tarjeta tarjeta : tarjetas) { %>
-                                                <option value="<%= tarjeta.getIdTarjetaCliente() %>"
-                                                        data-metodo="<%= tarjeta.getMetodoPago() %>"
-                                                        data-fecha="<%= tarjeta.getFechaExpiracion() %>"
-                                                        data-tipo="<%= tarjeta.getTipoTarjeta() %>"
-                                                        data-numero="<%= tarjeta.getNumeroTarjeta() %>">
-                                                    <%= tarjeta.getNombreTarjeta() %>
-                                                </option>
-                                                <% } %>
-                                            </select>                     
-                                        </div>
-                                        <%
-                                            }
-                                        %>
+                                    if (isLoggedIn) {
+                                %>
+                                <div class="col-md-6">
+                                    <label for="tarjetaSelect">Seleccionar Tarjeta:</label>
+                                    <select name="idTarjetaCliente" id="tarjetaSelect" class="form-control">
+                                        <option value="" disabled selected class="invisible">Seleccionar opción</option>
+                                        <% for (Tarjeta tarjeta : tarjetas) { %>
+                                        <option value="<%= tarjeta.getIdTarjetaCliente() %>"
+                                                data-metodo="<%= tarjeta.getMetodoPago() %>"
+                                                data-fecha="<%= tarjeta.getFechaExpiracion() %>"
+                                                data-tipo="<%= tarjeta.getTipoTarjeta() %>"
+                                                data-numero="<%= tarjeta.getNumeroTarjeta() %>">
+                                            <%= tarjeta.getNombreTarjeta() %>
+                                        </option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <%
+                                    }
+                                %>
                                 
                                 <div class="col-md-6">
                                     <fieldset>
@@ -266,20 +267,49 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td>Envio delivery</td>
+                        <td>5.90</td>
+                        <td>1</td>
+                        <td>5.90</td>
+                    </tr>
+                    <c:set var="subtotalGeneral" value="0"/>
+                    <c:set var="cantidadTotal" value="1"/>
+                    
                     <c:forEach var="car" items="${carrito}">
+                        <c:set var="subtotalGeneral" value="${subtotalGeneral + car.getSubtotal()}"/>
+                        <c:set var="cantidadTotal" value="${cantidadTotal + car.getCantidad()}"/>
+                        
                         <tr>
                             <td>${car.getNombre()}</td>
                             <td>${car.getPrecio()}</td>
                             <td>${car.getCantidad()}</td>
                             <td>${car.getSubtotal()}</td>
                         </tr>
-                    
                     </c:forEach>
                     </tbody>
-                
+                </table>
+            </section>
+            
+            <section class="card p-4 mt-4">
+                <h1>Total a pagar</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Cantidad productos</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>${cantidadTotal}</td>
+                        <td>${subtotalGeneral +  5.90}</td>
+                    </tr>
+                    </tbody>
                 </table>
             </section>
         </div>
+    
     </div>
 </main>
 
@@ -305,14 +335,15 @@
                     <a href="${pageContext.request.contextPath}/contacto.jsp">Atención al
                         cliente</a><br>
                     <a href="${pageContext.request.contextPath}/preguntas-frecuentes.jsp">Preguntas Frecuentes</a><br>
-                   
+                
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4>Políticas</h4>
                 <div class="footer-links">
                     <a href="#">Políticas de Datos Personales</a><br>
-                    <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Términos y condiciones de Promociones</a><br>
+                    <a href="${pageContext.request.contextPath}/terminos-condiciones.jsp">Términos y condiciones de
+                        Promociones</a><br>
                     <a href="#">Derechos ARCO</a>
                 </div>
             </div>
@@ -372,7 +403,7 @@
         document.getElementById('numeroTarjeta').value = selectedOption.getAttribute('data-numero');
     });
 
-    document.getElementById('numeroTarjeta').addEventListener('input', function() {
+    document.getElementById('numeroTarjeta').addEventListener('input', function () {
         var numeroTarjeta = this.value.replace(/\s/g, '');
         if (numeroTarjeta.length !== 16) {
             this.setCustomValidity('El número de tarjeta debe tener 16 dígitos');
@@ -381,7 +412,7 @@
         }
     });
 
-    document.getElementById('fechaExpiracion').addEventListener('input', function() {
+    document.getElementById('fechaExpiracion').addEventListener('input', function () {
         var fechaExpiracion = this.value;
         var regex = /^(0[1-9]|1[0-2])\/\d{2}$/; // Formato MM/YY
         if (!regex.test(fechaExpiracion)) {

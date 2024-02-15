@@ -151,13 +151,31 @@
         </div>
         </c:if>
         <c:if test="${totalPagar > 0}">
+            <%@ page import="java.text.DecimalFormat" %>
+            <%
+                if (request.getAttribute("totalPagar") != null) {
+                    double totalPagar = Double.parseDouble(request.getAttribute("totalPagar").toString());
+                    
+                    DecimalFormat df = new DecimalFormat("#.##");
+
+                    double totalConEnvio = totalPagar +   5.90;
+                    String totalFormateado = df.format(totalConEnvio);
+                    String totalPagarFormateado = df.format(totalPagar);
+            %>
+            
             <div class="col-sm-4">
-                <p>Subtotal: S/ ${totalPagar}</p>
-                <p>Envío: S/ 5.90</p>
+                <p>Subtotal: S/ <%= totalPagarFormateado %></p>
+                <p>Envío: S/   5.90</p>
                 <hr class="my-2">
-                <p style="font-weight:700">Total a pagar: S/ ${totalPagar + 5.90}</p>
+                <p style="font-weight:700">Total a pagar: S/ <%= totalFormateado %></p>
                 <a href="#" id="btnRealizarPago" class="btn btn-warning text-center">Realizar pago</a>
             </div>
+            
+            <% } else { %>
+            <!-- Manejar el caso cuando totalPagar no está disponible -->
+            <p>No se pudo calcular el total a pagar.</p>
+            <% } %>
+        
         </c:if>
     </div>
     

@@ -90,7 +90,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td>Envio delivery</td>
+                    <td>5.90</td>
+                    <td>1</td>
+                    <td>5.90</td>
+                </tr>
                     <c:forEach var="car" items="${carrito}">
+                        <c:set var="subtotalGeneral" value="${subtotalGeneral + car.getSubtotal()}"/>
+                        <c:set var="cantidadTotal" value="${cantidadTotal + car.getCantidad()}"/>
                         <tr>
                             <td>${car.getNombre()}</td>
                             <td>${car.getPrecio()}</td>
@@ -100,10 +108,24 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <table class="table table-bordered mt-3 mb-5">
+                <thead>
+                <tr>
+                    <th>Cantidad productos</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${cantidadTotal}</td>
+                        <td>${subtotalGeneral +  5.90}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 mb-5 text-center">
             <a class="btn btn-warning" href="<%=request.getContextPath()%>/index.jsp">Volver al menú</a>
         </div>
     </div>
