@@ -37,7 +37,7 @@ public class PedidoDao {
             ps.setInt(8, pedido.getTipoVivienda());
             ps.setInt(9, pedido.getMetodoPago());
             ps.setInt(10, pedido.getTipoTarjeta());
-            ps.setInt(11, pedido.getEstado());
+            ps.setInt(11, 0);
             ps.setString(12, obtenerFechaActual());
             ps.setDouble(13, pedido.getTotal());
 

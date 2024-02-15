@@ -122,7 +122,7 @@
                                 <td>
                                     <c:choose>
                                         <c:when test="${filtroPedido.getEstado() == 0}">En Preparación</c:when>
-                                        <c:when test="${filtroPedido.getEstado() == 1}">En Camino</c:when>
+                                        <c:when test="${filtroPedido.getEstado() == 1}">Pendiente a envío</c:when>
                                         <c:otherwise>Estado Desconocido</c:otherwise>
                                     </c:choose>
                                 </td>
@@ -141,7 +141,7 @@
                                     <form action="${pageContext.request.contextPath}/ControlPedido" method="post">
                                         <input type="hidden" name="idPedido" value="${filtroPedido.getIdPedido()}">
                                         <input type="hidden" name="newEstado" value="1">
-                                        <button class="btn btn-success btn-sm" type="submit">En Camino
+                                        <button class="btn btn-success btn-sm" type="submit">Pendiente a envío
                                         </button>
                                     </form>
                                 </td>
@@ -217,7 +217,7 @@
                                     <td>
                                         <c:choose>
                                             <c:when test="${ped.getEstado() == 0}">En Preparación</c:when>
-                                            <c:when test="${ped.getEstado() == 1}">En Camino</c:when>
+                                            <c:when test="${ped.getEstado() == 1}">Pendiente a envío</c:when>
                                             <c:otherwise>Estado Desconocido</c:otherwise>
                                         </c:choose>
                                     </td>
@@ -238,7 +238,7 @@
                                               method="post">
                                             <input type="hidden" name="idPedido" value="${ped.getIdPedido()}">
                                             <input type="hidden" name="newEstado" value="1">
-                                            <button class="btn btn-success btn-sm" type="submit">En Camino
+                                            <button class="btn btn-success btn-sm" type="submit">Pendiente a envío
                                             </button>
                                         </form>
                                     </td>
